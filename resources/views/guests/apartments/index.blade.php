@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-{{-- <section id="input-search">
+<section id="input-search">
   <div class="container">
     <div class="row">
       <div class="col">
@@ -15,8 +15,8 @@
 </section>
 
 <section id="sponsored">
-  @include('guests.apartments.partials.sponsored')
+  @include('admin.apartments.partials.sponsored')
 </section>
 
-</div> --}}
+</div>
 @endsection

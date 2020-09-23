@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('guests.apartments.index');
-});
+// Route::get('/', function () {
+//     return view('guests.apartments.index');
+// });
 
 Auth::routes();
 
@@ -28,5 +28,7 @@ Route::prefix('admin')
   ->group(function() {
     Route::resource('apartments','ApartmentController');
   });
-// Route::get('/posts', 'PostController@index')->name('posts.index');
+
+//Route apartments per tutti gli utenti
+Route::get('/', 'ApartmentController@index')->name('apartments.index');
 // Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
