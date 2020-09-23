@@ -4,8 +4,8 @@
   Bool b&b
 @endsection
 
-{{-- @section('content')
-<section id="input-search">
+@section('content')
+{{-- <section id="input-search">
   <div class="container">
     <div class="row">
       <div class="col">
