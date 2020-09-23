@@ -17,8 +17,6 @@ class ApartmentController extends Controller
     public function index()
     {
         $apartments= Apartment::all();
-        //dd($apartments);
-        
         return view('admin.apartments.index', compact('apartments'));
     }
 
