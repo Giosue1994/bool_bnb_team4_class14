@@ -30,13 +30,13 @@ class Apartment extends Model
       return $this->hasMany('App\Image');
     }
 
-    public function sponsors(){
-      return $this->belongsToMany('App\Sponsor');
-    }
+    // public function sponsors(){
+    //   return $this->belongsToMany('App\Sponsor');
+    // }
 
-    public function statistics() {
-      return $this->hasMany('App\Statistic');
-    }
+    // public function statistics() {
+    //   return $this->hasMany('App\Statistic');
+    // }
 
     public function services(){
       return $this->belongsToMany('App\Service');

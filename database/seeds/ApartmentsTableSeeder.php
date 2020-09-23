@@ -32,7 +32,7 @@ class ApartmentsTableSeeder extends Seeder
 
           $new_apartment->services()->attach(rand(1, 9));
 
-          $new_apartment->sponsors()->attach(rand(1, 3));
+          // $new_apartment->sponsors()->attach(rand(1, 3));
 
           // $new_apartment->sponsors()->attach([
           //   'sponsor_id' => rand(1, 3),
