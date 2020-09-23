@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Apartment;
 use App\User;
+use App\Image;
 
 class ApartmentController extends Controller
 {
@@ -17,6 +18,12 @@ class ApartmentController extends Controller
     public function index()
     {
         $apartments= Apartment::all();
+
+
+        //dd($apartments);
+
+
+
         return view('admin.apartments.index', compact('apartments'));
     }
 
@@ -47,9 +54,10 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Apartment $apartment)
     {
-        //
+        //dd($apartment->images);
+        return view('admin.apartments.show', compact('apartment'));
     }
 
     /**
