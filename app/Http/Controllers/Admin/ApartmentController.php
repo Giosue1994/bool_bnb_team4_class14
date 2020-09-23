@@ -19,7 +19,10 @@ class ApartmentController extends Controller
     {
         $apartments= Apartment::all();
 
+
         //dd($apartments);
+
+
 
         return view('admin.apartments.index', compact('apartments'));
     }
