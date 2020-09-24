@@ -130,19 +130,8 @@ class ApartmentController extends Controller
         $image->update();
 
         $apartment->update();
-        $apartment->save();
 
         return redirect()->route('admin.apartments.show', $apartment);
-
-
-
-
-
-
-
-
-
-
 
     }
 
