@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-  Bool b&b ewroeheofeòorgnò
+  Bool b&b 
 @endsection
 
 @section('content')
@@ -17,6 +17,3 @@
 <section id="sponsored">
   @include('admin.apartments.partials.sponsored')
 </section>
-
-</div>
-@endsection
