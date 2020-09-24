@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Apartment;
 use App\User;
 use App\Image;
-use App\Client;
 
 
 class ApartmentController extends Controller
@@ -131,8 +130,20 @@ class ApartmentController extends Controller
         $image->update();
 
         $apartment->update();
+        $apartment->save();
 
         return redirect()->route('admin.apartments.show', $apartment);
+
+
+
+
+
+
+
+
+
+
+
     }
 
     /**
