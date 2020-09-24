@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Apartment;
 use App\User;
 use App\Image;
+use App\Service;
+use App\Conversation;
 
 
 class ApartmentController extends Controller
@@ -30,7 +32,8 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        return view('admin.apartments.create');
+        $services = Service::all();
+        return view('admin.apartments.create', compact('services'));
     }
 
     /**
@@ -67,6 +70,10 @@ class ApartmentController extends Controller
           $new_image->save();
         }
 
+        if (isset($data['services'])) {
+          $new_apartment->services()->sync($data['services']);
+        }
+
         return redirect()->route('admin.apartments.show', $new_apartment);
     }
 
@@ -78,7 +85,6 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
-        //dd($apartment->images);
         return view('admin.apartments.show', compact('apartment'));
     }
 
@@ -90,8 +96,9 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
-        $user =Auth::user();
-        return view( "admin.apartments.edit", compact('apartment', 'user'));
+        $user = Auth::user();
+        $services = Service::all();
+        return view( "admin.apartments.edit", compact('apartment', 'user', 'services'));
     }
 
     /**
@@ -103,29 +110,36 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment)
     {
-        $request_data = $request->all();
-        $apartment->title = $request_data['title'];
-        $apartment->rooms = $request_data['rooms'];
-        $apartment->baths = $request_data['baths'];
-        $apartment->beds = $request_data['beds'];
-        $apartment->mqs = $request_data['mqs'];
-        $apartment->description = $request_data['description'];
-        $apartment->guests = $request_data['guests'];
+        $data = $request->all();
+        $apartment->title = $data['title'];
+        $apartment->rooms = $data['rooms'];
+        $apartment->baths = $data['baths'];
+        $apartment->beds = $data['beds'];
+        $apartment->mqs = $data['mqs'];
+        $apartment->description = $data['description'];
+        $apartment->guests = $data['guests'];
         $apartment->user_id = Auth::id();
-        $apartment->latitude = $request_data['latitude'];
-        $apartment->longitude = $request_data['longitude'];
-        $apartment->address = $request_data['address'];
-        $apartment->city = $request_data['city'];
-        $apartment->zip = $request_data['zip'];
+        $apartment->latitude = $data['latitude'];
+        $apartment->longitude = $data['longitude'];
+        $apartment->address = $data['address'];
+        $apartment->city = $data['city'];
+        $apartment->zip = $data['zip'];
 
         $image = Image::where('apartment_id' , $apartment->id)->first();
 
-        if (isset($request_data['image_path'])) {
+        if (isset($data['image_path'])) {
           $path = $request->file('image_path')->store('images','public');
           $image->image_path = asset('storage'). '/' . $path;
         } else {
           $image->image_path = 'https://otticasilingardi.it/wp-content/themes/consultix/images/no-image-found-360x250.png';
         }
+
+        if (!empty($data['services'])) {
+          $apartment->services()->sync($data['services']);
+        } else {
+          $apartment->services()->detach();
+        }
+
         // Faccio l'update dell'immagine e dell'appartamento
         $image->update();
 
@@ -141,8 +155,16 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Apartment $apartment)
     {
-        //
+        $conversation = Conversation::where('apartment_id' , $apartment->id);
+        $image = Image::where('apartment_id' , $apartment->id);
+
+        $apartment->services()->detach();
+        $conversation->delete();
+        $image->delete();
+        $apartment->delete();
+
+        return redirect()->route('admin.apartments.index');
     }
 }

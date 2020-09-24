@@ -41,4 +41,8 @@ class Apartment extends Model
     public function services(){
       return $this->belongsToMany('App\Service');
     }
+
+    public function conversations(){
+      return $this->hasMany('App\Conversation');
+    }
 }

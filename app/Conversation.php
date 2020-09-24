@@ -13,7 +13,7 @@ class Conversation extends Model
       'apartment_id',
     ];
 
-    public function apartments(){
+    public function apartment(){
       return $this->belongsTo('App\Apartment');
     }
 }
