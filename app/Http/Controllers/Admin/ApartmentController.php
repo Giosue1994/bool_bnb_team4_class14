@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Apartment;
 use App\User;
 use App\Image;
-use Illuminate\Support\Facades\Auth;
 
 
 class ApartmentController extends Controller
