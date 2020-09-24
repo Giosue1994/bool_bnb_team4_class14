@@ -127,6 +127,7 @@ class ApartmentController extends Controller
         } else {
           $image->image_path = 'https://otticasilingardi.it/wp-content/themes/consultix/images/no-image-found-360x250.png';
         }
+        // Faccio l'update dell'immagine e dell'appartamento
         $image->update();
 
         $apartment->update();
