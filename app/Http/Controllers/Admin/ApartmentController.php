@@ -44,6 +44,8 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate($this->validationData());
+
         $data = $request->all();
         $new_apartment = new Apartment();
         $new_apartment->user_id = Auth::id();
@@ -61,14 +63,16 @@ class ApartmentController extends Controller
         $new_apartment->longitude = $data['longitude'];
 
         $new_apartment->save();
+        $new_image = new Image();
 
         if (isset($data['image_path'])) {
-          $new_image = new Image();
           $path = $request->file('image_path')->store('images','public');
           $new_image->image_path = asset('storage'). '/' . $path;
-          $new_image->apartment_id = $new_apartment->id;
-          $new_image->save();
+        } else {
+          $new_image->image_path = 'https://otticasilingardi.it/wp-content/themes/consultix/images/no-image-found-360x250.png';
         }
+        $new_image->apartment_id = $new_apartment->id;
+        $new_image->save();
 
         if (isset($data['services'])) {
           $new_apartment->services()->sync($data['services']);
@@ -110,6 +114,8 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment)
     {
+        $request->validate($this->validationData());
+
         $data = $request->all();
         $apartment->title = $data['title'];
         $apartment->rooms = $data['rooms'];
@@ -166,5 +172,20 @@ class ApartmentController extends Controller
         $apartment->delete();
 
         return redirect()->route('admin.apartments.index');
+    }
+
+    public function validationData() {
+      return [
+        'title' => 'required|max:255',
+        'rooms' => 'required|integer|min:1|max:10',
+        'baths' => 'required|integer|min:1|max:5',
+        'beds' => 'required|integer|min:1|max:10',
+        'mqs' => 'required|integer|min:25',
+        'guests' => 'required|integer|min:1|max:20',
+        'latitude' => 'required|numeric',
+        'longitude' => 'required|numeric',
+        'address' => 'required|max:255',
+        'city' => 'required|max:255',
+      ];
     }
 }

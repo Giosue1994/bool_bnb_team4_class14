@@ -4,7 +4,7 @@
 
       <div class="row sponsored-apartment">
         @foreach ($apartments as $apartment)
-          <a href="{{ route('admin.apartments.show', $apartment) }}">
+          <a href="{{ route('apartments.show', $apartment) }}">
             <div class="col-4 single-apartment">
               @foreach ($apartment->images as $image)
 
