@@ -71,6 +71,16 @@
               <textarea name="description" rows="8" cols="80">{{ old('description') ? old('description') : $apartment->description}}</textarea>
             </div>
 
+            <div class="chekboxes">
+              <span>Servizi aggiuntivi</span>
+              @foreach ($services as $service)
+                <div>
+                  <input type="checkbox" name="services[]" {{ $apartment->services->contains($service) ? 'checked' : '' }} value="{{$service->id}}">
+                  <label>{{$service->name}}</label>
+                </div>
+              @endforeach
+            </div>
+
             <div class="">
               <label>Inserisci immagine</label>
               <input type="file" name="image_path" accept="image/*">

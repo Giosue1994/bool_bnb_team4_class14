@@ -15,7 +15,7 @@
 </section>
 
 <section id="sponsored">
-  @include('admin.apartments.partials.sponsored')
+  @include('guests.apartments.partials.sponsored')
 </section>
 
 @endsection

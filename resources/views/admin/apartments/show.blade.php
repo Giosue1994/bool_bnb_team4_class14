@@ -20,9 +20,29 @@
               </ul>
 
             </div>
+
+            <div class="services-list">
+              <h3>Servizi aggiuntivi</h3>
+              @if ($apartment->services->isEmpty())
+                <p>Non ci sono servizi</p>
+              @else
+                  <ul>
+                    @foreach ($apartment->services as $service)
+                      <li>{{$service->name}}</li>
+                    @endforeach
+                  </ul>
+              @endif
+            </div>
+
             <div class="mb-2">
               <a class="btn btn-primary" href="{{ route('admin.apartments.index')}}"> Torna alla lista post</a>
               <a class="btn btn-warning" href="{{ route('admin.apartments.edit', $apartment) }}"> Modifica Appartamento</a>
+              <form class="delete" action="{{ route('admin.apartments.destroy', $apartment) }}" method="post">
+                @csrf
+                @method('DELETE')
+
+                <input class="btn btn-danger" type="submit" value="Elimina">
+              </form>
             </div>
             <div class="">
               @foreach ($apartment->images as $image)
