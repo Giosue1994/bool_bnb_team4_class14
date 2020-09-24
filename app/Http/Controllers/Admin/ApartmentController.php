@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Apartment;
@@ -61,9 +61,10 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Apartment $apartment)
     {
-        //
+        $user =Auth::user();
+        return view( "admin.apartments.edit", compact('apartment', 'user'));
     }
 
     /**
@@ -73,9 +74,39 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Apartment $apartment)
     {
-        //
+        $request_data = $request->all();
+        $apartment->title = $request_data['title'];
+        $apartment->rooms = $request_data['rooms'];
+        $apartment->baths = $request_data['baths'];
+        $apartment->beds = $request_data['beds'];
+        $apartment->mqs = $request_data['mqs'];
+        $apartment->description = $request_data['description'];
+        $apartment->guests = $request_data['guests'];
+        $apartment->user_id = Auth::id();
+        $apartment->latitude = $request_data['latitude'];
+        $apartment->longitude = $request_data['longitude'];
+        $apartment->address = $request_data['address'];
+        $apartment->city = $request_data['city'];
+        $apartment->zip = $request_data['zip'];
+
+
+        $apartment->update();
+        $apartment->save();
+
+        return redirect()->route('admin.apartments.show', $apartment);
+
+
+
+
+
+
+
+
+
+
+
     }
 
     /**

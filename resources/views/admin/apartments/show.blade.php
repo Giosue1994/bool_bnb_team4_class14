@@ -22,7 +22,7 @@
             </div>
             <div class="mb-2">
               <a class="btn btn-primary" href="{{ route('admin.apartments.index')}}"> Torna alla lista post</a>
-              {{-- <a class="btn btn-warning" href="{{ route('admin.posts.edit', $post) }}"> Modifica Post</a> --}}
+              <a class="btn btn-warning" href="{{ route('admin.apartments.edit', $apartment) }}"> Modifica Appartamento</a>
             </div>
             <div class="">
               @foreach ($apartment->images as $image)
