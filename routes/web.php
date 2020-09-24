@@ -31,4 +31,4 @@ Route::prefix('admin')
 
 //Route apartments per tutti gli utenti
 Route::get('/', 'ApartmentController@index')->name('apartments.index');
-// Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
+Route::get('/apartments/{apartment}', 'ApartmentController@show')->name('apartments.show');

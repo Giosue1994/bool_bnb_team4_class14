@@ -35,14 +35,8 @@
             </div>
 
             <div class="mb-2">
-              <a class="btn btn-primary" href="{{ route('admin.apartments.index')}}"> Torna alla lista apaprtamenti</a>
-              <a class="btn btn-warning" href="{{ route('admin.apartments.edit', $apartment) }}"> Modifica Appartamento</a>
-              <form class="delete" action="{{ route('admin.apartments.destroy', $apartment) }}" method="post">
-                @csrf
-                @method('DELETE')
+              <a class="btn btn-primary" href="{{ route('apartments.index')}}"> Torna alla lista appartamenti</a>
 
-                <input class="btn btn-danger" type="submit" value="Elimina">
-              </form>
             </div>
             <div class="">
               @foreach ($apartment->images as $image)

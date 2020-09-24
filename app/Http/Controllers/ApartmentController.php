@@ -12,4 +12,9 @@ class ApartmentController extends Controller
 
     return view('guests.apartments.index', compact('apartments'));
   }
+
+  public function show(Apartment $apartment) {
+
+    return view('guests.apartments.show', compact('apartment'));
+  }
 }

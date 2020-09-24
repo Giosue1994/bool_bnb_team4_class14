@@ -9,6 +9,19 @@
   <div class="container">
     <div class="row">
       <div class="col">
+        <h1>Crea il tuo appartamento</h1>
+
+        {{-- Validazione form --}}
+        @if ($errors->any())
+          <div class="alert alert-danger">
+            <ul>
+              @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
+
         <div class="create_form">
       <form action="{{route('admin.apartments.store')}}" method="post" enctype="multipart/form-data">
         @csrf

@@ -7,6 +7,17 @@
 
         <h1> Modifica i dati dell'appartamento</h1>
 
+        {{-- Validazione form --}}
+        @if ($errors->any())
+          <div class="alert alert-danger">
+            <ul>
+              @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
+
         <div>
           <form action="{{ route('admin.apartments.update', $apartment) }}" method="post" enctype="multipart/form-data">
             @csrf
