@@ -12,11 +12,10 @@
         <input type="text" name="" value=""><input type="submit" name="" value="VAI">
       </div>
     </div>
+  </div>
 </section>
 
 <section id="sponsored">
   @include('admin.apartments.partials.sponsored')
 </section>
-
-</div>
 @endsection
