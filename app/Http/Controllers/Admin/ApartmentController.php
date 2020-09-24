@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Apartment;
 use App\User;
 use App\Image;
+use App\Client;
 
 
 class ApartmentController extends Controller
@@ -118,22 +119,19 @@ class ApartmentController extends Controller
         $apartment->city = $request_data['city'];
         $apartment->zip = $request_data['zip'];
 
+        $image = Image::where('apartment_id' , $apartment->id)->first();
+
+        if (isset($request_data['image_path'])) {
+          $path = $request->file('image_path')->store('images','public');
+          $image->image_path = asset('storage'). '/' . $path;
+        } else {
+          $image->image_path = 'https://otticasilingardi.it/wp-content/themes/consultix/images/no-image-found-360x250.png';
+        }
+        $image->update();
 
         $apartment->update();
-        $apartment->save();
 
         return redirect()->route('admin.apartments.show', $apartment);
-
-
-
-
-
-
-
-
-
-
-
     }
 
     /**

@@ -71,6 +71,11 @@
               <textarea name="description" rows="8" cols="80">{{ old('description') ? old('description') : $apartment->description}}</textarea>
             </div>
 
+            <div class="">
+              <label>Inserisci immagine</label>
+              <input type="file" name="image_path" accept="image/*">
+            </div>
+
             <input type="submit" name="" value="Salva le modifiche">
 
           </form>
