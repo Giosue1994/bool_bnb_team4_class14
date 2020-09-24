@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-  Bool b&b
+  Bool b&b ewroeheofeòorgnò
 @endsection
 
 @section('content')
