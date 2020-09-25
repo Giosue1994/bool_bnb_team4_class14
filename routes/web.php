@@ -27,8 +27,13 @@ Route::prefix('admin')
   ->name('admin.')
   ->group(function() {
     Route::resource('apartments','ApartmentController');
+    //Route per cercare gli appartamenti
+    Route::get('/search/{searchKey}', 'ApartmentController@search')->name('search');
   });
 
 //Route apartments per tutti gli utenti
 Route::get('/', 'ApartmentController@index')->name('apartments.index');
 Route::get('/apartments/{apartment}', 'ApartmentController@show')->name('apartments.show');
+
+//Route per cercare gli appartamenti
+Route::get('/search/{searchKey}', 'ApartmentController@search')->name('search');

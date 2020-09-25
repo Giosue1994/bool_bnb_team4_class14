@@ -114,22 +114,24 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment)
     {
+        Apartment::find(request('apartment'));
+
         $request->validate($this->validationData());
 
         $data = $request->all();
-        $apartment->title = $data['title'];
-        $apartment->rooms = $data['rooms'];
-        $apartment->baths = $data['baths'];
-        $apartment->beds = $data['beds'];
-        $apartment->mqs = $data['mqs'];
-        $apartment->description = $data['description'];
-        $apartment->guests = $data['guests'];
+        $apartment->title = request('title');
+        $apartment->rooms = request('rooms');
+        $apartment->baths = request('baths');
+        $apartment->beds = request('beds');
+        $apartment->mqs = request('mqs');
+        $apartment->description = request('description');
+        $apartment->guests = request('guests');
         $apartment->user_id = Auth::id();
-        $apartment->latitude = $data['latitude'];
-        $apartment->longitude = $data['longitude'];
-        $apartment->address = $data['address'];
-        $apartment->city = $data['city'];
-        $apartment->zip = $data['zip'];
+        $apartment->latitude = request('latitude');
+        $apartment->longitude = request('longitude');
+        $apartment->address = request('address');
+        $apartment->city = request('city');
+        $apartment->zip = request('zip');
 
         $image = Image::where('apartment_id' , $apartment->id)->first();
 
@@ -187,5 +189,11 @@ class ApartmentController extends Controller
         'address' => 'required|max:255',
         'city' => 'required|max:255',
       ];
+    }
+
+    public function search($searchKey) {
+      $apartments = Apartment::search($searchKey)->get();
+
+      return view('admin.apartments.search', compact('apartments'));
     }
 }

@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Apartment extends Model
 {
+
+    use Searchable;
+
     protected $fillable = [
       'title',
       'rooms',
@@ -21,6 +25,11 @@ class Apartment extends Model
       'city',
       'zip',
     ];
+
+    public function shouldBeSearchable()
+    {
+        return $this->isPublished();
+    }
 
     public function user(){
       return $this->belongsTo('App\User');
