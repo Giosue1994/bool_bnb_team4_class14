@@ -9,7 +9,8 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <input type="text" name="" value=""><input type="submit" name="" value="VAI">
+        <input type="text" name="" value="">
+        {{-- <a class="btn btn-primary" href="{{ route('search', $searchKey)}}">Cerca</a> --}}
       </div>
     </div>
 </section>

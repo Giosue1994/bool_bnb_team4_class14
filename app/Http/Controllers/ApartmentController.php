@@ -17,4 +17,10 @@ class ApartmentController extends Controller
 
     return view('guests.apartments.show', compact('apartment'));
   }
+
+  public function search($searchKey) {
+    $apartments = Apartment::search($searchKey)->get();
+
+    return view('guests.apartments.search', compact('apartments'));
+  }
 }
