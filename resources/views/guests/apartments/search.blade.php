@@ -10,8 +10,11 @@
     <div class="row">
 
       <div class="col">
-        <input type="text" name="" value="">
-        {{-- <a class="btn btn-primary" href="{{ route('search', $searchKey)}}">Cerca</a> --}}
+        <form class="" action="{{ route('search') }}" method="GET">
+          <input type="text" name="query" value="">
+          <input type="submit" name="query" value="Cerca">
+          {{-- <a class="btn btn-primary" href="{{ route('search', $searchKey)}}">Cerca</a> --}}
+        </form>
       </div>
 
       <div class="col">

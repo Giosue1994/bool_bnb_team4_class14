@@ -6,7 +6,7 @@
       <a class="btn btn-primary" href="{{ route('admin.apartments.create')}}">Inserisci il tuo appartamento</a>
     </div>
 
-      <div class="row sponsored-apartment">
+      <div id="sponsored" class="row sponsored-apartment">
         @foreach ($apartments as $apartment)
           <a href="{{ route('admin.apartments.show', $apartment) }}">
             <div class="col-4 single-apartment">
