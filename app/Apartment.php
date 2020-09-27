@@ -26,10 +26,10 @@ class Apartment extends Model
       'zip',
     ];
 
-    public function shouldBeSearchable()
-    {
-        return $this->isPublished();
-    }
+    // public function shouldBeSearchable()
+    // {
+    //     return $this->isPublished();
+    // }
 
     public function user(){
       return $this->belongsTo('App\User');

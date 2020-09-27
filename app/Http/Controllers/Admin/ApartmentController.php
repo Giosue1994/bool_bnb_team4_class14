@@ -102,7 +102,7 @@ class ApartmentController extends Controller
     {
         $user = Auth::user();
         $services = Service::all();
-        return view( "admin.apartments.edit", compact('apartment', 'user', 'services'));
+        return view( 'admin.apartments.edit', compact('apartment', 'user', 'services'));
     }
 
     /**
@@ -189,11 +189,5 @@ class ApartmentController extends Controller
         'address' => 'required|max:255',
         'city' => 'required|max:255',
       ];
-    }
-
-    public function search($searchKey) {
-      $apartments = Apartment::search($searchKey)->get();
-
-      return view('admin.apartments.search', compact('apartments'));
     }
 }

@@ -18,8 +18,12 @@ class ApartmentController extends Controller
     return view('guests.apartments.show', compact('apartment'));
   }
 
-  public function search($searchKey) {
-    $apartments = Apartment::search($searchKey)->get();
+  public function search(Request $request) {
+    $query = $request->input('query');
+
+    $apartments = Apartment::where('city', 'like', "%query%")->get();
+
+    dd($apartments);
 
     return view('guests.apartments.search', compact('apartments'));
   }
