@@ -9,9 +9,6 @@
 
     <title>@yield('title')</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -21,10 +18,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css" integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8=" crossorigin="anonymous">
 
     <!-- cdn algolia -->
-    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.0.0/dist/algoliasearch-lite.umd.js" integrity="sha256-MfeKq2Aw9VAkaE9Caes2NOxQf6vUa8Av0JqcUXUGkd0=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.0.0/dist/instantsearch.production.min.js" integrity="sha256-6S7q0JJs/Kx4kb/fv0oMjS855QTz5Rc2hh9AkIUjUsk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.16.5"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.0.0/dist/algoliasearch-lite.umd.js" integrity="sha256-MfeKq2Aw9VAkaE9Caes2NOxQf6vUa8Av0JqcUXUGkd0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.0.0/dist/instantsearch.production.min.js" integrity="sha256-6S7q0JJs/Kx4kb/fv0oMjS855QTz5Rc2hh9AkIUjUsk=" crossorigin="anonymous"></script> --}}
 </head>
 <body>
+
     <div id="app">
         <!-- HEADER -->
         <header>
@@ -42,37 +41,7 @@
         </footer>
     </div>
 
-    <script type="text/javascript">
-      const searchClient = algoliasearch(
-        'SJ7SUHX87E',
-        '2861bf463d87e9c46f95f655787cf1fb'
-       );
-
-      const search = instantsearch({
-        indexName: 'apartments',
-        searchClient,
-      });
-
-      search.addWidgets([
-        instantsearch.widgets.searchBox({
-          container: '#searchbox',
-          placeholder: 'Cerca appartamento',
-        }),
-
-        instantsearch.widgets.hits({
-          container: '#hits',
-          templates: {
-            item: `
-              <article>
-                <p>@{{ city }}</p>
-              </article>
-            `
-          }
-        })
-      ]);
-
-      search.start();
-
-    </script>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 </html>

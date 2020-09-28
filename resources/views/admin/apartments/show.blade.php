@@ -6,6 +6,13 @@
         <div class="card">
           <div class="card-body">
             <h2 class="card-title">{{ $apartment->title }}</h2>
+            <h4>{{ $apartment->address }}, {{ $apartment->city }}, {{ $apartment->zip }}</h4>
+            <div class="">
+              @foreach ($apartment->images as $image)
+                <img src="{{ $image->image_path }}" alt="">
+              @endforeach
+
+            </div>
             <p class="card-text">{{ $apartment->description }}</p>
             <p class="card-text"><small class="text-muted">Author: {{ $apartment->user->name }} - Creato il: {{ $apartment->created_at->format('d/m/y') }}</small></p>
 
@@ -16,7 +23,6 @@
                 <li>Numero letti: {{ $apartment->beds }}</li>
                 <li>Numero ospiti: {{ $apartment->guests }}</li>
                 <li>Metri quadri: {{ $apartment->mqs }}</li>
-                <li>Indirizzo: {{ $apartment->address }} {{ $apartment->city }} {{ $apartment->zip }}</li>
               </ul>
 
             </div>
@@ -35,7 +41,7 @@
             </div>
 
             <div class="mb-2">
-              <a class="btn btn-primary" href="{{ route('admin.apartments.index')}}"> Torna alla lista apaprtamenti</a>
+              <a class="btn btn-primary" href="{{ route('admin.apartments.index')}}"> Torna alla lista appartamenti</a>
               <a class="btn btn-warning" href="{{ route('admin.apartments.edit', $apartment) }}"> Modifica Appartamento</a>
               <form class="delete" action="{{ route('admin.apartments.destroy', $apartment) }}" method="post">
                 @csrf
@@ -43,12 +49,6 @@
 
                 <input class="btn btn-danger" type="submit" value="Elimina">
               </form>
-            </div>
-            <div class="">
-              @foreach ($apartment->images as $image)
-                <img src="{{ $image->image_path }}" alt="">
-              @endforeach
-
             </div>
 
         </div>
