@@ -61,20 +61,90 @@
           <input type="number" name="mqs" value="{{old('mqs')}}" placeholder="Metratura in mq">
         </div>
 
-        <div>
-          <label>Indirizzo</label>
-          <input type="text" name="city" value="{{old('city')}}" placeholder="Città">
-          <input type="text" name="address" value="{{old('address')}}" placeholder="Via / Piazza / Strada">
-          <input type="text" name="zip" value="{{old('zip')}}" placeholder="CAP / ZIP">
-          <div>
-            <label>Latitudine</label>
-            <input type="text" name="latitude" value="{{old('latitude')}}" placeholder="Latitudine">
-          </div>
-          <div>
-            <label>Longitudine</label>
-            <input type="text" name="longitude" value="{{old('longitude')}}" placeholder="Longitudine">
-          </div>
+      <div class="form-group">
+        <label for="form-address">Indirizzo*</label>
+        <input
+        value="{{old('address')}}"
+          name="address"
+          type="search"
+          class="form-control"
+          id="form-address"
+          placeholder="Inserisci l'indirizzo del tuo appartamento"
+        />
+      </div>
+      <div class="form-group">
+        <label for="form-city">Città*</label>
+        <input
+        value="{{old('city')}}"
+        name="city"
+          type="text"
+          class="form-control"
+          id="form-city"
+          placeholder="City"
+        />
+      </div>
+      <div class="form-group">
+        <label for="form-zip">CAP/ZIP*</label>
+        <input
+        value="{{old('zip')}}"
+        name="zip"
+          type="text"
+          class="form-control"
+          id="form-zip"
+          placeholder="ZIP code"
+        />
+      </div>
+      <div class="split" style="display: none">
+        <div class="form-group">
+          <label for="form-lat">Latitude</label>
+          <input
+          value="{{old('latitude')}}"
+          name="latitude"
+            type="text"
+            class="form-control"
+            id="form-lat"
+            placeholder="Latitude"
+          />
         </div>
+        <div class="form-group">
+          <label for="form-lng">Longitude</label>
+          <input
+          value="{{old('longitude')}}"
+          name="longitude"
+            type="text"
+            class="form-control"
+            id="form-lng"
+            placeholder="Longitude"
+          />
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/places.js@1.16.5"></script>
+      <script>
+        (function() {
+          var placesAutocomplete = places({
+            container: document.querySelector("#form-address"),
+            templates: {
+              value: function(suggestion) {
+                return suggestion.name;
+              }
+            }
+          }).configure({
+            type: "address"
+          });
+          placesAutocomplete.on("change", function resultSelected(e) {
+            // document.querySelector("#form-address2").value =
+            //   e.suggestion.administrative || "";
+            document.querySelector("#form-city").value = e.suggestion.city || "";
+            document.querySelector("#form-zip").value =
+              e.suggestion.postcode || "";
+            document.querySelector("#form-lat").value =
+              e.suggestion.latlng.lat || "";
+            document.querySelector("#form-lng").value =
+              e.suggestion.latlng.lng || "";
+          });
+        })();
+      </script>
 
         <div class="chekboxes">
           <span>Servizi aggiuntivi</span>

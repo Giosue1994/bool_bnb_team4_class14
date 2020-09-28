@@ -19,12 +19,19 @@ class ApartmentController extends Controller
   }
 
   public function search(Request $request) {
-    $query = $request->input('query');
 
-    $apartments = Apartment::where('city', 'like', "%query%")->get();
+    $data = $request->all();
+    $lat = $data['lat'];
+    $lng = $data['lng'];
 
-    dd($apartments);
+    $apartments = Apartment::where(
+      [
+        ['latitude', '=', $lat],
+        ['longitude', '=', $lng]
+      ])->get();
 
     return view('guests.apartments.search', compact('apartments'));
   }
 }
+
+//lat=45.6136lng=8.1968

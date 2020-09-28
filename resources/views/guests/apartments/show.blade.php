@@ -6,6 +6,12 @@
         <div class="card">
           <div class="card-body">
             <h2 class="card-title">{{ $apartment->title }}</h2>
+            <div class="">
+              @foreach ($apartment->images as $image)
+                <img src="{{ $image->image_path }}" alt="">
+              @endforeach
+
+            </div>
             <p class="card-text">{{ $apartment->description }}</p>
             <p class="card-text"><small class="text-muted">Author: {{ $apartment->user->name }} - Creato il: {{ $apartment->created_at->format('d/m/y') }}</small></p>
 
@@ -36,12 +42,6 @@
 
             <div class="mb-2">
               <a class="btn btn-primary" href="{{ route('apartments.index')}}"> Torna alla lista appartamenti</a>
-
-            </div>
-            <div class="">
-              @foreach ($apartment->images as $image)
-                <img src="{{ $image->image_path }}" alt="">
-              @endforeach
 
             </div>
 
