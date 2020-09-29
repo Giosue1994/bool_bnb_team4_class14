@@ -80,7 +80,7 @@
         </div>
         <div class="form-group">
           <label for="form-lng">Longitude</label>
-          <input value="{{old('longitude')}}" name="longitude" type="text" class="form-control" placeholder="Longitude" />
+          <input value="{{old('longitude')}}" name="longitude" type="text" class="form-control" id="form-lng" placeholder="Longitude" />
         </div>
       </div>
 

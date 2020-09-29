@@ -9,7 +9,7 @@
   <div class="container">
     <div class="row">
 
-      <div class="col">
+      <div class="col-12">
         <form action="{{ route('search') }}" class="form">
           {{-- viene incluso il file che cerca gli appartamenti in base alle città e gli indirizzi --}}
           @include('partials.search-partials.search-city_address')
@@ -20,9 +20,12 @@
         </form>
       </div>
 
-      <h2>Risultati appartamenti</h2>
-      <p>{{ $apartments->count() }} risultati per {{ ucfirst(request()->input('city')) }}</p>
       <div class="col">
+        <h2>Risultati appartamenti</h2>
+        <p>{{ $apartments->count() }} risultati per {{ ucfirst(request()->input('city')) }}</p>
+      </div>
+
+      <div class="col-12">
         <div id="search-results">
           @foreach ($apartments as $apartment)
             <a href="{{ route('apartments.show', $apartment) }}">
