@@ -63,59 +63,24 @@
 
       <div class="form-group">
         <label for="form-address">Indirizzo*</label>
-        <input
-        value="{{old('address')}}"
-          name="address"
-          type="search"
-          class="form-control"
-          id="form-address"
-          placeholder="Inserisci l'indirizzo del tuo appartamento"
-        />
+        <input value="{{old('address')}}" name="address" type="search" class="form-control" id="form-address" placeholder="Inserisci l'indirizzo del tuo appartamento" />
       </div>
       <div class="form-group">
         <label for="form-city">Città*</label>
-        <input
-        value="{{old('city')}}"
-        name="city"
-          type="text"
-          class="form-control"
-          id="form-city"
-          placeholder="City"
-        />
+        <input value="{{old('city')}}" name="city" type="text" class="form-control" id="form-city" placeholder="City" />
       </div>
       <div class="form-group">
         <label for="form-zip">CAP/ZIP*</label>
-        <input
-        value="{{old('zip')}}"
-        name="zip"
-          type="text"
-          class="form-control"
-          id="form-zip"
-          placeholder="ZIP code"
-        />
+        <input value="{{old('zip')}}" name="zip" type="text" class="form-control" id="form-zip" placeholder="ZIP code" />
       </div>
       <div class="split" style="display: none">
         <div class="form-group">
           <label for="form-lat">Latitude</label>
-          <input
-          value="{{old('latitude')}}"
-          name="latitude"
-            type="text"
-            class="form-control"
-            id="form-lat"
-            placeholder="Latitude"
-          />
+          <input value="{{old('latitude')}}" name="latitude" type="text" class="form-control" id="form-lat" placeholder="Latitude" />
         </div>
         <div class="form-group">
           <label for="form-lng">Longitude</label>
-          <input
-          value="{{old('longitude')}}"
-          name="longitude"
-            type="text"
-            class="form-control"
-            id="form-lng"
-            placeholder="Longitude"
-          />
+          <input value="{{old('longitude')}}" name="longitude" type="text" class="form-control" id="form-lng" placeholder="Longitude" />
         </div>
       </div>
 

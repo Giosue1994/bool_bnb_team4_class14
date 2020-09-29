@@ -58,7 +58,7 @@ class ApartmentController extends Controller
 
 
 
-    return view('guests.apartments.search', compact('apartments'));
+    return view('partials.search', compact('apartments'));
   }
 }
 
