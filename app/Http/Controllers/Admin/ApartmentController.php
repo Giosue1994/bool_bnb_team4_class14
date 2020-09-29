@@ -89,7 +89,8 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
-        return view('admin.apartments.show', compact('apartment'));
+        $logged_user = Auth::user();
+        return view('admin.apartments.show', compact('apartment','logged_user'));
     }
 
     /**

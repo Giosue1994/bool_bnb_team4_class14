@@ -28,7 +28,12 @@
       <div class="col-12">
         <div id="search-results">
           @foreach ($apartments as $apartment)
-            <a href="{{ route('apartments.show', $apartment) }}">
+            @if (Auth::check())
+              <a href="{{ route('admin.apartments.show', $apartment) }}">
+              @else
+                <a href="{{ route('apartments.show', $apartment) }}">
+            @endif
+
               <div class="col-12 single-apartment">
                 @foreach ($apartment->images as $image)
 
