@@ -79,13 +79,20 @@
         </form>
       </div>
 
-      <h2>Risultati appartamenti</h2>
-      <p>{{ $apartments->count() }} risultati per {{ ucfirst(request()->input('city')) }}</p>
+
+    </div>
+    <div class="row">
+      <div class="col">
+        <h2>Risultati appartamenti</h2>
+        <p>{{ $apartments->count() }} risultati per {{ ucfirst(request()->input('city')) }}</p>
+      </div>
+    </div>
+    <div class="row">
       <div class="col">
         <div id="search-results">
           @foreach ($apartments as $apartment)
             <a href="{{ route('apartments.show', $apartment) }}">
-              <div class="col-12 single-apartment">
+              <div class="single-apartment">
                 @foreach ($apartment->images as $image)
 
                   @if ($loop->first)
@@ -99,7 +106,9 @@
           @endforeach
         </div>
       </div>
+
     </div>
+
   </div>
 </section>
 @endsection
