@@ -54,12 +54,12 @@
 
             <div>
               <label>latitudine</label>
-              <input type="number" name="latitude" value="{{old('latitude') ? old('latitude') : $apartment->latitude}}">
+              <input type="text" name="latitude" value="{{old('latitude') ? old('latitude') : $apartment->latitude}}">
             </div>
 
             <div>
               <label>longitudine</label>
-              <input type="number" name="longitude" value="{{old('longitude') ? old('longitude') : $apartment->longitude}}">
+              <input type="text" name="longitude" value="{{old('longitude') ? old('longitude') : $apartment->longitude}}">
             </div>
 
             <div>
