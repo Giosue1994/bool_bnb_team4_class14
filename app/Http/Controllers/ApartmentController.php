@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Apartment;
+use App\Service;
 
 class ApartmentController extends Controller
 {
@@ -20,6 +21,7 @@ class ApartmentController extends Controller
 
   public function search(Request $request) {
 
+    $services = Service::all();
     $data = $request->all();
     $lat = $data['lat'];
     $lng = $data['lng'];
@@ -27,7 +29,19 @@ class ApartmentController extends Controller
     $minRooms = 1;
     $minBeds = 1;
     $minBaths = 1;
+    $inputServices = [];
+    $requestedServices = $request->services;
+    $selectedApartments = [];
 
+    function in_array_all($arrayA, $arrayB) {
+        return empty(array_diff($arrayA, $arrayB));
+
+    }
+
+    if (isset($requestedServices)) {
+      $inputServices = $requestedServices;
+      //dd($inputServices);
+    }
 
 
     if (isset($data['rad'])) {
@@ -55,28 +69,33 @@ class ApartmentController extends Controller
                              ['rooms', '>', $minRooms],
                              ['beds', '>', $minBeds],
                              ['baths', '>', $minBaths],
+
                          ])
-                         
-            ->having("distance", "<", $rad)
+                         ->having("distance", "<", $rad)
 
             ->orderBy("distance",'asc')
             ->offset(0)
             ->limit(20)
             ->get();
 
-            // $arrayService = [];
-            // foreach ($apartments as $apartment) {
-            //   $apartment_id = $apartment->id;
-            //   foreach ($apartment->services as $service) {
-            //     $arrayService[] = $service->name;
-            //   }
-            // }
-            //
-            // dd($arrayService);
+          foreach ($apartments as $apartment) {
+            $apartmentServices = $apartment->services;
+          // prepariamo array per salvare i servizi scelti dall'utente
+            $arrayApartmentServices = [];
+            foreach ($apartmentServices as $service) {
+              $arrayApartmentServices[] = $service->id;
+              //var_dump($arrayApartmentServices);
+            }
+            // usando la funzione dichiarata prima, controlliamo che l'array che contiene i servizi selezionati dall'utente sia completamente contenuto nell'array dei servizi dell'appartamento, se questo e' vero l'appartamento viene salvato
 
+            if (in_array_all( $inputServices, $arrayApartmentServices)){
+              $selectedApartments[] = $apartment;
+              $apartments = collect($selectedApartments);
 
-    return view('partials.search', compact('apartments'));
+            }
+            // dd($apartments);
+          }
+
+    return view('partials.search', compact('apartments', 'services'));
   }
 }
-
-//lat=45.6136lng=8.1968

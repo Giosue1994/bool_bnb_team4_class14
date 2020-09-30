@@ -10,9 +10,18 @@
 </div>
 {{-- Filtro per servizi --}}
 <div class="form-group d-flex justify-content-between">
-  
-  <div class="d-flex">
-    <input class="mr-2" type="checkbox" name="wifi" value="">
+  <div class="checkboxes">
+    <span>Servizi aggiuntivi</span>
+    @foreach ($services as $service)
+      <div>
+        <input type="checkbox" name="services[]" value="{{$service->id}}">
+        <label>{{$service->name}}</label>
+      </div>
+    @endforeach
+  </div>
+
+  {{-- <div class="d-flex">
+    <input class="mr-2" type="checkbox" name="service[1][]" value="">
     <label>WiFi</label>
   </div>
   <div class="d-flex">
@@ -46,6 +55,6 @@
   <div class="d-flex">
     <input class="mr-2" type="checkbox" name="breakfast" value="">
     <label>Colazione</label>
-  </div>
+  </div> --}}
 
 </div>

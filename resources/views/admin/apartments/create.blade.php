@@ -111,7 +111,7 @@
         })();
       </script>
 
-        <div class="chekboxes">
+        <div class="checkboxes">
           <span>Servizi aggiuntivi</span>
           @foreach ($services as $service)
             <div>
