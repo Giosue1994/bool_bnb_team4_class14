@@ -28,6 +28,8 @@ class ApartmentController extends Controller
     $minBeds = 1;
     $minBaths = 1;
 
+
+
     if (isset($data['rad'])) {
       $rad = $data['rad'];
     }
@@ -54,13 +56,24 @@ class ApartmentController extends Controller
                              ['beds', '>', $minBeds],
                              ['baths', '>', $minBaths],
                          ])
-
+                         
             ->having("distance", "<", $rad)
 
             ->orderBy("distance",'asc')
             ->offset(0)
             ->limit(20)
             ->get();
+
+            // $arrayService = [];
+            // foreach ($apartments as $apartment) {
+            //   $apartment_id = $apartment->id;
+            //   foreach ($apartment->services as $service) {
+            //     $arrayService[] = $service->name;
+            //   }
+            // }
+            //
+            // dd($arrayService);
+
 
     return view('partials.search', compact('apartments'));
   }
