@@ -94,6 +94,6 @@ class ApartmentController extends Controller
               $apartments = collect($selectedApartments);
           }
 
-    return view('partials.search', compact('apartments', 'services'));
+    return view('partials.search', compact('apartments', 'services', 'requestedServices'));
   }
 }
