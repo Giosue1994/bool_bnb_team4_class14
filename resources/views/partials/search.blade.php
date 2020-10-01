@@ -16,6 +16,9 @@
           {{-- viene incluso il file che cerca gli appartamenti filtrandoli --}}
           @include('partials.search-partials.filters')
 
+          {{-- Mappa --}}
+          <div id="map-example-container"></div>
+
           <input id="btn-search" type="submit" value="Cerca">
         </form>
       </div>

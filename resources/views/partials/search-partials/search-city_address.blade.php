@@ -4,6 +4,7 @@
   <input id="form-city" name="city" type="text" class="form-control" placeholder="Città/Via" value="{{request()->input('city')}}"/>
 </div>
 
+
 {{-- latitudine e longitudine rimangono display: none perchè non sappiamo ancora nasconderli per bene --}}
 <div class="split" style="display: none">
   <div class="form-group">
