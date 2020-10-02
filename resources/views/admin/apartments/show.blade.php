@@ -5,6 +5,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
+            <a class="btn btn-warning" href="{{ url()->previous('search') }}"> Torna alla ricerca</a>
             <h2 class="card-title">{{ $apartment->title }}</h2>
             <h4>{{ $apartment->address }}, {{ $apartment->city }}, {{ $apartment->zip }}</h4>
             <div class="">
