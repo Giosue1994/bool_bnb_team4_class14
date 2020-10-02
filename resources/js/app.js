@@ -2,8 +2,14 @@ require('./bootstrap');
 
 var $ = require( "jquery" );
 
+var Handlebars = require("handlebars");
+
 $(document).ready(function() {
+
   (function() {
+
+
+
     var placesAutocomplete = places({
       container: document.querySelector("#form-city"),
       templates: {
@@ -21,10 +27,99 @@ $(document).ready(function() {
 
     if (document.URL.includes("search") ) {
 
+      $('#btn-search').click(function () {
+
+        map.eachLayer((layer) => {
+          layer.remove();
+        });
+
+        var latitude = document.querySelector("#form-lat").value;
+        var longitude = document.querySelector("#form-lng").value;
+        var radius = document.querySelector("#form-rad").value;
+        var minRooms = document.querySelector("#form-minRooms").value;
+        var minBeds = document.querySelector("#form-minBeds").value;
+        var minBaths = document.querySelector("#form-minBaths").value;
+        var servicesArray = []
+
+        var services = document.querySelectorAll("input[type=checkbox]:checked");
+        for (var i = 0; i < services.length; i++) {
+          servicesArray.push(services[i].value)
+        }
+
+        if (radius == '' || radius < 1 || isNaN(radius)) {
+          radius = 20
+        }
+
+        ajaxMarkers(latitude,longitude,radius,minRooms,minBeds,minBaths,servicesArray);
+
+
+        map.setView(new L.LatLng(latitude, longitude), customZoom);
+        var circle = L.circle([latitude, longitude], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: radius * 1000
+        }).addTo(map);
+        map.addLayer(osmLayer);
+
+        // placesAutocomplete.on('suggestions', handleOnSuggestions);
+        placesAutocomplete.on('cursorchanged', handleOnCursorchanged);
+        placesAutocomplete.on('clear', handleOnClear);
+        placesAutocomplete.on('change', handleOnChange);
+
+      })
+
       var latitude = document.querySelector("#form-lat").value;
       var longitude = document.querySelector("#form-lng").value;
       var radius = document.querySelector("#form-rad").value;
+      var minRooms = document.querySelector("#form-minRooms").value;
+      var minBeds = document.querySelector("#form-minBeds").value;
+      var minBaths = document.querySelector("#form-minBaths").value;
 
+
+
+      if (radius == '' || radius < 1 || isNaN(radius)) {
+        radius = 20
+      }
+
+      ajaxMarkers(latitude,longitude);
+// --------------------------------------------------------------------------------------
+      function ajaxMarkers(latitude,longitude,radius,minRooms,minBeds,minBaths,servicesArray) {
+        $.ajax({
+          method: 'GET',
+          url: 'search',
+          data: {
+            lat: latitude,
+            lng: longitude,
+            rad: radius,
+            minRooms: minRooms,
+            minBeds: minBeds,
+            minBaths: minBaths,
+            services: servicesArray,
+          },
+
+          success: function(result){
+            $('.search-results-container').html('')
+            var source = document.getElementById("entry-template").innerHTML;
+            var template = Handlebars.compile(source);
+
+            for (var i = 0; i < result.length; i++) {
+              var singleResult = result[i]
+              console.log(singleResult)
+              L.marker([singleResult.latitude, singleResult.longitude]).addTo(map)
+              .bindPopup(singleResult.title)
+              var context = singleResult
+              var html = template(context);
+              $('.search-results-container').append(html)
+
+            }
+          },
+
+          error: function(XMLHttpRequest, textStatus, errorThrown)
+            { alert(errorThrown); },
+        });
+      }
+// --------------------------------------------------------------------------------------
       var map = L.map('map-example-container', {
         scrollWheelZoom: true,
         zoomControl: true
@@ -44,10 +139,6 @@ $(document).ready(function() {
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map);
 
-      L.marker([latitude, longitude]).addTo(map)
-        .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-        .openPopup();
-
       var circle = L.circle([latitude, longitude], {
           color: 'red',
           fillColor: '#f03',
@@ -55,11 +146,30 @@ $(document).ready(function() {
           radius: radius * 1000
       }).addTo(map);
 
+      var customZoom
+      if (radius > 1 && radius <= 5) {
+        customZoom = 13
+      } else if (radius >= 5 && radius < 10) {
+        customZoom = 12
+      } else if (radius >= 10 && radius < 20) {
+        customZoom = 11
+      } else if (radius >= 20 && radius < 40) {
+        customZoom = 10
+      } else if (radius >= 40 && radius < 60) {
+        customZoom = 9
+      } else if (radius >= 60 && radius < 100) {
+        customZoom = 8
+      } else if (radius >= 100 && radius < 150) {
+        customZoom = 7
+      } else {
+        customZoom = 6
+      }
+
       // map.setView(new L.LatLng(0, 0), 1);
-      map.setView(new L.LatLng(latitude, longitude), 7);
+      map.setView(new L.LatLng(latitude, longitude), customZoom);
       map.addLayer(osmLayer);
 
-      placesAutocomplete.on('suggestions', handleOnSuggestions);
+      // placesAutocomplete.on('suggestions', handleOnSuggestions);
       placesAutocomplete.on('cursorchanged', handleOnCursorchanged);
       placesAutocomplete.on('clear', handleOnClear);
       placesAutocomplete.on('change', handleOnChange);
@@ -82,7 +192,6 @@ $(document).ready(function() {
           } else {
             removeMarker(marker);
           }
-
         });
     }
 

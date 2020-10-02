@@ -4,9 +4,9 @@
 </div>
 {{-- Filtro per informazioni appartamenti --}}
 <div class="form-group">
-  <input name="minRooms" type="number" placeholder="Numero camere" value="{{request()->input('minRooms')}}">
-  <input name="minBeds" type="number" placeholder="Numero letti" value="{{request()->input('minBeds')}}">
-  <input name="minBaths" type="number" placeholder="Numero bagni" value="{{request()->input('minBaths')}}">
+  <input id="form-minRooms" name="minRooms" type="number" placeholder="Numero camere" value="{{request()->input('minRooms')}}">
+  <input id="form-minBeds" name="minBeds" type="number" placeholder="Numero letti" value="{{request()->input('minBeds')}}">
+  <input id="form-minBaths" name="minBaths" type="number" placeholder="Numero bagni" value="{{request()->input('minBaths')}}">
 </div>
 {{-- Filtro per servizi --}}
 <div class="form-group justify-content-between">
@@ -14,7 +14,7 @@
     <span>Servizi aggiuntivi</span>
       <div class="d-flex">
       @foreach ($services as $service)
-        <input type="checkbox" name="services[]" value="{{$service->id}}">
+        <input class="checkbox" type="checkbox" name="services[]" value="{{$service->id}}">
         <label class="ml-2 mr-2">{{$service->name}}</label>
       @endforeach
     </div>

@@ -68,9 +68,9 @@ class ApartmentController extends Controller
                            sin( radians( latitude ) ) )
                          ) AS distance", [$lat, $lng, $lat])
                          ->where([
-                             ['rooms', '>', $minRooms],
-                             ['beds', '>', $minBeds],
-                             ['baths', '>', $minBaths],
+                             ['rooms', '>=', $minRooms],
+                             ['beds', '>=', $minBeds],
+                             ['baths', '>=', $minBaths],
                          ])
                          ->having("distance", "<", $rad)
                          ->orderBy("distance",'asc')
@@ -90,9 +90,17 @@ class ApartmentController extends Controller
               if ($match == true) {
                 $selectedApartments[] = $apartment;
               }
-
               $apartments = collect($selectedApartments);
           }
+
+          if($request->ajax())
+          {
+            return response()->json($apartments);
+          }
+
+
+
+
 
     return view('partials.search', compact('apartments', 'services', 'requestedServices'));
   }

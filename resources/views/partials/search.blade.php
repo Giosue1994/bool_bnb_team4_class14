@@ -19,7 +19,7 @@
           {{-- Mappa --}}
           <div id="map-example-container"></div>
 
-          <input id="btn-search" type="submit" value="Cerca">
+          <button type="button" id="btn-search" name="button">Chi cerca trova</button>
         </form>
       </div>
 
@@ -28,7 +28,7 @@
         <p>{{ $apartments->count() }} risultati per {{ ucfirst(request()->input('city')) }}</p>
       </div>
 
-      <div class="col-12">
+      {{-- <div class="col-12">
         <div id="search-results">
           @foreach ($apartments as $apartment)
             @if (Auth::check())
@@ -50,7 +50,29 @@
             </a>
           @endforeach
         </div>
+      </div> --}}
+
+      <div class="col-12 search-results-container">
+
       </div>
+
+        <script id="entry-template" type="text/x-handlebars-template">
+          <div class="entry">
+            @foreach ($apartments as $apartment)
+            @if (Auth::check())
+            <a href="admin/apartments/@{{id}}" class="btn-blue">
+            @else
+            <a href="apartments/@{{id}}" class="btn-blue">
+            @endif
+              @foreach ($apartment->images as $image)
+              <img src="{{ $image->image_path }}" alt="">
+              @endforeach
+              <h2>@{{title}}</h2>
+            </a>
+            @endforeach
+          </div>
+        </script>
+
     </div>
   </div>
 </section>
