@@ -25,7 +25,7 @@
 
       <div class="col">
         <h2>Risultati appartamenti</h2>
-        <p>{{ $apartments->count() }} risultati per {{ ucfirst(request()->input('city')) }}</p>
+        <p id="counter"></p>
       </div>
 
       {{-- <div class="col-12">
@@ -57,19 +57,18 @@
       </div>
 
         <script id="entry-template" type="text/x-handlebars-template">
-          <div class="entry">
-            @foreach ($apartments as $apartment)
-            @if (Auth::check())
-            <a href="admin/apartments/@{{id}}" class="btn-blue">
-            @else
-            <a href="apartments/@{{id}}" class="btn-blue">
-            @endif
-              @foreach ($apartment->images as $image)
-              <img src="{{ $image->image_path }}" alt="">
-              @endforeach
-              <h2>@{{title}}</h2>
-            </a>
-            @endforeach
+
+
+            <div class="entry">
+              @if (Auth::check())
+                <a href="admin/apartments/@{{id}}" class="btn-blue">
+                @else
+                <a href="apartments/@{{id}}" class="btn-blue">
+              @endif
+                  <img src="@{{ image }}" alt="">
+                <h2>@{{title}}</h2>
+              </a>
+
           </div>
         </script>
 

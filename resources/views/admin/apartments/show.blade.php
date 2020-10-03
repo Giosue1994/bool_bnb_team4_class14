@@ -5,14 +5,11 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <a class="btn btn-warning" href="{{ url()->previous('search') }}"> Torna alla ricerca</a>
+            <a class="btn btn-warning" href="{{ url()->previous('search') }}"> Torna indietro</a>
             <h2 class="card-title">{{ $apartment->title }}</h2>
             <h4>{{ $apartment->address }}, {{ $apartment->city }}, {{ $apartment->zip }}</h4>
             <div class="">
-              @foreach ($apartment->images as $image)
-                <img src="{{ $image->image_path }}" alt="">
-              @endforeach
-
+              <img src="{{ $apartment->image }}" alt="">
             </div>
             <p class="card-text">{{ $apartment->description }}</p>
             <p class="card-text"><small class="text-muted">Author: {{ $apartment->user->name }} - Creato il: {{ $apartment->created_at->format('d/m/y') }}</small></p>

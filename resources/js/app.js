@@ -23,6 +23,29 @@ $(document).ready(function() {
         "address"
       ]
     });
+    if (document.URL.includes("edit") ||  document.URL.includes("create")) {
+      var placesAutocomplete = places({
+        container: document.querySelector("#form-address"),
+        templates: {
+          value: function(suggestion) {
+            return suggestion.name;
+          }
+        }
+      }).configure({
+        type: "address"
+      });
+      placesAutocomplete.on("change", function resultSelected(e) {
+        // document.querySelector("#form-address2").value =
+        //   e.suggestion.administrative || "";
+        document.querySelector("#form-city").value = e.suggestion.city || "";
+        document.querySelector("#form-zip").value =
+          e.suggestion.postcode || "";
+        document.querySelector("#form-lat").value =
+          e.suggestion.latlng.lat || "";
+        document.querySelector("#form-lng").value =
+          e.suggestion.latlng.lng || "";
+      });
+    }
 
 
     if (document.URL.includes("search") ) {
@@ -39,6 +62,7 @@ $(document).ready(function() {
         var minRooms = document.querySelector("#form-minRooms").value;
         var minBeds = document.querySelector("#form-minBeds").value;
         var minBaths = document.querySelector("#form-minBaths").value;
+        var city = document.querySelector("#form-city").value;
         var servicesArray = []
 
         var services = document.querySelectorAll("input[type=checkbox]:checked");
@@ -50,7 +74,8 @@ $(document).ready(function() {
           radius = 20
         }
 
-        ajaxMarkers(latitude,longitude,radius,minRooms,minBeds,minBaths,servicesArray);
+        ajaxMarkers(city,latitude,longitude,radius,minRooms,minBeds,minBaths,servicesArray);
+
 
 
         map.setView(new L.LatLng(latitude, longitude), customZoom);
@@ -75,6 +100,7 @@ $(document).ready(function() {
       var minRooms = document.querySelector("#form-minRooms").value;
       var minBeds = document.querySelector("#form-minBeds").value;
       var minBaths = document.querySelector("#form-minBaths").value;
+      var city = document.querySelector("#form-city").value;
 
 
 
@@ -82,9 +108,11 @@ $(document).ready(function() {
         radius = 20
       }
 
-      ajaxMarkers(latitude,longitude);
+      ajaxMarkers(city,latitude,longitude);
+
 // --------------------------------------------------------------------------------------
-      function ajaxMarkers(latitude,longitude,radius,minRooms,minBeds,minBaths,servicesArray) {
+      function ajaxMarkers(city,latitude, longitude, radius, minRooms, minBeds, minBaths, servicesArray) {
+
         $.ajax({
           method: 'GET',
           url: 'search',
@@ -97,15 +125,22 @@ $(document).ready(function() {
             minBaths: minBaths,
             services: servicesArray,
           },
-
+          complete : function(){
+            var newurl = this.url
+            history.pushState(newurl)
+          },
           success: function(result){
+
             $('.search-results-container').html('')
             var source = document.getElementById("entry-template").innerHTML;
             var template = Handlebars.compile(source);
+            console.log(result)
+            var counter = $('#counter')
+            counter.text(result.length + ' Risultati per ' + city)
 
             for (var i = 0; i < result.length; i++) {
               var singleResult = result[i]
-              console.log(singleResult)
+
               L.marker([singleResult.latitude, singleResult.longitude]).addTo(map)
               .bindPopup(singleResult.title)
               var context = singleResult
@@ -113,6 +148,7 @@ $(document).ready(function() {
               $('.search-results-container').append(html)
 
             }
+
           },
 
           error: function(XMLHttpRequest, textStatus, errorThrown)

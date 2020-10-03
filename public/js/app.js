@@ -42362,9 +42362,30 @@ $(document).ready(function () {
       type: ["city", "address"]
     });
 
+    if (document.URL.includes("edit") || document.URL.includes("create")) {
+      var placesAutocomplete = places({
+        container: document.querySelector("#form-address"),
+        templates: {
+          value: function value(suggestion) {
+            return suggestion.name;
+          }
+        }
+      }).configure({
+        type: "address"
+      });
+      placesAutocomplete.on("change", function resultSelected(e) {
+        // document.querySelector("#form-address2").value =
+        //   e.suggestion.administrative || "";
+        document.querySelector("#form-city").value = e.suggestion.city || "";
+        document.querySelector("#form-zip").value = e.suggestion.postcode || "";
+        document.querySelector("#form-lat").value = e.suggestion.latlng.lat || "";
+        document.querySelector("#form-lng").value = e.suggestion.latlng.lng || "";
+      });
+    }
+
     if (document.URL.includes("search")) {
       // --------------------------------------------------------------------------------------
-      var ajaxMarkers = function ajaxMarkers(latitude, longitude, radius, minRooms, minBeds, minBaths, servicesArray) {
+      var ajaxMarkers = function ajaxMarkers(city, latitude, longitude, radius, minRooms, minBeds, minBaths, servicesArray) {
         $.ajax({
           method: 'GET',
           url: 'search',
@@ -42377,14 +42398,20 @@ $(document).ready(function () {
             minBaths: minBaths,
             services: servicesArray
           },
+          complete: function complete() {
+            var newurl = this.url;
+            history.pushState(newurl);
+          },
           success: function success(result) {
             $('.search-results-container').html('');
             var source = document.getElementById("entry-template").innerHTML;
             var template = Handlebars.compile(source);
+            console.log(result);
+            var counter = $('#counter');
+            counter.text(result.length + ' Risultati per ' + city);
 
             for (var i = 0; i < result.length; i++) {
               var singleResult = result[i];
-              console.log(singleResult);
               L.marker([singleResult.latitude, singleResult.longitude]).addTo(map).bindPopup(singleResult.title);
               var context = singleResult;
               var html = template(context);
@@ -42408,6 +42435,7 @@ $(document).ready(function () {
         var minRooms = document.querySelector("#form-minRooms").value;
         var minBeds = document.querySelector("#form-minBeds").value;
         var minBaths = document.querySelector("#form-minBaths").value;
+        var city = document.querySelector("#form-city").value;
         var servicesArray = [];
         var services = document.querySelectorAll("input[type=checkbox]:checked");
 
@@ -42419,7 +42447,7 @@ $(document).ready(function () {
           radius = 20;
         }
 
-        ajaxMarkers(latitude, longitude, radius, minRooms, minBeds, minBaths, servicesArray);
+        ajaxMarkers(city, latitude, longitude, radius, minRooms, minBeds, minBaths, servicesArray);
         map.setView(new L.LatLng(latitude, longitude), customZoom);
         var circle = L.circle([latitude, longitude], {
           color: 'red',
@@ -42439,12 +42467,13 @@ $(document).ready(function () {
       var minRooms = document.querySelector("#form-minRooms").value;
       var minBeds = document.querySelector("#form-minBeds").value;
       var minBaths = document.querySelector("#form-minBaths").value;
+      var city = document.querySelector("#form-city").value;
 
       if (radius == '' || radius < 1 || isNaN(radius)) {
         radius = 20;
       }
 
-      ajaxMarkers(latitude, longitude);
+      ajaxMarkers(city, latitude, longitude);
       var map = L.map('map-example-container', {
         scrollWheelZoom: true,
         zoomControl: true
@@ -42626,8 +42655,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Crescenzo\Desktop\Lezioni Boolean\Repo\bool_bnb_team4_class14\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Crescenzo\Desktop\Lezioni Boolean\Repo\bool_bnb_team4_class14\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/michele/Documents/Boolean/repo/mamp-htdocs/bool_bnb_team4_class14/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/michele/Documents/Boolean/repo/mamp-htdocs/bool_bnb_team4_class14/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -62,21 +62,20 @@ class ApartmentController extends Controller
         $new_apartment->latitude = $data['latitude'];
         $new_apartment->longitude = $data['longitude'];
 
-        $new_apartment->save();
-        $new_image = new Image();
 
         if (isset($data['image_path'])) {
           $path = $request->file('image_path')->store('images','public');
-          $new_image->image_path = asset('storage'). '/' . $path;
+          $new_apartment->image = asset('storage'). '/' . $path;
         } else {
-          $new_image->image_path = 'https://otticasilingardi.it/wp-content/themes/consultix/images/no-image-found-360x250.png';
+          $new_apartment->image = 'https://otticasilingardi.it/wp-content/themes/consultix/images/no-image-found-360x250.png';
         }
-        $new_image->apartment_id = $new_apartment->id;
-        $new_image->save();
-
+        // $new_image->apartment_id = $new_apartment->id;
+        // $new_image->save();
+        $new_apartment->save();
         if (isset($data['services'])) {
           $new_apartment->services()->sync($data['services']);
         }
+
 
         return redirect()->route('admin.apartments.show', $new_apartment);
     }
@@ -134,13 +133,12 @@ class ApartmentController extends Controller
         $apartment->city = request('city');
         $apartment->zip = request('zip');
 
-        $image = Image::where('apartment_id' , $apartment->id)->first();
 
         if (isset($data['image_path'])) {
           $path = $request->file('image_path')->store('images','public');
-          $image->image_path = asset('storage'). '/' . $path;
+          $apartment->image = asset('storage'). '/' . $path;
         } else {
-          $image->image_path = 'https://otticasilingardi.it/wp-content/themes/consultix/images/no-image-found-360x250.png';
+          $apartment->image = 'https://otticasilingardi.it/wp-content/themes/consultix/images/no-image-found-360x250.png';
         }
 
         if (!empty($data['services'])) {
@@ -149,8 +147,7 @@ class ApartmentController extends Controller
           $apartment->services()->detach();
         }
 
-        // Faccio l'update dell'immagine e dell'appartamento
-        $image->update();
+        // Faccio l'update dell'appartamento
 
         $apartment->update();
 
@@ -167,11 +164,8 @@ class ApartmentController extends Controller
     public function destroy(Apartment $apartment)
     {
         $conversation = Conversation::where('apartment_id' , $apartment->id);
-        $image = Image::where('apartment_id' , $apartment->id);
-
         $apartment->services()->detach();
         $conversation->delete();
-        $image->delete();
         $apartment->delete();
 
         return redirect()->route('admin.apartments.index');
