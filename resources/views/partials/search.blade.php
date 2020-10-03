@@ -16,16 +16,19 @@
           {{-- viene incluso il file che cerca gli appartamenti filtrandoli --}}
           @include('partials.search-partials.filters')
 
-          <input id="btn-search" type="submit" value="Cerca">
+          {{-- Mappa --}}
+          <div id="map-example-container"></div>
+
+          <button type="button" id="btn-search" name="button">Chi cerca trova</button>
         </form>
       </div>
 
       <div class="col">
         <h2>Risultati appartamenti</h2>
-        <p>{{ $apartments->count() }} risultati per {{ ucfirst(request()->input('city')) }}</p>
+        <p id="counter"></p>
       </div>
 
-      <div class="col-12">
+      {{-- <div class="col-12">
         <div id="search-results">
           @foreach ($apartments as $apartment)
             @if (Auth::check())
@@ -47,7 +50,28 @@
             </a>
           @endforeach
         </div>
+      </div> --}}
+
+      <div class="col-12 search-results-container">
+
       </div>
+
+        <script id="entry-template" type="text/x-handlebars-template">
+
+
+            <div class="entry">
+              @if (Auth::check())
+                <a href="admin/apartments/@{{id}}" class="btn-blue">
+                @else
+                <a href="apartments/@{{id}}" class="btn-blue">
+              @endif
+                  <img src="@{{ image }}" alt="">
+                <h2>@{{title}}</h2>
+              </a>
+
+          </div>
+        </script>
+
     </div>
   </div>
 </section>

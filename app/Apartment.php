@@ -24,6 +24,7 @@ class Apartment extends Model
       'address',
       'city',
       'zip',
+      'image',
     ];
 
     // public function shouldBeSearchable()

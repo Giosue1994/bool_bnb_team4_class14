@@ -28,6 +28,11 @@
             </div>
 
             <div>
+              <label> Descrizione:</label>
+              <textarea name="description" rows="8" cols="80">{{ old('description') ? old('description') : $apartment->description}}</textarea>
+            </div>
+            
+            <div>
               <label>Numero stanze:</label>
               <input type="number" name="rooms" value="{{ old('rooms') ? old('rooms') : $apartment->rooms}}">
             </div>
@@ -52,34 +57,27 @@
               <input type="number" name="guests" value="{{old('guests') ? old('guests') : $apartment->guests}}">
             </div>
 
-            <div>
-              <label>latitudine</label>
-              <input type="text" name="latitude" value="{{old('latitude') ? old('latitude') : $apartment->latitude}}">
+            <div class="form-group">
+              <label for="form-address">Indirizzo*</label>
+              <input value="{{old('address') ? old('address') : $apartment->address}}" name="address" type="search" class="form-control" id="form-address" placeholder="Inserisci l'indirizzo del tuo appartamento" />
             </div>
-
-            <div>
-              <label>longitudine</label>
-              <input type="text" name="longitude" value="{{old('longitude') ? old('longitude') : $apartment->longitude}}">
+            <div class="form-group">
+              <label for="form-city">Città*</label>
+              <input value="{{old('city') ? old('city') : $apartment->city}}" name="city" type="text" class="form-control" id="form-city" placeholder="City" />
             </div>
-
-            <div>
-              <label>Indirizzo</label>
-              <input type="text" name="address" value="{{old('address') ? old('address') : $apartment->address}}">
+            <div class="form-group">
+              <label for="form-zip">CAP/ZIP*</label>
+              <input value="{{old('zip') ? old('zip') : $apartment->zip}}" name="zip" type="text" class="form-control" id="form-zip" placeholder="ZIP code" />
             </div>
-
-            <div>
-              <label>Città</label>
-              <input type="text" name="city" value="{{old('city') ? old('city') : $apartment->city}}">
-            </div>
-
-            <div>
-              <label>Codice postale</label>
-              <input type="number" name="zip" value="{{old('zip') ? old('zip') : $apartment->zip}}">
-            </div>
-
-            <div>
-              <label> Descrizione:</label>
-              <textarea name="description" rows="8" cols="80">{{ old('description') ? old('description') : $apartment->description}}</textarea>
+            <div class="split" style="display: none">
+              <div class="form-group">
+                <label for="form-lat">Latitude</label>
+                <input value="{{old('latitude') ? old('latitude') : $apartment->latitude}}" name="latitude" type="text" class="form-control" id="form-lat" placeholder="Latitude" />
+              </div>
+              <div class="form-group">
+                <label for="form-lng">Longitude</label>
+                <input value="{{old('longitude') ? old('longitude') : $apartment->longitude}}" name="longitude" type="text" class="form-control" id="form-lng" placeholder="Longitude" />
+              </div>
             </div>
 
             <div class="chekboxes">

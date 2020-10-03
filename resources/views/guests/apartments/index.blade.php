@@ -9,8 +9,12 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <input type="text" name="" value="">
-        {{-- <a class="btn btn-primary" href="{{ route('search', $searchKey)}}">Cerca</a> --}}
+        <form action="{{ route('search') }}" class="form">
+          {{-- viene incluso il file che cerca gli appartamenti in base alle città e gli indirizzi --}}
+          @include('partials.search-partials.search-city_address')
+
+          <input id="btn-index-search" type="submit" value="Cerca">
+        </form>  
       </div>
     </div>
 </section>

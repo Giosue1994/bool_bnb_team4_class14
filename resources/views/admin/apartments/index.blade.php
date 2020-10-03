@@ -13,7 +13,7 @@
           {{-- viene incluso il file che cerca gli appartamenti in base alle città e gli indirizzi --}}
           @include('partials.search-partials.search-city_address')
 
-          <input id="btn-search" type="submit" value="Cerca">
+          <input id="btn-index-search" type="submit" value="Cerca">
         </form>
       </div>
     </div>
