@@ -42390,6 +42390,7 @@ $(document).ready(function () {
           method: 'GET',
           url: 'search',
           data: {
+            city: city,
             lat: latitude,
             lng: longitude,
             rad: radius,
@@ -42400,7 +42401,8 @@ $(document).ready(function () {
           },
           complete: function complete() {
             var newurl = this.url;
-            history.pushState(newurl);
+            history.pushState({}, null, newurl);
+            console.log(newurl);
           },
           success: function success(result) {
             $('.search-results-container').html('');
@@ -42655,8 +42657,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/michele/Documents/Boolean/repo/mamp-htdocs/bool_bnb_team4_class14/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/michele/Documents/Boolean/repo/mamp-htdocs/bool_bnb_team4_class14/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Crescenzo\Desktop\Lezioni Boolean\Repo\bool_bnb_team4_class14\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Crescenzo\Desktop\Lezioni Boolean\Repo\bool_bnb_team4_class14\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

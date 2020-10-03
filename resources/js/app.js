@@ -117,6 +117,7 @@ $(document).ready(function() {
           method: 'GET',
           url: 'search',
           data: {
+            city: city,
             lat: latitude,
             lng: longitude,
             rad: radius,
@@ -127,7 +128,9 @@ $(document).ready(function() {
           },
           complete : function(){
             var newurl = this.url
-            history.pushState(newurl)
+            history.pushState({}, null, newurl);
+
+            console.log(newurl)
           },
           success: function(result){
 
