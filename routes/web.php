@@ -28,6 +28,8 @@ Route::prefix('admin')
   ->group(function() {
     Route::resource('apartments','ApartmentController');
 
+    //Route pagamento
+    Route::get('payment', 'PaymentController@payment')->name('payment');
   });
 
 //Route apartments per tutti gli utenti
