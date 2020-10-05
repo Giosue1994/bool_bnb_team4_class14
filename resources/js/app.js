@@ -1,15 +1,17 @@
 require('./bootstrap');
 
+// viene incluso jquery
 var $ = require( "jquery" );
 
+// viene incluso handlebars
 var Handlebars = require("handlebars");
 
 $(document).ready(function() {
 
+// funzione ricerca appartamenti
   (function() {
 
-
-
+    // autocomplete ricerca città
     var placesAutocomplete = places({
       container: document.querySelector("#form-city"),
       templates: {
@@ -23,6 +25,8 @@ $(document).ready(function() {
         "address"
       ]
     });
+
+    // autocompleta la città, e lo zip inserendo nell'input l'indirizzo nell'edit e nel create
     if (document.URL.includes("edit") ||  document.URL.includes("create")) {
       var placesAutocomplete = places({
         container: document.querySelector("#form-address"),
@@ -34,9 +38,9 @@ $(document).ready(function() {
       }).configure({
         type: "address"
       });
+
+      // otteniamo i dati che immettiamo nelle input e le autocompleta
       placesAutocomplete.on("change", function resultSelected(e) {
-        // document.querySelector("#form-address2").value =
-        //   e.suggestion.administrative || "";
         document.querySelector("#form-city").value = e.suggestion.city || "";
         document.querySelector("#form-zip").value =
           e.suggestion.postcode || "";
@@ -47,15 +51,18 @@ $(document).ready(function() {
       });
     }
 
-
-    if (document.URL.includes("search") ) {
+    // se ci troviamo nella pagina search al click parte una chiamata ajax
+    // che aggiorna i risultati senza ricaricare la pagina
+    if (document.URL.includes("search")) {
 
       $('#btn-search').click(function () {
 
+        // rimuove i marker e il cerchio
         map.eachLayer((layer) => {
           layer.remove();
         });
 
+        // variabili che leggono il valore delle input se ci troviamo nel search
         var latitude = document.querySelector("#form-lat").value;
         var longitude = document.querySelector("#form-lng").value;
         var radius = document.querySelector("#form-rad").value;
@@ -63,37 +70,44 @@ $(document).ready(function() {
         var minBeds = document.querySelector("#form-minBeds").value;
         var minBaths = document.querySelector("#form-minBaths").value;
         var city = document.querySelector("#form-city").value;
-        var servicesArray = []
 
+        var servicesArray = []
+        // otteniamo il valore della checkbox e con un ciclo le pushamo dentro l'array vuoto servicesArray
         var services = document.querySelectorAll("input[type=checkbox]:checked");
         for (var i = 0; i < services.length; i++) {
           servicesArray.push(services[i].value)
         }
 
+        // se il raggio è vuoto o minore di uno o non è un numero assegna un valore di default di 20 km
         if (radius == '' || radius < 1 || isNaN(radius)) {
           radius = 20
         }
 
+        // viene richiamata la funzione ajax
         ajaxMarkers(city,latitude,longitude,radius,minRooms,minBeds,minBaths,servicesArray);
 
-
-
-        map.setView(new L.LatLng(latitude, longitude), customZoom);
+        // variabile cerchio e valore raggio aggiunto alla mappa in base a latitudine e longitudine
         var circle = L.circle([latitude, longitude], {
             color: 'red',
             fillColor: '#f03',
             fillOpacity: 0.5,
             radius: radius * 1000
         }).addTo(map);
+
+        // viee visulizzata la mappa in base alla latitudine, alla longitudine e viene anche impostato lo zoom
+        map.setView(new L.LatLng(latitude, longitude), customZoom);
+
+        // crea un layer alla mappa
         map.addLayer(osmLayer);
 
-        // placesAutocomplete.on('suggestions', handleOnSuggestions);
+        // richiama le funzioni di interazione
         placesAutocomplete.on('cursorchanged', handleOnCursorchanged);
         placesAutocomplete.on('clear', handleOnClear);
         placesAutocomplete.on('change', handleOnChange);
 
       })
 
+      // variabili che leggono il valore delle input se ci troviamo nell'index
       var latitude = document.querySelector("#form-lat").value;
       var longitude = document.querySelector("#form-lng").value;
       var radius = document.querySelector("#form-rad").value;
@@ -102,82 +116,33 @@ $(document).ready(function() {
       var minBaths = document.querySelector("#form-minBaths").value;
       var city = document.querySelector("#form-city").value;
 
-
-
+      // se il raggio è vuoto o minore di uno o non è un numero assegna un valore di default di 20 km
       if (radius == '' || radius < 1 || isNaN(radius)) {
         radius = 20
       }
 
       ajaxMarkers(city,latitude,longitude);
 
-// --------------------------------------------------------------------------------------
-      function ajaxMarkers(city,latitude, longitude, radius, minRooms, minBeds, minBaths, servicesArray) {
-
-        $.ajax({
-          method: 'GET',
-          url: 'search',
-          data: {
-            city: city,
-            lat: latitude,
-            lng: longitude,
-            rad: radius,
-            minRooms: minRooms,
-            minBeds: minBeds,
-            minBaths: minBaths,
-            services: servicesArray,
-          },
-          complete : function(){
-            var newurl = this.url
-            history.pushState({}, null, newurl);
-
-            console.log(newurl)
-          },
-          success: function(result){
-
-            $('.search-results-container').html('')
-            var source = document.getElementById("entry-template").innerHTML;
-            var template = Handlebars.compile(source);
-            console.log(result)
-            var counter = $('#counter')
-            counter.text(result.length + ' Risultati per ' + city)
-
-            for (var i = 0; i < result.length; i++) {
-              var singleResult = result[i]
-
-              L.marker([singleResult.latitude, singleResult.longitude]).addTo(map)
-              .bindPopup(singleResult.title)
-              var context = singleResult
-              var html = template(context);
-              $('.search-results-container').append(html)
-
-            }
-
-          },
-
-          error: function(XMLHttpRequest, textStatus, errorThrown)
-            { alert(errorThrown); },
-        });
-      }
-// --------------------------------------------------------------------------------------
+      // classe mappa nell'html
       var map = L.map('map-example-container', {
         scrollWheelZoom: true,
         zoomControl: true
       });
 
+      // layer mappa con zoom e crediti
       var osmLayer = new L.TileLayer(
-        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
           minZoom: 1,
           maxZoom: 13,
           attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
         }
       );
 
+      // array dei marker
       var markers = [];
 
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
-
+      // variabile cerchio che viene creato quando effettuiamo la ricerca nell'index
       var circle = L.circle([latitude, longitude], {
           color: 'red',
           fillColor: '#f03',
@@ -185,6 +150,7 @@ $(document).ready(function() {
           radius: radius * 1000
       }).addTo(map);
 
+      // vine inpostato lo zoom in base alla dimensione del raggio
       var customZoom
       if (radius > 1 && radius <= 5) {
         customZoom = 13
@@ -204,16 +170,18 @@ $(document).ready(function() {
         customZoom = 6
       }
 
-      // map.setView(new L.LatLng(0, 0), 1);
+      // viee visulizzata la mappa in base alla latitudine, alla longitudine e viene anche impostato lo zoom
       map.setView(new L.LatLng(latitude, longitude), customZoom);
+
       map.addLayer(osmLayer);
 
-      // placesAutocomplete.on('suggestions', handleOnSuggestions);
+      // richiama le funzioni di interazione
       placesAutocomplete.on('cursorchanged', handleOnCursorchanged);
       placesAutocomplete.on('clear', handleOnClear);
       placesAutocomplete.on('change', handleOnChange);
     }
 
+    // otteniamo i dati della città e autocompleta latitudine e longitudine
     placesAutocomplete.on("change", function resultSelected(e) {
       document.querySelector("#form-lat").value =
         e.suggestion.latlng.lat || "";
@@ -221,6 +189,66 @@ $(document).ready(function() {
         e.suggestion.latlng.lng || "";
     });
 
+// --------------------------------------------------------------------------------------
+///////////////////////////////// SEZIONE FUNZIONI //////////////////////////////////////
+// --------------------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------
+      // funzione ajax che ricerca gli appartamenti in base ai filtri
+      function ajaxMarkers(city,latitude, longitude, radius, minRooms, minBeds, minBaths, servicesArray) {
+
+        $.ajax({
+          method: 'GET',
+          url: 'search',
+          data: {
+            city: city,
+            lat: latitude,
+            lng: longitude,
+            rad: radius,
+            minRooms: minRooms,
+            minBeds: minBeds,
+            minBaths: minBaths,
+            services: servicesArray,
+          },
+          complete : function(){
+            // restituisce un nuovo url ogni volta che facciamo una ricerca
+            var newurl = this.url
+            history.pushState({}, null, newurl);
+
+            console.log(newurl)
+          },
+
+          success: function(result){
+            // la pagina diventa vuota
+            $('.search-results-container').html('')
+
+            // variabili handlebars
+            var source = document.getElementById("entry-template").innerHTML;
+            var template = Handlebars.compile(source);
+
+            // contiamo i risultati ottenuti
+            var counter = $('#counter')
+            counter.text(result.length + ' Risultati per ' + city)
+
+            // ciclo che appende i risultati nella pagina search
+            for (var i = 0; i < result.length; i++) {
+              var singleResult = result[i]
+
+              L.marker([singleResult.latitude, singleResult.longitude]).addTo(map)
+              .bindPopup(singleResult.title)
+              var context = singleResult
+              var html = template(context);
+
+              $('.search-results-container').append(html)
+            }
+
+          },
+
+          error: function(XMLHttpRequest, textStatus, errorThrown)
+            { alert(errorThrown); },
+        });
+      }
+// --------------------------------------------------------------------------------------
     function handleOnChange(e) {
       markers
         .forEach(function(marker, markerIndex) {

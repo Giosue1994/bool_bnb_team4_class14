@@ -28,38 +28,13 @@
         <p id="counter"></p>
       </div>
 
-      {{-- <div class="col-12">
-        <div id="search-results">
-          @foreach ($apartments as $apartment)
-            @if (Auth::check())
-              <a href="{{ route('admin.apartments.show', $apartment) }}">
-              @else
-                <a href="{{ route('apartments.show', $apartment) }}">
-            @endif
-
-              <div class="col-12 single-apartment">
-                @foreach ($apartment->images as $image)
-
-                  @if ($loop->first)
-                    <img src="{{ $image->image_path }}" alt="">
-                  @endif
-
-                @endforeach
-                <h2>{{ $apartment->title }}</h2>
-              </div>
-            </a>
-          @endforeach
-        </div>
-      </div> --}}
-
       <div class="col-12 search-results-container">
 
       </div>
 
         <script id="entry-template" type="text/x-handlebars-template">
 
-
-            <div class="entry">
+            <div lat="@{{ latitude }}" lng="@{{ longitude }}" class="single-apartment">
               @if (Auth::check())
                 <a href="admin/apartments/@{{id}}" class="btn-blue">
                 @else
