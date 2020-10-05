@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateApartmentsSponsorsTable extends Migration
+class CreateApartmentSponsorTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateApartmentsSponsorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('apartments_sponsors', function (Blueprint $table) {
+        Schema::create('apartment_sponsor', function (Blueprint $table) {
             $table->id();
 
             // apartment_id
@@ -43,6 +43,6 @@ class CreateApartmentsSponsorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('apartments_sponsors');
+        Schema::dropIfExists('apartment_sponsor');
     }
 }
