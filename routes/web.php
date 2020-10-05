@@ -29,7 +29,11 @@ Route::prefix('admin')
     Route::resource('apartments','ApartmentController');
 
     //Route pagamento
-    Route::get('payment', 'PaymentController@payment')->name('payment');
+    Route::get('payment/{apartment}', 'PaymentController@payment')->name('payment');
+
+    //Route checkout
+    Route::post('checkout/{apartment}', 'PaymentController@checkout')->name('checkout');
+
   });
 
 //Route apartments per tutti gli utenti

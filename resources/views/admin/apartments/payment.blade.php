@@ -2,17 +2,47 @@
 @section('content')
 
   <div class="container">
+
+    @if (session('success_message'))
+        <div class="alert alert-success">
+            {{ session('success_message') }}
+        </div>
+    @endif
+
+    @if(count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <div class="row">
       <div class="col-12">
-        <form method="post" id="payment-form" action="#">
+        <h2>Sponsorizza la stanza “{{ $apartment->title }}”</h2>
+        <h3>Scegli la modalità di sponsorizzazione:</h3>
+      </div>
+      <div class="col-12">
+        <form method="post" id="payment-form" action="{{ url('admin/checkout', $apartment) }}">
           @csrf
           <section>
-              <label for="amount">
-                  <span class="input-label">Amount</span>
-                  <div class="input-wrapper amount-wrapper">
-                      <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10">
-                  </div>
-              </label>
+            @foreach ($sponsors as $sponsor)
+              <div>
+                <input type="radio" name="sponsors[]" value="{{$sponsor->id}}">
+                <label>{{ $sponsor->price }} € per {{ $sponsor->duration }} ore di sponsorizzazione</label>
+              </div>
+            @endforeach
+
+              <div>
+                <label for="amount">
+                    <span class="input-label">Amount</span>
+                    <div class="input-wrapper amount-wrapper">
+                        <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10">
+                    </div>
+                </label>
+              </div>
 
               <div class="bt-drop-in-wrapper">
                   <div id="bt-dropin"></div>

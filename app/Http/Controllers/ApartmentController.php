@@ -60,47 +60,38 @@ class ApartmentController extends Controller
       $minBaths = $data['minBaths'];
     }
 
-    $apartments = Apartment::selectRaw("*,
-                         ( 6371 * acos( cos( radians(?) ) *
-                           cos( radians( latitude ) )
-                           * cos( radians( longitude ) - radians(?)
-                           ) + sin( radians(?) ) *
-                           sin( radians( latitude ) ) )
-                         ) AS distance", [$lat, $lng, $lat])
-                         ->where([
-                             ['rooms', '>=', $minRooms],
-                             ['beds', '>=', $minBeds],
-                             ['baths', '>=', $minBaths],
-                         ])
-                         ->having("distance", "<", $rad)
-                         ->orderBy("distance",'asc')
-                         ->offset(0)
-                        ->limit(20)
-                        ->get();
+    $apartments = Apartment::selectRaw("*, ( 6371 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) -
+                                    radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance", [$lat, $lng, $lat])
+   ->where([
+     ['rooms', '>=', $minRooms],
+     ['beds', '>=', $minBeds],
+     ['baths', '>=', $minBaths],
+   ])
+   ->having("distance", "<", $rad)
+   ->orderBy("distance",'asc')
+   ->offset(0)
+  ->limit(20)
+  ->get();
 
-          foreach ($apartments as $apartment) {
-            $apartmentServices = $apartment->services;
-            // prepariamo array per salvare i servizi scelti dall'utente
-            $arrayApartmentServices = [];
-            foreach ($apartmentServices as $service) {
-              $arrayApartmentServices[] = $service->id;
-            }
+  foreach ($apartments as $apartment) {
+    $apartmentServices = $apartment->services;
+    // prepariamo array per salvare i servizi scelti dall'utente
+    $arrayApartmentServices = [];
+    foreach ($apartmentServices as $service) {
+      $arrayApartmentServices[] = $service->id;
+    }
 
-            $match = $this->matchingServices( $inputServices, $arrayApartmentServices);
-              if ($match == true) {
-                $selectedApartments[] = $apartment;
-              }
-              $apartments = collect($selectedApartments);
-          }
+    $match = $this->matchingServices( $inputServices, $arrayApartmentServices);
+      if ($match == true) {
+        $selectedApartments[] = $apartment;
+      }
+      $apartments = collect($selectedApartments);
+  }
 
-          if($request->ajax())
-          {
-            return response()->json($apartments);
-          }
-
-
-
-
+  if($request->ajax())
+  {
+    return response()->json($apartments);
+  }
 
     return view('partials.search', compact('apartments', 'services', 'requestedServices'));
   }
