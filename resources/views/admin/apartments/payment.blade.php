@@ -30,19 +30,10 @@
           <section>
             @foreach ($sponsors as $sponsor)
               <div>
-                <input type="radio" name="sponsors[]" value="{{$sponsor->id}}">
+                <input type="radio" name="sponsors[]" value="{{$sponsor->price}}">
                 <label>{{ $sponsor->price }} € per {{ $sponsor->duration }} ore di sponsorizzazione</label>
               </div>
             @endforeach
-
-              <div>
-                <label for="amount">
-                    <span class="input-label">Amount</span>
-                    <div class="input-wrapper amount-wrapper">
-                        <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10">
-                    </div>
-                </label>
-              </div>
 
               <div class="bt-drop-in-wrapper">
                   <div id="bt-dropin"></div>
@@ -56,7 +47,6 @@
   </div>
 </div>
 
-<script src="https://js.braintreegateway.com/web/dropin/1.24.0/js/dropin.min.js"></script>
 <script>
     var form = document.querySelector('#payment-form');
     var client_token = "{{ $token }}";

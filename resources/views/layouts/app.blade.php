@@ -21,8 +21,10 @@
     <!-- cdn algolia -->
     <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
     <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.0.0/dist/algoliasearch-lite.umd.js" integrity="sha256-MfeKq2Aw9VAkaE9Caes2NOxQf6vUa8Av0JqcUXUGkd0=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.0.0/dist/instantsearch.production.min.js" integrity="sha256-6S7q0JJs/Kx4kb/fv0oMjS855QTz5Rc2hh9AkIUjUsk=" crossorigin="anonymous"></script> --}}
+
+    <!-- braintree -->
+    <script src="https://js.braintreegateway.com/web/dropin/1.24.0/js/dropin.min.js"></script>
+    
 </head>
 <body>
 
