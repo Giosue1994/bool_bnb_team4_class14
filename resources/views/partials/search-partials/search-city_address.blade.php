@@ -1,7 +1,6 @@
 {{-- struttura per la ricerca in base alle città e gli indirizzi --}}
 <div class="form-group">
-  <label for="form-city">Cerca appartamenti</label>
-  <input id="form-city" name="city" type="text" class="form-control" placeholder="Città/Via" value="{{request()->input('city')}}"/>
+  <input id="form-city" name="city" type="text"  placeholder="Inizia la ricerca" value="{{request()->input('city')}}"/>
 </div>
 
 

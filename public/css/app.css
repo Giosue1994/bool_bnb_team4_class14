@@ -11,6 +11,68 @@ img {
   z-index: 0;
 }
 
+header .my-nav {
+  position: fixed;
+  width: 100%;
+  z-index: 2345;
+}
+
+main .input-search {
+  margin-top: 70px;
+}
+
+main .input-search .form-search-apartment {
+  flex-direction: column;
+  align-items: center;
+  transition: 0.2s ease-in-out;
+}
+
+main .input-search .form-search-apartment .form-group {
+  position: relative;
+}
+
+main .input-search .form-search-apartment .form-group .ap-input {
+  border-radius: 20px;
+  transition: 0.2s ease-in-out;
+}
+
+main .input-search .form-search-apartment .form-group .ap-input:hover {
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+main .input-search .form-search-apartment .btn-index-search {
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 25px;
+  background: transparent;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 58%;
+  transform: translate(-50%, -50%);
+}
+
+main .input-search .form-search-apartment .icon-search {
+  float: right;
+  margin-right: 6px;
+  margin-top: -20px;
+  z-index: 0;
+  color: red;
+  font-size: 25px;
+  position: absolute;
+  top: 78%;
+  left: 58%;
+  transform: translate(-50%, -50%);
+}
+
+main .sponsored .title-section-sponsored {
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
 form {
   width: 100%;
 }
@@ -29,6 +91,10 @@ form {
 .form-group {
   margin-bottom: 1em;
   clear: both;
+}
+
+.form-group .ap-input-icon {
+  display: none;
 }
 
 .form-group label {

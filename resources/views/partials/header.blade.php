@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<nav class="my-nav navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container">
       @if (Auth::check())
         <a class="navbar-brand" href="{{ url('/admin/apartments') }}">
