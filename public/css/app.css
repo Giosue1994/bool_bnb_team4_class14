@@ -59,7 +59,7 @@ main .form-search-apartment .btn-index-search {
   background: transparent;
   z-index: 1;
   position: absolute;
-  top: 55%;
+  top: 38%;
   left: 67%;
   transform: translate(-50%, -50%);
 }
@@ -72,15 +72,39 @@ main .form-search-apartment .icon-search {
   color: red;
   font-size: 25px;
   position: absolute;
-  top: 78%;
+  top: 53%;
   left: 67%;
   transform: translate(-50%, -50%);
 }
 
-main .sponsored .title-section-sponsored {
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
+main .heading {
+  padding-bottom: 20px;
+}
+
+main .apartments {
+  margin-bottom: 80px;
+}
+
+main .apartments .single-apartment {
+  margin-bottom: 20px;
+  transition: 0.2s ease-in-out;
+}
+
+main .apartments .single-apartment:hover {
+  transform: scale(1.05);
+}
+
+main .apartments .single-apartment:hover .apartment-image {
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.4);
+}
+
+main .apartments .single-apartment a {
+  text-decoration: none;
+}
+
+main .apartments .single-apartment .apartment-image {
+  border-radius: 20px;
+  transition: 0.2s ease-in-out;
 }
 
 main #search-results .form-group {

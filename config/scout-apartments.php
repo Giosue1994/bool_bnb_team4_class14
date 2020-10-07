@@ -29,6 +29,7 @@ return [
         'address',
         'city',
         'zip',
+        'active',
     ],
 
     /*

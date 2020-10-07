@@ -24,6 +24,14 @@
             @csrf
             @method('PUT')
             <div>
+              <label>Visibilità</label>
+              <select class="" name="active">
+                <option value="1" {{ old('active') == 1 ? 'selected' : '' }}>Attiva</option>
+                <option value="0" {{ old('active') == 0 ? 'selected' : '' }}>Non attiva</option>
+              </select>
+
+            </div>
+            <div>
               <label>Titolo:</label>
               <input type="text" name="title" value="{{ old('title') ? old('title') : $apartment->title}}">
             </div>

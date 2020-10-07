@@ -21,8 +21,11 @@ class ApartmentController extends Controller
     public function index()
     {
         $apartments= Apartment::all();
+        $sponsoredApartments = Apartment::whereHas('sponsors', function($q){
+          $q->where('fine_sponsorizzazione', '>=', now());
+        })->get();
 
-        return view('admin.apartments.index', compact('apartments'));
+        return view('admin.apartments.index', compact('apartments', 'sponsoredApartments'));
     }
 
     /**
@@ -61,6 +64,7 @@ class ApartmentController extends Controller
         $new_apartment->zip = $data['zip'];
         $new_apartment->latitude = $data['latitude'];
         $new_apartment->longitude = $data['longitude'];
+        $new_apartment->active = true;
 
 
         if (isset($data['image_path'])) {
@@ -118,7 +122,9 @@ class ApartmentController extends Controller
 
         $request->validate($this->validationData());
 
+
         $data = $request->all();
+        //dd($data);
         $apartment->title = request('title');
         $apartment->rooms = request('rooms');
         $apartment->baths = request('baths');
@@ -132,7 +138,7 @@ class ApartmentController extends Controller
         $apartment->address = request('address');
         $apartment->city = request('city');
         $apartment->zip = request('zip');
-
+        $apartment->active = request('active');
 
         if (isset($data['image_path'])) {
           $path = $request->file('image_path')->store('images','public');

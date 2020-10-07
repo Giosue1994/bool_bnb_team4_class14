@@ -60,6 +60,11 @@ class ApartmentController extends Controller
       $minBaths = $data['minBaths'];
     }
 
+    $sponsoredApartments = Apartment::whereHas('sponsors', function($q){
+      $q->where('fine_sponsorizzazione', '>=', now());
+    })->get();
+    //dd($sponsoredApartments);
+
     $apartments = Apartment::selectRaw("*, ( 6371 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) -
                                     radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance", [$lat, $lng, $lat])
      ->where([
@@ -93,6 +98,6 @@ class ApartmentController extends Controller
     return response()->json($apartments);
   }
 
-    return view('partials.search', compact('apartments', 'services', 'requestedServices'));
+    return view('partials.search', compact('apartments', 'services', 'requestedServices', 'sponsoredApartments'));
   }
 }

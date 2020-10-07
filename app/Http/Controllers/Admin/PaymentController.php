@@ -85,6 +85,7 @@ class PaymentController extends Controller
 
         if ($activeSponsor->isEmpty()) {
           $startSponsor = Carbon::now()->format('Y-m-d H:i:s');
+          //dd($startSponsor);
         }else {
           $startSponsor = $apartment->sponsors()
             ->wherePivot('apartment_id', $apartment->id)

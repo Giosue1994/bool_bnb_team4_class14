@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateApartmentSponsorTable extends Migration
+class CreateStatisticsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,24 +13,16 @@ class CreateApartmentSponsorTable extends Migration
      */
     public function up()
     {
-        Schema::create('apartment_sponsor', function (Blueprint $table) {
+        Schema::create('statistics', function (Blueprint $table) {
             $table->id();
-
-            // apartment_id
+            $table->datetime('date');
+            
             $table->unsignedBigInteger('apartment_id');
             $table->foreign('apartment_id')
             ->references('id')
             ->on('apartments');
 
-            //sponsor_id
-            $table->unsignedBigInteger('sponsor_id');
-            $table->foreign('sponsor_id')
-            ->references('id')
-            ->on('sponsors');
-
-            $table->datetime('inizio_sponsorizzazione');
-            $table->datetime('fine_sponsorizzazione');
-            $table->string('status_payment');
+            $table->timestamps();
         });
     }
 
@@ -41,6 +33,6 @@ class CreateApartmentSponsorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('apartment_sponsor');
+        Schema::dropIfExists('statistics');
     }
 }
