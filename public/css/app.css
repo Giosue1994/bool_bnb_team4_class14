@@ -2,11 +2,23 @@
 
 /* ________ REGOLE GENERALI ________ */
 
+section {
+  margin-top: 70px;
+}
+
 img {
   width: 360px;
 }
 
-#map-example-container {
+#map-search {
+  height: 100vh;
+  z-index: 0;
+  position: fixed;
+  width: 58%;
+  top: 56px;
+}
+
+#map-show {
   height: 300px;
   z-index: 0;
 }
@@ -17,44 +29,42 @@ header .my-nav {
   z-index: 2345;
 }
 
-main .input-search {
-  margin-top: 70px;
-}
-
-main .input-search .form-search-apartment {
+main .form-search-apartment {
   flex-direction: column;
   align-items: center;
   transition: 0.2s ease-in-out;
 }
 
-main .input-search .form-search-apartment .form-group {
+main .form-search-apartment .form-group {
   position: relative;
+  width: 40%;
 }
 
-main .input-search .form-search-apartment .form-group .ap-input {
+main .form-search-apartment .form-group .ap-input {
   border-radius: 20px;
   transition: 0.2s ease-in-out;
 }
 
-main .input-search .form-search-apartment .form-group .ap-input:hover {
+main .form-search-apartment .form-group .ap-input:hover {
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
 }
 
-main .input-search .form-search-apartment .btn-index-search {
+main .form-search-apartment .btn-index-search {
   border-radius: 50%;
   background: transparent;
   border: none;
   outline: none;
-  width: 25px;
+  width: 30px;
+  height: 30px;
   background: transparent;
   z-index: 1;
   position: absolute;
-  top: 50%;
-  left: 58%;
+  top: 55%;
+  left: 67%;
   transform: translate(-50%, -50%);
 }
 
-main .input-search .form-search-apartment .icon-search {
+main .form-search-apartment .icon-search {
   float: right;
   margin-right: 6px;
   margin-top: -20px;
@@ -63,7 +73,7 @@ main .input-search .form-search-apartment .icon-search {
   font-size: 25px;
   position: absolute;
   top: 78%;
-  left: 58%;
+  left: 67%;
   transform: translate(-50%, -50%);
 }
 
@@ -73,19 +83,16 @@ main .sponsored .title-section-sponsored {
   align-items: center;
 }
 
-form {
+main #search-results .form-group {
   width: 100%;
 }
 
-.form-control {
+main #search-results .form-group .my-number {
+  padding: 0 15px;
+}
+
+form {
   width: 100%;
-  box-sizing: border-box;
-  padding-left: 16px;
-  line-height: 40px;
-  height: 40px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  outline: none;
 }
 
 .form-group {

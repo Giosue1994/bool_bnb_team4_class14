@@ -1,9 +1,21 @@
 /* ________ REGOLE GENERALI ________ */
+section {
+  margin-top: 70px;
+}
+
 img {
   width: 360px;
 }
 
-#map-example-container {
+#map-search {
+  height: 100vh;
+  z-index: 0;
+  position: fixed;
+  width: 58%;
+  top: 56px;
+};
+
+#map-show {
   height: 300px;
   z-index: 0;
 };

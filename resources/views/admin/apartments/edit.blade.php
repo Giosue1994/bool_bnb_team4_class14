@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
+<section id="edit">
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -31,7 +32,7 @@
               <label> Descrizione:</label>
               <textarea name="description" rows="8" cols="80">{{ old('description') ? old('description') : $apartment->description}}</textarea>
             </div>
-            
+
             <div>
               <label>Numero stanze:</label>
               <input type="number" name="rooms" value="{{ old('rooms') ? old('rooms') : $apartment->rooms}}">
@@ -106,5 +107,6 @@
     </div>
 
   </div>
+</section>
 
 @endsection
