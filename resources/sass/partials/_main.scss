@@ -88,6 +88,23 @@ main {
         padding: 0 15px;
       }
     }
+    .heading {
+      padding-bottom: 5px;
+    }
+    .all-apartments {
+      overflow: auto;
+      height: 300px;
+      .single-sponsored{
+        padding: 5px;
+      }
+    }
+    .single-apartment {
+      .apartment-image {
+        img{
+          width: 100%;
+        }
+      }
+    }
   }
 
 }
