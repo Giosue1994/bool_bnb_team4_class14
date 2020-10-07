@@ -34,6 +34,9 @@ Route::prefix('admin')
     //Route checkout
     Route::post('checkout/{apartment}', 'PaymentController@checkout')->name('checkout');
 
+    //Route user apartments
+    Route::get('user-apartments', 'ApartmentController@userApartments')->name('user-apartments');
+
   });
 
 //Route apartments per tutti gli utenti

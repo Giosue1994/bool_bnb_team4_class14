@@ -71,6 +71,7 @@ class ApartmentController extends Controller
        ['rooms', '>=', $minRooms],
        ['beds', '>=', $minBeds],
        ['baths', '>=', $minBaths],
+       ['active', '=', true],
      ])
      ->having("distance", "<", $rad)
      ->orderBy("distance",'asc')
