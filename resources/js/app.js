@@ -94,6 +94,28 @@ $(document).ready(function() {
             radius: radius * 1000
         }).addTo(map);
 
+        // vine inpostato lo zoom in base alla dimensione del raggio
+        var customZoom
+        if (radius <= 1) {
+          customZoom = 15
+        } else if (radius >= 2 && radius < 5) {
+          customZoom = 14
+        } else if (radius >= 5 && radius < 10) {
+          customZoom = 13
+        } else if (radius >= 10 && radius < 20) {
+          customZoom = 12
+        } else if (radius >= 20 && radius < 40) {
+          customZoom = 11
+        } else if (radius >= 40 && radius < 60) {
+          customZoom = 10
+        } else if (radius >= 60 && radius < 100) {
+          customZoom = 9
+        } else if (radius >= 100 && radius < 150) {
+          customZoom = 8
+        } else {
+          customZoom = 7
+        }
+
         // viee visulizzata la mappa in base alla latitudine, alla longitudine e viene anche impostato lo zoom
         map.setView(new L.LatLng(latitude, longitude), customZoom);
 
@@ -124,7 +146,7 @@ $(document).ready(function() {
       ajaxMarkers(city,latitude,longitude);
 
       // classe mappa nell'html
-      var map = L.map('map-example-container', {
+      var map = L.map('map-search', {
         scrollWheelZoom: true,
         zoomControl: true
       });
@@ -134,7 +156,7 @@ $(document).ready(function() {
         'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         {
           minZoom: 1,
-          maxZoom: 13,
+          maxZoom: 19,
           attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
         }
       );
@@ -152,22 +174,22 @@ $(document).ready(function() {
 
       // vine inpostato lo zoom in base alla dimensione del raggio
       var customZoom
-      if (radius > 1 && radius <= 5) {
-        customZoom = 13
+      if (radius <= 5) {
+        customZoom = 14
       } else if (radius >= 5 && radius < 10) {
-        customZoom = 12
+        customZoom = 13
       } else if (radius >= 10 && radius < 20) {
-        customZoom = 11
+        customZoom = 12
       } else if (radius >= 20 && radius < 40) {
-        customZoom = 10
+        customZoom = 11
       } else if (radius >= 40 && radius < 60) {
-        customZoom = 9
+        customZoom = 10
       } else if (radius >= 60 && radius < 100) {
-        customZoom = 8
+        customZoom = 9
       } else if (radius >= 100 && radius < 150) {
-        customZoom = 7
+        customZoom = 8
       } else {
-        customZoom = 6
+        customZoom = 7
       }
 
       // viee visulizzata la mappa in base alla latitudine, alla longitudine e viene anche impostato lo zoom

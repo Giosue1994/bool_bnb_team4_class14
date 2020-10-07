@@ -1,4 +1,70 @@
 // MAIN
 main {
+  //SEZIONE INPUT DI RICERCA
+  .form-search-apartment {
+    flex-direction: column;
+    align-items: center;
+    transition: 0.2s ease-in-out;
 
+    .form-group {
+      position: relative;
+      width: 40%;
+
+      .ap-input {
+        border-radius: 20px;
+        transition: 0.2s ease-in-out;
+
+        &:hover {
+          box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.1);
+        }
+      }
+    }
+
+    .btn-index-search {
+      border-radius: 50%;
+      background: transparent;
+      border: none;
+      outline: none;
+      width: 30px;
+      height: 30px;
+      background: transparent;
+      z-index: 1;
+      position: absolute;
+      top: 55%;
+      left: 67%;
+      transform: translate(-50%, -50%);
+    }
+
+    .icon-search {
+      float: right;
+      margin-right: 6px;
+      margin-top: -20px;
+      z-index: 0;
+      color: red;
+      font-size: 25px;
+      position: absolute;
+      top: 78%;
+      left: 67%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  //SEZIONE LISTA APPARTAMENTI
+  .sponsored {
+    .title-section-sponsored {
+      width: 100%;
+      @include vertical_between;
+    }
+  }
+
+  //SEZIONE SEARCH
+  #search-results {
+    .form-group {
+      width: 100%;
+
+      .my-number {
+        padding: 0 15px;
+      }
+    }
+  }
 }
