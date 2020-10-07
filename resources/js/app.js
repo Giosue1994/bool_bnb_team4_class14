@@ -256,7 +256,16 @@ $(document).ready(function() {
             for (var i = 0; i < result.length; i++) {
               var singleResult = result[i]
 
-              L.marker([singleResult.latitude, singleResult.longitude]).addTo(map)
+              // icona marker personalizzata
+              var houseIcon = L.icon({
+                iconUrl: 'images/house.png',
+                iconSize: [60, 60], // size of the icon
+                // shadowUrl: 'images/shadow.png',
+                // shadowSize:   [50, 50], // size of the shadow
+                // shadowAnchor: [25, 20],  // the same for the shadow
+              });
+
+              L.marker([singleResult.latitude, singleResult.longitude], {icon: houseIcon}).addTo(map)
               .bindPopup(singleResult.title)
               var context = singleResult
               var html = template(context);

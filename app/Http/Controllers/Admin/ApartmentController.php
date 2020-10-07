@@ -20,10 +20,14 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments= Apartment::all();
+        $apartments= Apartment::all()->where('active', '=', true);
         $sponsoredApartments = Apartment::whereHas('sponsors', function($q){
-          $q->where('fine_sponsorizzazione', '>=', now());
+          $q->where([
+            ['fine_sponsorizzazione', '>=', now()],
+            ['active', '=', true],
+          ]);
         })->get();
+
 
         return view('admin.apartments.index', compact('apartments', 'sponsoredApartments'));
     }
@@ -124,7 +128,7 @@ class ApartmentController extends Controller
 
 
         $data = $request->all();
-        //dd($data);
+
         $apartment->title = request('title');
         $apartment->rooms = request('rooms');
         $apartment->baths = request('baths');
@@ -190,5 +194,12 @@ class ApartmentController extends Controller
         'address' => 'required|max:255',
         'city' => 'required|max:255',
       ];
+    }
+    public function userApartments(){
+      $idUser = Auth::id();
+      $userApartments = Apartment::all()->where('user_id', '=', $idUser);
+
+      return view('admin.apartments.user_apartments', compact('userApartments'));
+
     }
 }

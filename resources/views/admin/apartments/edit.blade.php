@@ -26,8 +26,8 @@
             <div>
               <label>Visibilità</label>
               <select class="" name="active">
-                <option value="1" {{ old('active') == 1 ? 'selected' : '' }}>Attiva</option>
-                <option value="0" {{ old('active') == 0 ? 'selected' : '' }}>Non attiva</option>
+                <option value="1" {{ $apartment->active == 1 ? 'selected' : '' }}>Attiva</option>
+                <option value="0" {{ $apartment->active == 0 ? 'selected' : '' }}>Non attiva</option>
               </select>
 
             </div>
