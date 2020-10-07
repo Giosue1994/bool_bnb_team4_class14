@@ -31,8 +31,6 @@ class CreateApartmentSponsorTable extends Migration
             $table->datetime('inizio_sponsorizzazione');
             $table->datetime('fine_sponsorizzazione');
             $table->string('status_payment');
-
-            $table->timestamps();
         });
     }
 

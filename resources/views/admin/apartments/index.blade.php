@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<!-- SEZIONE INPUT DI RICERCA-->
+<!-- SEZIONE INPUT DI RICERCA -->
 <section class="input-search" id="input-search-admin">
   <div class="container">
     <div class="row">
@@ -17,52 +17,50 @@
 
           <input class="btn-index-search" type="submit" value="">
           <i class="fas fa-search-location icon-search"></i>
+
+          <a class="btn btn-primary" href="{{ route('admin.apartments.create')}}">Inserisci il tuo appartamento</a>
         </form>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SEZIONE LISTA APPARTAMENTI-->
-<section class="sponsored" id="sponsored-admin">
+<!-- SEZIONE LISTA APPARTAMENTI -->
+<section class="apartments-admin" id="apartments-admin">
   <div class="container">
-    <div class="row">
-      <div class="title-section-sponsored d-flex">
-        @if (!$sponsoredApartments->isEmpty())
-          <h1>Appartamenti in evidenza</h1>
-        @endif
 
-        <a class="btn btn-primary" href="{{ route('admin.apartments.create')}}">Inserisci il tuo appartamento</a>
-      </div>
-
-      <div class="row sponsored-apartment d-flex justify-content-center">
+    @if (!$sponsoredApartments->isEmpty())
+      <!-- Appartamenti in evidenza -->
+      <h1 class="heading text-center">Appartamenti in evidenza</h1>
+      <div class="row apartments sponsored-apartments d-flex justify-content-center">
         @foreach ($sponsoredApartments as $sponsoredApartment)
-          <a href="{{ route('admin.apartments.show', $sponsoredApartment) }}">
-            <div lat="{{ $sponsoredApartment->latitude }}" lng="{{ $sponsoredApartment->longitude }}" class="col-4 single-apartment">
-              <img src="{{ $sponsoredApartment->image }}" alt="">
-              <h2>{{ $sponsoredApartment->title }}</h2>
-            </div>
-          </a>
+          <div lat="{{ $sponsoredApartment->latitude }}" lng="{{ $sponsoredApartment->longitude }}" class="col-4 single-apartment">
+            <a href="{{ route('admin.apartments.show', $sponsoredApartment) }}">
+              <img class="apartment-image" src="{{ $sponsoredApartment->image }}" alt="Immagine appartamento">
+              <h2 class="text-center">{{ $sponsoredApartment->title }}</h2>
+            </a>
+          </div>
         @endforeach
       </div>
+    @endif
 
-      <div class="title-section-sponsored d-flex">
-        <h2>Appartamenti</h2>
+    <!-- Appartamenti -->
+    <h2 class="heading text-center">Appartamenti</h2>
+    <div class="row apartments all-apartments d-flex justify-content-center">
 
-      </div>
-
-      <div class="row apartment d-flex justify-content-center">
-        @foreach ($apartments as $apartment)
+      @foreach ($apartments as $apartment)
+        <div lat="{{ $apartment->latitude }}" lng="{{ $apartment->longitude }}" class="col-4 single-apartment">
           <a href="{{ route('admin.apartments.show', $apartment) }}">
-            <div lat="{{ $apartment->latitude }}" lng="{{ $apartment->longitude }}" class="col-4 single-apartment">
-              <img src="{{ $apartment->image }}" alt="">
-              <h2>{{ $apartment->title }}</h2>
-            </div>
+            <img class="apartment-image" src="{{ $apartment->image }}" alt="Immagine appartamento">
+            <h2 class="text-center">{{ $apartment->title }}</h2>
           </a>
-        @endforeach
-      </div>
-
+        </div>
+      @endforeach
     </div>
+
   </div>
 </section>
+
+
+
 @endsection
