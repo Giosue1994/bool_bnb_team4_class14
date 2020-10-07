@@ -8,6 +8,7 @@ section {
 
 img {
   width: 360px;
+  height: 250px;
 }
 
 #map-search {
@@ -113,6 +114,23 @@ main #search-results .form-group {
 
 main #search-results .form-group .my-number {
   padding: 0 15px;
+}
+
+main #search-results .heading {
+  padding-bottom: 5px;
+}
+
+main #search-results .all-apartments {
+  overflow: auto;
+  height: 300px;
+}
+
+main #search-results .all-apartments .single-sponsored {
+  padding: 5px;
+}
+
+main #search-results .single-apartment .apartment-image img {
+  width: 100%;
 }
 
 form {
