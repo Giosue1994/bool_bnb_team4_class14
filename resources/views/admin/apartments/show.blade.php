@@ -101,7 +101,7 @@
               </script>
             </div>
             <div class="col-12">
-              <h3>Srivi al proprietario</h3>
+              <h3>Scrivi al proprietario</h3>
               <div class="message-form">
                 <form action="index.html" method="post">
                   <input type="text" name="" value="" placeholder="Email">

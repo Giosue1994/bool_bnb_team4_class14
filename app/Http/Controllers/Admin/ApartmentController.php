@@ -21,8 +21,11 @@ class ApartmentController extends Controller
     public function index()
     {
         $apartments= Apartment::all();
+        $sponsoredApartments = Apartment::whereHas('sponsors', function($q){
+          $q->where('fine_sponsorizzazione', '>=', now());
+        })->get();
 
-        return view('admin.apartments.index', compact('apartments'));
+        return view('admin.apartments.index', compact('apartments', 'sponsoredApartments'));
     }
 
     /**

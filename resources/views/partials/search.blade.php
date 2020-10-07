@@ -24,6 +24,22 @@
           <p id="counter"></p>
         </div>
 
+        <div class="results-sponsors-container " style="background-color:#e4e6e8; ">
+          @foreach ($sponsoredApartments as $sponsoredApartment)
+            <div class="col-12 d-flex justify-content-center">
+              @if (Auth::check())
+                <a href="{{route('admin.apartments.show', $sponsoredApartment)}}">
+                @else
+                <a href="{{route('guests.apartments.show', $sponsoredApartment)}}">
+              @endif
+
+                <img src="{{$sponsoredApartment->image}}" alt="">
+                <h2>{{$sponsoredApartment->title}}</h2>
+              </a>
+            </div>
+          @endforeach
+        </div>
+
         <div class="search-results-container"></div>
       </div>
 
@@ -35,7 +51,7 @@
 
         <script id="entry-template" type="text/x-handlebars-template">
 
-            <div lat="@{{ latitude }}" lng="@{{ longitude }}" class="single-apartment">
+            <div lat="@{{ latitude }}" lng="@{{ longitude }}" class="single-apartment d-flex justify-content-center">
               @if (Auth::check())
                 <a href="admin/apartments/@{{id}}" class="btn-blue">
                 @else

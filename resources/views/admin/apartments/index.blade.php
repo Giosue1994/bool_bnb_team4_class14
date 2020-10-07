@@ -28,11 +28,30 @@
   <div class="container">
     <div class="row">
       <div class="title-section-sponsored d-flex">
-        <h1>Appartamenti in evidenza</h1>
+        @if (!$sponsoredApartments->isEmpty())
+          <h1>Appartamenti in evidenza</h1>
+        @endif
+
         <a class="btn btn-primary" href="{{ route('admin.apartments.create')}}">Inserisci il tuo appartamento</a>
       </div>
 
-      <div class="row sponsored-apartment">
+      <div class="row sponsored-apartment d-flex justify-content-center">
+        @foreach ($sponsoredApartments as $sponsoredApartment)
+          <a href="{{ route('admin.apartments.show', $sponsoredApartment) }}">
+            <div lat="{{ $sponsoredApartment->latitude }}" lng="{{ $sponsoredApartment->longitude }}" class="col-4 single-apartment">
+              <img src="{{ $sponsoredApartment->image }}" alt="">
+              <h2>{{ $sponsoredApartment->title }}</h2>
+            </div>
+          </a>
+        @endforeach
+      </div>
+
+      <div class="title-section-sponsored d-flex">
+        <h2>Appartamenti</h2>
+
+      </div>
+
+      <div class="row apartment d-flex justify-content-center">
         @foreach ($apartments as $apartment)
           <a href="{{ route('admin.apartments.show', $apartment) }}">
             <div lat="{{ $apartment->latitude }}" lng="{{ $apartment->longitude }}" class="col-4 single-apartment">
