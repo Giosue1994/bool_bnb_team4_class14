@@ -156,7 +156,7 @@ $(document).ready(function() {
         'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         {
           minZoom: 1,
-          maxZoom: 20,
+          maxZoom: 19,
           attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
         }
       );
