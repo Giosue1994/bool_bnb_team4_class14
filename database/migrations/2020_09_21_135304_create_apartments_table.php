@@ -21,7 +21,7 @@ class CreateApartmentsTable extends Migration
             $table->foreign('user_id')
             ->references('id')
             ->on('users');
-            
+
             $table->string('title');
             $table->integer('rooms')->nullable();
             $table->integer('baths')->nullable();
@@ -34,6 +34,8 @@ class CreateApartmentsTable extends Migration
             $table->string('address');
             $table->string('city');
             $table->integer('zip')->nullable();
+            $table->longText('image')->nullable();
+            $table->boolean('active');
             $table->timestamps();
 
         });

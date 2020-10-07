@@ -14,15 +14,15 @@ class ServicesTableSeeder extends Seeder
     public function run()
     {
       $services = [
-        'wifi',
-        'parking',
-        'pets_allowed',
-        'air_conditioning',
-        'swimming_pool',
-        'washingmachine',
-        'tv',
-        'kitchen',
-        'breakfast',
+        'Wifi',
+        'Parcheggio',
+        'Animali ammessi',
+        'Aria condizionata',
+        'Piscina',
+        'Lavatrice',
+        'Tv',
+        'Cucina',
+        'Colazione',
       ];
       foreach ($services as $service) {
         $new_service = new Service();

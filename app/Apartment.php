@@ -25,6 +25,7 @@ class Apartment extends Model
       'city',
       'zip',
       'image',
+      'active',
     ];
 
     // public function shouldBeSearchable()
@@ -39,13 +40,14 @@ class Apartment extends Model
     public function images(){
       return $this->hasMany('App\Image');
     }
+
     public function sponsors(){
       return $this->belongsToMany('App\Sponsor')->withPivot('inizio_sponsorizzazione', 'fine_sponsorizzazione','status_payment');
     }
 
-    // public function statistics() {
-    //   return $this->hasMany('App\Statistic');
-    // }
+    public function statistics() {
+      return $this->hasMany('App\Statistic');
+    }
 
     public function services(){
       return $this->belongsToMany('App\Service');
