@@ -42561,8 +42561,19 @@ $(document).ready(function () {
           counter.text(result.length + ' Risultati per ' + city); // ciclo che appende i risultati nella pagina search
 
           for (var i = 0; i < result.length; i++) {
-            var singleResult = result[i];
-            L.marker([singleResult.latitude, singleResult.longitude]).addTo(map).bindPopup(singleResult.title);
+            var singleResult = result[i]; // icona marker personalizzata
+
+            var houseIcon = L.icon({
+              iconUrl: 'images/house.png',
+              iconSize: [60, 60] // size of the icon
+              // shadowUrl: 'images/shadow.png',
+              // shadowSize:   [50, 50], // size of the shadow
+              // shadowAnchor: [25, 20],  // the same for the shadow
+
+            });
+            L.marker([singleResult.latitude, singleResult.longitude], {
+              icon: houseIcon
+            }).addTo(map).bindPopup(singleResult.title);
             var context = singleResult;
             var html = template(context);
             $('.search-results-container').append(html);
