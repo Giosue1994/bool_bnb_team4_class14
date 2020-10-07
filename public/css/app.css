@@ -7,15 +7,20 @@ section {
 }
 
 img {
-  width: 360px;
-  height: 250px;
+  width: 100%;
+  display: block;
+}
+
+.border {
+  position: absolute;
+  top: 0;
 }
 
 #map-search {
   height: 100vh;
   z-index: 0;
   position: fixed;
-  width: 58%;
+  width: 50%;
   top: 56px;
 }
 
@@ -120,17 +125,25 @@ main #search-results .heading {
   padding-bottom: 5px;
 }
 
-main #search-results .all-apartments {
+main #search-results .sponsored-apartments {
   overflow: auto;
-  height: 300px;
 }
 
-main #search-results .all-apartments .single-sponsored {
+main #search-results .sponsored-apartments .single-sponsored {
   padding: 5px;
 }
 
-main #search-results .single-apartment .apartment-image img {
-  width: 100%;
+main #search-results .sponsored-apartments .single-sponsored h2 {
+  padding-top: 10px;
+  font-size: 17px;
+}
+
+main #search-results .sponsored-apartments .single-sponsored .img-sponsored {
+  position: relative;
+}
+
+main #search-results .sponsored-apartments .single-sponsored .img-sponsored img {
+  width: 200px;
 }
 
 form {
