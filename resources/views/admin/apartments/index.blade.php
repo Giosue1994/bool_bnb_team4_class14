@@ -8,7 +8,7 @@
 
 <!-- INCLUDE DEL JUMBOTRON -->
   @include('partials.jumbo')
-  
+
 <!-- SEZIONE INPUT DI RICERCA -->
 <section class="input-search" id="input-search-admin">
   <div class="container">
@@ -22,7 +22,6 @@
           <input class="btn-index-search" type="submit" value="">
           <i class="fas fa-search-location icon-search"></i>
 
-          <a class="btn btn-primary" href="{{ route('admin.apartments.create')}}">Inserisci il tuo appartamento</a>
         </form>
       </div>
     </div>
@@ -40,8 +39,12 @@
         @foreach ($sponsoredApartments as $sponsoredApartment)
           <div lat="{{ $sponsoredApartment->latitude }}" lng="{{ $sponsoredApartment->longitude }}" class="col-4 single-apartment">
             <a href="{{ route('admin.apartments.show', $sponsoredApartment) }}">
-              <img class="apartment-image" src="{{ $sponsoredApartment->image }}" alt="Immagine appartamento">
-              <h2 class="text-center">{{ $sponsoredApartment->title }}</h2>
+              <div class="img-container">
+                <img class="apartment-image" src="{{ $sponsoredApartment->image }}" alt="Immagine appartamento">
+              </div>
+              <div class="title-container">
+                <h2 class="text-center">{{ $sponsoredApartment->title }}</h2>
+              </div>
             </a>
           </div>
         @endforeach
@@ -55,8 +58,12 @@
       @foreach ($apartments as $apartment)
         <div lat="{{ $apartment->latitude }}" lng="{{ $apartment->longitude }}" class="col-4 single-apartment">
           <a href="{{ route('admin.apartments.show', $apartment) }}">
-            <img class="apartment-image" src="{{ $apartment->image }}" alt="Immagine appartamento">
-            <h2 class="text-center">{{ $apartment->title }}</h2>
+            <div class="img-container">
+              <img class="apartment-image" src="{{ $apartment->image }}" alt="Immagine appartamento">
+            </div>
+            <div class="title-container">
+              <h2 class="text-center">{{ $apartment->title }}</h2>
+            </div>
           </a>
         </div>
       @endforeach
@@ -64,7 +71,4 @@
 
   </div>
 </section>
-
-
-
 @endsection

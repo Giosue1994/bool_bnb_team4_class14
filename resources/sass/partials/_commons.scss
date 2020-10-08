@@ -4,28 +4,28 @@ section {
 }
 
 img {
-  // width: 360px;
-  // height: 250px;
   width: 100%;
   display: block;
 }
-
 
 .border {
   position: absolute;
   top: 0;
 }
 
-
 #map-search {
   height: 100vh;
   z-index: 0;
   position: fixed;
   width: 50%;
-  top: 56px;
+  top: 70px;
 };
 
 #map-show {
   height: 300px;
   z-index: 0;
 };
+
+.img-user-apart {
+  width: 200px;
+}

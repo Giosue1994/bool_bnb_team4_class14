@@ -9,9 +9,15 @@ use App\Service;
 class ApartmentController extends Controller
 {
   public function index() {
-    $apartments = Apartment::all();
+    $apartments= Apartment::all()->where('active', '=', true);
+    $sponsoredApartments = Apartment::whereHas('sponsors', function($q){
+      $q->where([
+        ['fine_sponsorizzazione', '>=', now()],
+        ['active', '=', true],
+      ]);
+    })->get();
 
-    return view('guests.apartments.index', compact('apartments'));
+    return view('guests.apartments.index', compact('apartments', 'sponsoredApartments'));
   }
 
   public function show(Apartment $apartment) {
@@ -60,7 +66,7 @@ class ApartmentController extends Controller
       $minBaths = $data['minBaths'];
     }
 
-    $sponsoredApartments = Apartment::whereHas('sponsors', function($q){
+    $sponsoredApartments = Apartment::where('active', '=', true)->whereHas('sponsors', function($q){
       $q->where('fine_sponsorizzazione', '>=', now());
     })->get();
     //dd($sponsoredApartments);

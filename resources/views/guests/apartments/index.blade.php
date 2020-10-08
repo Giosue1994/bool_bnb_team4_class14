@@ -5,6 +5,10 @@
 @endsection
 
 @section('content')
+
+<!-- INCLUDE DEL JUMBOTRON -->
+  @include('partials.jumbo')
+
 <!-- SEZIONE INPUT DI RICERCA-->
 <section class="input-search" id="input-search-guest">
   <div class="container">
@@ -24,23 +28,38 @@
 </section>
 
 <!-- SEZIONE LISTA APPARTAMENTI-->
-<section class="sponsored" id="sponsored-guest">
+<section class="apartments-guests" id="apartments-guests">
   <div class="container">
-    <div class="row">
-      <h1>Appartamenti in evidenza</h1>
 
-      <div class="row sponsored-apartment">
-        @foreach ($apartments as $apartment)
-          <a href="{{ route('apartments.show', $apartment) }}">
-            <div lat="{{ $apartment->latitude }}" lng="{{ $apartment->longitude }}" class="col-4 single-apartment">
-              <img src="{{ $apartment->image }}" alt="">
-              <h2>{{ $apartment->title }}</h2>
-            </div>
-          </a>
+    @if (!$sponsoredApartments->isEmpty())
+      <!-- Appartamenti in evidenza -->
+      <h1 class="heading text-center">Appartamenti in evidenza</h1>
+      <div class="row apartments sponsored-apartments d-flex justify-content-center">
+        @foreach ($sponsoredApartments as $sponsoredApartment)
+          <div lat="{{ $sponsoredApartment->latitude }}" lng="{{ $sponsoredApartment->longitude }}" class="col-4 single-apartment">
+            <a href="{{ route('apartments.show', $sponsoredApartment) }}">
+              <img class="apartment-image" src="{{ $sponsoredApartment->image }}" alt="Immagine appartamento">
+              <h2 class="text-center">{{ $sponsoredApartment->title }}</h2>
+            </a>
+          </div>
         @endforeach
       </div>
+    @endif
 
+    <!-- Appartamenti -->
+    <h2 class="heading text-center">Appartamenti</h2>
+    <div class="row apartments all-apartments d-flex justify-content-center">
+
+      @foreach ($apartments as $apartment)
+        <div lat="{{ $apartment->latitude }}" lng="{{ $apartment->longitude }}" class="col-4 single-apartment">
+          <a href="{{ route('apartments.show', $apartment) }}">
+            <img class="apartment-image" src="{{ $apartment->image }}" alt="Immagine appartamento">
+            <h2 class="text-center">{{ $apartment->title }}</h2>
+          </a>
+        </div>
+      @endforeach
     </div>
+
   </div>
 </section>
 @endsection

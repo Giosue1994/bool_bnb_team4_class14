@@ -29,7 +29,7 @@
               @if (Auth::check())
                 <a href="{{route('admin.apartments.show', $sponsoredApartment)}}">
                 @else
-                <a href="{{route('guests.apartments.show', $sponsoredApartment)}}">
+                <a href="{{route('apartments.show', $sponsoredApartment)}}">
               @endif
 
                 <div class="img-sponsored">
