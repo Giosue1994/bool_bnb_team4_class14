@@ -66,7 +66,7 @@ class ApartmentController extends Controller
       $minBaths = $data['minBaths'];
     }
 
-    $sponsoredApartments = Apartment::whereHas('sponsors', function($q){
+    $sponsoredApartments = Apartment::where('active', '=', true)->whereHas('sponsors', function($q){
       $q->where('fine_sponsorizzazione', '>=', now());
     })->get();
     //dd($sponsoredApartments);

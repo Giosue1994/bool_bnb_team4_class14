@@ -53,6 +53,9 @@
                             <a class="dropdown-item" href="{{ route('admin.user-apartments') }}">
                               I tuoi appartamenti
                             </a>
+                            <a class="dropdown-item" href="{{ route('admin.received-emails') }}">
+                              Messaggi ricevuti
+                            </a>
 
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();

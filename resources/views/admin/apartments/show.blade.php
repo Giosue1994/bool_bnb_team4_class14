@@ -103,12 +103,19 @@
             <div class="col-12">
               <h3>Scrivi al proprietario</h3>
               <div class="message-form">
-                <form action="index.html" method="post">
-                  <input type="text" name="" value="" placeholder="Email">
-                  <textarea name="name" rows="8" cols="61" placeholder="Scrivi un messaggio"></textarea>
+                <form action="{{route('admin.send-email', $apartment)}}" method="post">
+                  @csrf
+                  @method('POST')
+                  <input type="text" name="userMail" value="{{$logged_user->email}}" placeholder="Email">
+                  <textarea name="bodyMessage" rows="8" cols="61" placeholder="Scrivi un messaggio"></textarea>
                   <input type="submit" name="" value="Invia">
                 </form>
               </div>
+              @if (session('success'))
+                <div id="success_message" class="message ">
+                  {{session('success')}}
+                </div>
+              @endif
             </div>
 
         </div>
