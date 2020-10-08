@@ -42351,111 +42351,49 @@ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"
 
 var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebars/dist/cjs/handlebars.js");
 
-$(document).ready(function () {
-  // funzione ricerca appartamenti
-  (function () {
-    // autocomplete ricerca città
+$(document).ready(function () {}); // funzione ricerca appartamenti
+
+(function () {
+  // autocomplete ricerca città
+  var placesAutocomplete = places({
+    container: document.querySelector("#form-city"),
+    templates: {
+      value: function value(suggestion) {
+        return suggestion.name;
+      }
+    }
+  }).configure({
+    type: ["city", "address"]
+  }); // autocompleta la città, e lo zip inserendo nell'input l'indirizzo nell'edit e nel create
+
+  if (document.URL.includes("edit") || document.URL.includes("create")) {
     var placesAutocomplete = places({
-      container: document.querySelector("#form-city"),
+      container: document.querySelector("#form-address"),
       templates: {
         value: function value(suggestion) {
           return suggestion.name;
         }
       }
     }).configure({
-      type: ["city", "address"]
-    }); // autocompleta la città, e lo zip inserendo nell'input l'indirizzo nell'edit e nel create
+      type: "address"
+    }); // otteniamo i dati che immettiamo nelle input e le autocompleta
 
-    if (document.URL.includes("edit") || document.URL.includes("create")) {
-      var placesAutocomplete = places({
-        container: document.querySelector("#form-address"),
-        templates: {
-          value: function value(suggestion) {
-            return suggestion.name;
-          }
-        }
-      }).configure({
-        type: "address"
-      }); // otteniamo i dati che immettiamo nelle input e le autocompleta
-
-      placesAutocomplete.on("change", function resultSelected(e) {
-        document.querySelector("#form-city").value = e.suggestion.city || "";
-        document.querySelector("#form-zip").value = e.suggestion.postcode || "";
-        document.querySelector("#form-lat").value = e.suggestion.latlng.lat || "";
-        document.querySelector("#form-lng").value = e.suggestion.latlng.lng || "";
-      });
-    } // se ci troviamo nella pagina search al click parte una chiamata ajax
-    // che aggiorna i risultati senza ricaricare la pagina
+    placesAutocomplete.on("change", function resultSelected(e) {
+      document.querySelector("#form-city").value = e.suggestion.city || "";
+      document.querySelector("#form-zip").value = e.suggestion.postcode || "";
+      document.querySelector("#form-lat").value = e.suggestion.latlng.lat || "";
+      document.querySelector("#form-lng").value = e.suggestion.latlng.lng || "";
+    });
+  } // se ci troviamo nella pagina search al click parte una chiamata ajax
+  // che aggiorna i risultati senza ricaricare la pagina
 
 
-    if (document.URL.includes("search")) {
-      $('#btn-search').click(function () {
-        // rimuove i marker e il cerchio
-        map.eachLayer(function (layer) {
-          layer.remove();
-        }); // variabili che leggono il valore delle input se ci troviamo nel search
-
-        var latitude = document.querySelector("#form-lat").value;
-        var longitude = document.querySelector("#form-lng").value;
-        var radius = document.querySelector("#form-rad").value;
-        var minRooms = document.querySelector("#form-minRooms").value;
-        var minBeds = document.querySelector("#form-minBeds").value;
-        var minBaths = document.querySelector("#form-minBaths").value;
-        var city = document.querySelector("#form-city").value;
-        var servicesArray = []; // otteniamo il valore della checkbox e con un ciclo le pushamo dentro l'array vuoto servicesArray
-
-        var services = document.querySelectorAll("input[type=checkbox]:checked");
-
-        for (var i = 0; i < services.length; i++) {
-          servicesArray.push(services[i].value);
-        } // se il raggio è vuoto o minore di uno o non è un numero assegna un valore di default di 20 km
-
-
-        if (radius == '' || radius < 1 || isNaN(radius)) {
-          radius = 20;
-        } // viene richiamata la funzione ajax
-
-
-        ajaxMarkers(city, latitude, longitude, radius, minRooms, minBeds, minBaths, servicesArray); // variabile cerchio e valore raggio aggiunto alla mappa in base a latitudine e longitudine
-
-        var circle = L.circle([latitude, longitude], {
-          color: 'red',
-          fillColor: '#f03',
-          fillOpacity: 0.5,
-          radius: radius * 1000
-        }).addTo(map); // vine inpostato lo zoom in base alla dimensione del raggio
-
-        var customZoom;
-
-        if (radius <= 1) {
-          customZoom = 15;
-        } else if (radius >= 2 && radius < 5) {
-          customZoom = 14;
-        } else if (radius >= 5 && radius < 10) {
-          customZoom = 13;
-        } else if (radius >= 10 && radius < 20) {
-          customZoom = 12;
-        } else if (radius >= 20 && radius < 40) {
-          customZoom = 11;
-        } else if (radius >= 40 && radius < 60) {
-          customZoom = 10;
-        } else if (radius >= 60 && radius < 100) {
-          customZoom = 9;
-        } else if (radius >= 100 && radius < 150) {
-          customZoom = 8;
-        } else {
-          customZoom = 7;
-        } // viee visulizzata la mappa in base alla latitudine, alla longitudine e viene anche impostato lo zoom
-
-
-        map.setView(new L.LatLng(latitude, longitude), customZoom); // crea un layer alla mappa
-
-        map.addLayer(osmLayer); // richiama le funzioni di interazione
-
-        placesAutocomplete.on('cursorchanged', handleOnCursorchanged);
-        placesAutocomplete.on('clear', handleOnClear);
-        placesAutocomplete.on('change', handleOnChange);
-      }); // variabili che leggono il valore delle input se ci troviamo nell'index
+  if (document.URL.includes("search")) {
+    $('#btn-search').click(function () {
+      // rimuove i marker e il cerchio
+      map.eachLayer(function (layer) {
+        layer.remove();
+      }); // variabili che leggono il valore delle input se ci troviamo nel search
 
       var latitude = document.querySelector("#form-lat").value;
       var longitude = document.querySelector("#form-lng").value;
@@ -42463,26 +42401,22 @@ $(document).ready(function () {
       var minRooms = document.querySelector("#form-minRooms").value;
       var minBeds = document.querySelector("#form-minBeds").value;
       var minBaths = document.querySelector("#form-minBaths").value;
-      var city = document.querySelector("#form-city").value; // se il raggio è vuoto o minore di uno o non è un numero assegna un valore di default di 20 km
+      var city = document.querySelector("#form-city").value;
+      var servicesArray = []; // otteniamo il valore della checkbox e con un ciclo le pushamo dentro l'array vuoto servicesArray
+
+      var services = document.querySelectorAll("input[type=checkbox]:checked");
+
+      for (var i = 0; i < services.length; i++) {
+        servicesArray.push(services[i].value);
+      } // se il raggio è vuoto o minore di uno o non è un numero assegna un valore di default di 20 km
+
 
       if (radius == '' || radius < 1 || isNaN(radius)) {
         radius = 20;
-      }
+      } // viene richiamata la funzione ajax
 
-      ajaxMarkers(city, latitude, longitude); // classe mappa nell'html
 
-      var map = L.map('map-search', {
-        scrollWheelZoom: true,
-        zoomControl: true
-      }); // layer mappa con zoom e crediti
-
-      var osmLayer = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        minZoom: 1,
-        maxZoom: 19,
-        attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-      }); // array dei marker
-
-      var markers = []; // variabile cerchio che viene creato quando effettuiamo la ricerca nell'index
+      ajaxMarkers(city, latitude, longitude, radius, minRooms, minBeds, minBaths, servicesArray); // variabile cerchio e valore raggio aggiunto alla mappa in base a latitudine e longitudine
 
       var circle = L.circle([latitude, longitude], {
         color: 'red',
@@ -42493,7 +42427,9 @@ $(document).ready(function () {
 
       var customZoom;
 
-      if (radius <= 5) {
+      if (radius <= 1) {
+        customZoom = 15;
+      } else if (radius >= 2 && radius < 5) {
         customZoom = 14;
       } else if (radius >= 5 && radius < 10) {
         customZoom = 13;
@@ -42512,142 +42448,205 @@ $(document).ready(function () {
       } // viee visulizzata la mappa in base alla latitudine, alla longitudine e viene anche impostato lo zoom
 
 
-      map.setView(new L.LatLng(latitude, longitude), customZoom);
+      map.setView(new L.LatLng(latitude, longitude), customZoom); // crea un layer alla mappa
+
       map.addLayer(osmLayer); // richiama le funzioni di interazione
 
       placesAutocomplete.on('cursorchanged', handleOnCursorchanged);
       placesAutocomplete.on('clear', handleOnClear);
       placesAutocomplete.on('change', handleOnChange);
-    } // otteniamo i dati della città e autocompleta latitudine e longitudine
+    }); // variabili che leggono il valore delle input se ci troviamo nell'index
 
+    var latitude = document.querySelector("#form-lat").value;
+    var longitude = document.querySelector("#form-lng").value;
+    var radius = document.querySelector("#form-rad").value;
+    var minRooms = document.querySelector("#form-minRooms").value;
+    var minBeds = document.querySelector("#form-minBeds").value;
+    var minBaths = document.querySelector("#form-minBaths").value;
+    var city = document.querySelector("#form-city").value; // se il raggio è vuoto o minore di uno o non è un numero assegna un valore di default di 20 km
 
-    placesAutocomplete.on("change", function resultSelected(e) {
-      document.querySelector("#form-lat").value = e.suggestion.latlng.lat || "";
-      document.querySelector("#form-lng").value = e.suggestion.latlng.lng || "";
-    }); // --------------------------------------------------------------------------------------
-    ///////////////////////////////// SEZIONE FUNZIONI //////////////////////////////////////
-    // --------------------------------------------------------------------------------------
-    // --------------------------------------------------------------------------------------
-    // funzione ajax che ricerca gli appartamenti in base ai filtri
-
-    function ajaxMarkers(city, latitude, longitude, radius, minRooms, minBeds, minBaths, servicesArray) {
-      $.ajax({
-        method: 'GET',
-        url: 'search',
-        data: {
-          city: city,
-          lat: latitude,
-          lng: longitude,
-          rad: radius,
-          minRooms: minRooms,
-          minBeds: minBeds,
-          minBaths: minBaths,
-          services: servicesArray
-        },
-        complete: function complete() {
-          // restituisce un nuovo url ogni volta che facciamo una ricerca
-          var newurl = this.url;
-          history.pushState({}, null, newurl);
-          console.log(newurl);
-        },
-        success: function success(result) {
-          // la pagina diventa vuota
-          $('.search-results-container').html(''); // variabili handlebars
-
-          var source = document.getElementById("entry-template").innerHTML;
-          var template = Handlebars.compile(source); // contiamo i risultati ottenuti
-
-          var counter = $('#counter');
-          counter.text(result.length + ' Risultati per ' + city); // ciclo che appende i risultati nella pagina search
-
-          for (var i = 0; i < result.length; i++) {
-            var singleResult = result[i]; // icona marker personalizzata
-
-            var houseIcon = L.icon({
-              iconUrl: 'images/house.png',
-              iconSize: [60, 60] // size of the icon
-              // shadowUrl: 'images/shadow.png',
-              // shadowSize:   [50, 50], // size of the shadow
-              // shadowAnchor: [25, 20],  // the same for the shadow
-
-            });
-            L.marker([singleResult.latitude, singleResult.longitude], {
-              icon: houseIcon
-            }).addTo(map).bindPopup(singleResult.title);
-            var context = singleResult;
-            var html = template(context);
-            $('.search-results-container').append(html);
-          }
-        },
-        error: function error(XMLHttpRequest, textStatus, errorThrown) {
-          alert(errorThrown);
-        }
-      });
-    } // --------------------------------------------------------------------------------------
-
-
-    function handleOnChange(e) {
-      markers.forEach(function (marker, markerIndex) {
-        if (markerIndex === e.suggestionIndex) {
-          markers = [marker];
-          marker.setOpacity(1);
-          findBestZoom();
-        } else {
-          removeMarker(marker);
-        }
-      });
+    if (radius == '' || radius < 1 || isNaN(radius)) {
+      radius = 20;
     }
 
-    function handleOnSuggestions(e) {
-      markers.forEach(removeMarker);
-      markers = [];
+    ajaxMarkers(city, latitude, longitude); // classe mappa nell'html
 
-      if (e.suggestions.length === 0) {
-        map.setView(new L.LatLng(latitude, longitude), 7);
-        return;
+    var map = L.map('map-search', {
+      scrollWheelZoom: true,
+      zoomControl: true
+    }); // layer mappa con zoom e crediti
+
+    var osmLayer = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      minZoom: 1,
+      maxZoom: 19,
+      attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+    }); // array dei marker
+
+    var markers = []; // variabile cerchio che viene creato quando effettuiamo la ricerca nell'index
+
+    var circle = L.circle([latitude, longitude], {
+      color: 'red',
+      fillColor: '#f03',
+      fillOpacity: 0.5,
+      radius: radius * 1000
+    }).addTo(map); // vine inpostato lo zoom in base alla dimensione del raggio
+
+    var customZoom;
+
+    if (radius <= 5) {
+      customZoom = 14;
+    } else if (radius >= 5 && radius < 10) {
+      customZoom = 13;
+    } else if (radius >= 10 && radius < 20) {
+      customZoom = 12;
+    } else if (radius >= 20 && radius < 40) {
+      customZoom = 11;
+    } else if (radius >= 40 && radius < 60) {
+      customZoom = 10;
+    } else if (radius >= 60 && radius < 100) {
+      customZoom = 9;
+    } else if (radius >= 100 && radius < 150) {
+      customZoom = 8;
+    } else {
+      customZoom = 7;
+    } // viee visulizzata la mappa in base alla latitudine, alla longitudine e viene anche impostato lo zoom
+
+
+    map.setView(new L.LatLng(latitude, longitude), customZoom);
+    map.addLayer(osmLayer); // richiama le funzioni di interazione
+
+    placesAutocomplete.on('cursorchanged', handleOnCursorchanged);
+    placesAutocomplete.on('clear', handleOnClear);
+    placesAutocomplete.on('change', handleOnChange);
+  } // otteniamo i dati della città e autocompleta latitudine e longitudine
+
+
+  placesAutocomplete.on("change", function resultSelected(e) {
+    document.querySelector("#form-lat").value = e.suggestion.latlng.lat || "";
+    document.querySelector("#form-lng").value = e.suggestion.latlng.lng || "";
+  }); // --------------------------------------------------------------------------------------
+  ///////////////////////////////// SEZIONE FUNZIONI //////////////////////////////////////
+  // --------------------------------------------------------------------------------------
+  // --------------------------------------------------------------------------------------
+  // funzione ajax che ricerca gli appartamenti in base ai filtri
+
+  function ajaxMarkers(city, latitude, longitude, radius, minRooms, minBeds, minBaths, servicesArray) {
+    $.ajax({
+      method: 'GET',
+      url: 'search',
+      data: {
+        city: city,
+        lat: latitude,
+        lng: longitude,
+        rad: radius,
+        minRooms: minRooms,
+        minBeds: minBeds,
+        minBaths: minBaths,
+        services: servicesArray
+      },
+      complete: function complete() {
+        // restituisce un nuovo url ogni volta che facciamo una ricerca
+        var newurl = this.url;
+        history.pushState({}, null, newurl);
+        console.log(newurl);
+      },
+      success: function success(result) {
+        // la pagina diventa vuota
+        $('.search-results-container').html(''); // variabili handlebars
+
+        var source = document.getElementById("entry-template").innerHTML;
+        var template = Handlebars.compile(source); // contiamo i risultati ottenuti
+
+        var counter = $('#counter');
+        counter.text(result.length + ' Risultati per ' + city); // ciclo che appende i risultati nella pagina search
+
+        for (var i = 0; i < result.length; i++) {
+          var singleResult = result[i]; // icona marker personalizzata
+
+          var houseIcon = L.icon({
+            iconUrl: 'images/house.png',
+            iconSize: [60, 60] // size of the icon
+            // shadowUrl: 'images/shadow.png',
+            // shadowSize:   [50, 50], // size of the shadow
+            // shadowAnchor: [25, 20],  // the same for the shadow
+
+          });
+          L.marker([singleResult.latitude, singleResult.longitude], {
+            icon: houseIcon
+          }).addTo(map).bindPopup(singleResult.title);
+          var context = singleResult;
+          var html = template(context);
+          $('.search-results-container').append(html);
+        }
+      },
+      error: function error(XMLHttpRequest, textStatus, errorThrown) {
+        alert(errorThrown);
       }
+    });
+  } // --------------------------------------------------------------------------------------
 
-      e.suggestions.forEach(addMarker);
-      findBestZoom();
+
+  function handleOnChange(e) {
+    markers.forEach(function (marker, markerIndex) {
+      if (markerIndex === e.suggestionIndex) {
+        markers = [marker];
+        marker.setOpacity(1);
+        findBestZoom();
+      } else {
+        removeMarker(marker);
+      }
+    });
+  }
+
+  function handleOnSuggestions(e) {
+    markers.forEach(removeMarker);
+    markers = [];
+
+    if (e.suggestions.length === 0) {
+      map.setView(new L.LatLng(latitude, longitude), 7);
+      return;
     }
 
-    function handleOnClear() {
-      map.setView(new L.LatLng(latitude, longitude), 15);
-      markers.forEach(removeMarker);
-    }
+    e.suggestions.forEach(addMarker);
+    findBestZoom();
+  }
 
-    function handleOnCursorchanged(e) {
-      markers.forEach(function (marker, markerIndex) {
-        if (markerIndex === e.suggestionIndex) {
-          marker.setOpacity(1);
-          marker.setZIndexOffset(1000);
-        } else {
-          marker.setZIndexOffset(0);
-          marker.setOpacity(0.5);
-        }
-      });
-    }
+  function handleOnClear() {
+    map.setView(new L.LatLng(latitude, longitude), 15);
+    markers.forEach(removeMarker);
+  }
 
-    function addMarker(suggestion) {
-      var marker = L.marker(suggestion.latlng, {
-        opacity: .3
-      });
-      marker.addTo(map);
-      markers.push(marker);
-    }
+  function handleOnCursorchanged(e) {
+    markers.forEach(function (marker, markerIndex) {
+      if (markerIndex === e.suggestionIndex) {
+        marker.setOpacity(1);
+        marker.setZIndexOffset(1000);
+      } else {
+        marker.setZIndexOffset(0);
+        marker.setOpacity(0.5);
+      }
+    });
+  }
 
-    function removeMarker(marker) {
-      map.removeLayer(marker);
-    }
+  function addMarker(suggestion) {
+    var marker = L.marker(suggestion.latlng, {
+      opacity: .3
+    });
+    marker.addTo(map);
+    markers.push(marker);
+  }
 
-    function findBestZoom() {
-      var featureGroup = L.featureGroup(markers);
-      map.fitBounds(featureGroup.getBounds().pad(0.5), {
-        animate: false
-      });
-    }
-  })();
-});
+  function removeMarker(marker) {
+    map.removeLayer(marker);
+  }
+
+  function findBestZoom() {
+    var featureGroup = L.featureGroup(markers);
+    map.fitBounds(featureGroup.getBounds().pad(0.5), {
+      animate: false
+    });
+  }
+})();
 
 /***/ }),
 
@@ -42714,8 +42713,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/michele/Documents/Boolean/repo/mamp-htdocs/bool_bnb_team4_class14/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/michele/Documents/Boolean/repo/mamp-htdocs/bool_bnb_team4_class14/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/giosue/Scrivania/Boolean/xampp-htdocs/bool_bnb_team4_class14/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/giosue/Scrivania/Boolean/xampp-htdocs/bool_bnb_team4_class14/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

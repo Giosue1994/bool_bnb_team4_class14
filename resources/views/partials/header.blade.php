@@ -9,7 +9,10 @@
         </a>
         @else
           <a class="navbar-brand" href="{{ url('/') }}">
-              Bool b&b
+            <div class="logo">
+              <img src="{{asset('images/bool-bnb-rg.png')}}" alt="">
+
+            </div>
           </a>
       @endif
 
@@ -36,10 +39,15 @@
                         </li>
                     @endif
                 @else
+                    <li class="nav-item  mr-5">
+                      <a class="btn btn-primary" href="{{ route('admin.apartments.create')}}">Inserisci il tuo appartamento</a>
+                    </li>
                     <li class="nav-item dropdown">
+
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
                         </a>
+
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('admin.user-apartments') }}">

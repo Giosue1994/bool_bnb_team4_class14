@@ -21,12 +21,16 @@ img {
   z-index: 0;
   position: fixed;
   width: 50%;
-  top: 56px;
+  top: 70px;
 }
 
 #map-show {
   height: 300px;
   z-index: 0;
+}
+
+.img-user-apart {
+  width: 200px;
 }
 
 header .my-nav {
@@ -89,7 +93,7 @@ main .form-search-apartment .btn-index-search {
   background: transparent;
   z-index: 1;
   position: absolute;
-  top: 38%;
+  top: 55%;
   left: 67%;
   transform: translate(-50%, -50%);
 }
@@ -102,7 +106,7 @@ main .form-search-apartment .icon-search {
   color: red;
   font-size: 25px;
   position: absolute;
-  top: 53%;
+  top: 79%;
   left: 67%;
   transform: translate(-50%, -50%);
 }
@@ -124,7 +128,7 @@ main .apartments .single-apartment:hover {
   transform: scale(1.05);
 }
 
-main .apartments .single-apartment:hover .apartment-image {
+main .apartments .single-apartment:hover .img-container {
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.4);
 }
 
@@ -132,9 +136,21 @@ main .apartments .single-apartment a {
   text-decoration: none;
 }
 
-main .apartments .single-apartment .apartment-image {
+main .apartments .single-apartment a .img-container {
+  height: 250px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
   border-radius: 20px;
   transition: 0.2s ease-in-out;
+}
+
+main .apartments .single-apartment a .img-container .apartment-image {
+  transform: scale(1.3);
+}
+
+main .apartments .single-apartment a .title-container {
+  padding-top: 20px;
 }
 
 main #search-results .form-group {

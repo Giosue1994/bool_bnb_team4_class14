@@ -8,6 +8,8 @@ var Handlebars = require("handlebars");
 
 $(document).ready(function() {
 
+});
+
 // funzione ricerca appartamenti
   (function() {
 
@@ -340,4 +342,3 @@ $(document).ready(function() {
     }
 
   })();
-});

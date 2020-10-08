@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-  <section id="show">
+  <section id="admin-show">
     <div class="container">
       <div class="card">
         <div class="row">
