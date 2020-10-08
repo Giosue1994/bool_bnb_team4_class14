@@ -30,7 +30,11 @@
           @csrf
             @foreach ($sponsors as $sponsor)
               <div>
-                <input type="radio" name="sponsors[]" value="{{$sponsor->price}}">
+                @if ($loop->first)
+                  <input type="radio" name="sponsors[]" checked value="{{$sponsor->price}}">
+                @else
+                  <input type="radio" name="sponsors[]" value="{{$sponsor->price}}">
+                @endif
                 <label>{{ $sponsor->price }} € per {{ $sponsor->duration }} ore di sponsorizzazione</label>
               </div>
             @endforeach

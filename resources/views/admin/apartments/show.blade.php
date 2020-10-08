@@ -106,7 +106,7 @@
                 <form action="{{route('admin.send-email', $apartment)}}" method="post">
                   @csrf
                   @method('POST')
-                  <input type="text" name="userMail" value="{{$logged_user->email}}" placeholder="Email">
+                  <input type="text" name="userMail" value="{{$logged_user->email}}" readonly placeholder="Email">
                   <textarea name="bodyMessage" rows="8" cols="61" placeholder="Scrivi un messaggio"></textarea>
                   <input type="submit" name="" value="Invia">
                 </form>
