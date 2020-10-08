@@ -1,8 +1,11 @@
 <nav class="my-nav navbar navbar-expand-md navbar-light bg-white shadow-sm">
-    <div class="container">
+    <div class="container-fluid">
       @if (Auth::check())
         <a class="navbar-brand" href="{{ url('/admin/apartments') }}">
-            Bool b&b
+            <div class="logo">
+              <img src="{{asset('images/bool-bnb-rg.png')}}" alt="">
+
+            </div>
         </a>
         @else
           <a class="navbar-brand" href="{{ url('/') }}">

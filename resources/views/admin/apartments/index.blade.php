@@ -5,6 +5,10 @@
 @endsection
 
 @section('content')
+
+<!-- INCLUDE DEL JUMBOTRON -->
+  @include('partials.jumbo')
+  
 <!-- SEZIONE INPUT DI RICERCA -->
 <section class="input-search" id="input-search-admin">
   <div class="container">

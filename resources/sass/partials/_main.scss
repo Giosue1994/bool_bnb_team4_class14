@@ -1,5 +1,18 @@
 // MAIN
 main {
+  //SEZIONE JUMBO
+  .teaser {
+    height: 232px;
+    margin-bottom:0;
+    padding: 2rem 0rem;
+    .jumbo {
+      background-image: url("/images/jumbo_03.gif");
+      background-repeat: no-repeat;
+      height: 400px;
+      background-size: cover;
+    }
+  }
+
   //SEZIONE INPUT DI RICERCA
   .form-search-apartment {
     flex-direction: column;
