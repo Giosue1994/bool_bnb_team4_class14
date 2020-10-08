@@ -37,6 +37,12 @@ Route::prefix('admin')
     //Route user apartments
     Route::get('user-apartments', 'ApartmentController@userApartments')->name('user-apartments');
 
+    //Route received emails
+    Route::get('received-emails', 'ApartmentController@receivedEmails')->name('received-emails');
+
+    //Route send email
+    Route::post('send-email/{apartment}', 'ApartmentController@sendEmail')->name('send-email');
+
   });
 
 //Route apartments per tutti gli utenti
