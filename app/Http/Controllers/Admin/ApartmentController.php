@@ -202,7 +202,7 @@ class ApartmentController extends Controller
       return view('admin.apartments.user_apartments', compact('userApartments'));
 
     }
-    public function sendEmail(Request $request, Apartment $apartment){
+    public function sendEmail(Request $request, Apartment $apartment) {
       $new_email = new Conversation();
       $data= $request->all();
       $new_email->apartment_id = $apartment->id;
@@ -212,13 +212,12 @@ class ApartmentController extends Controller
       $new_email->save();
 
       return redirect()->route('admin.apartments.show', $apartment)->with('success','email inviata con successo!');
-      // return view('admin.apartments.received_emails');
     }
-    public function receivedEmails(){
+    public function receivedEmails() {
       $idUser = Auth::id();
       $userApartmentsId = Apartment::all()->where('user_id', '=', $idUser)->pluck('id');
-      dd($userApartmentsId);
-      // $userReceived = Conversation::where('')
-      // return view('admin.apartments.received_emails');
+      $emailsReceived = Conversation::whereIn('apartment_id', $userApartmentsId)->get();
+
+      return view('admin.apartments.received_emails', compact('emailsReceived'));
     }
 }
