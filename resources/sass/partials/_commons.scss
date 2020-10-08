@@ -4,15 +4,24 @@ section {
 }
 
 img {
-  width: 360px;
-  height: 250px;
+  // width: 360px;
+  // height: 250px;
+  width: 100%;
+  display: block;
 }
+
+
+.border {
+  position: absolute;
+  top: 0;
+}
+
 
 #map-search {
   height: 100vh;
   z-index: 0;
   position: fixed;
-  width: 58%;
+  width: 50%;
   top: 56px;
 };
 

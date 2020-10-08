@@ -23,7 +23,7 @@
           <h2>Appartamenti in evidenza</h2>
         </div>
 
-        <div class="apartments all-apartments d-flex" style="background-color:#e4e6e8; ">
+        <div class="apartments sponsored-apartments d-flex">
           @foreach ($sponsoredApartments as $sponsoredApartment)
             <div class="single-sponsored">
               @if (Auth::check())
@@ -32,8 +32,11 @@
                 <a href="{{route('guests.apartments.show', $sponsoredApartment)}}">
               @endif
 
-                <img src="{{$sponsoredApartment->image}}" alt="">
-                <h2>{{$sponsoredApartment->title}}</h2>
+                <div class="img-sponsored">
+                  <img src="{{$sponsoredApartment->image}}" alt="">
+                  <img class="border" src="images/border.png" alt="">
+                </div>
+                <h2 class="text-center">{{$sponsoredApartment->title}}</h2>
               </a>
             </div>
 
@@ -45,12 +48,11 @@
           <p id="counter"></p>
         </div>
 
-        <div class="">
-          <div class="row search-results-container">
 
-          </div>
+        <div class="row search-results-container">
 
         </div>
+
       </div>
 
       <div class="col-6">
