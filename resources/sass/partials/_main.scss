@@ -1,5 +1,18 @@
 // MAIN
 main {
+  //SEZIONE JUMBO
+  .teaser {
+    height: 232px;
+    margin-bottom:0;
+    padding: 2rem 0rem;
+    .jumbo {
+      background-image: url("/images/jumbo_03.gif");
+      background-repeat: no-repeat;
+      height: 400px;
+      background-size: cover;
+    }
+  }
+
   //SEZIONE INPUT DI RICERCA
   .form-search-apartment {
     flex-direction: column;
@@ -88,21 +101,38 @@ main {
         padding: 0 15px;
       }
     }
+
     .heading {
       padding-bottom: 5px;
     }
-    .all-apartments {
+
+    .sponsored-apartments {
       overflow: auto;
-      height: 300px;
-      .single-sponsored{
+
+      .single-sponsored {
         padding: 5px;
+
+        h2 {
+          padding-top: 10px;
+          font-size: 17px;
+        }
+
+        .img-sponsored {
+          position: relative;
+
+          img {
+            width: 200px;
+          }
+        }
+
       }
     }
+
     .single-apartment {
       .apartment-image {
-        img{
-          width: 100%;
-        }
+        // img{
+        //   width: 100%;
+        // }
       }
     }
   }
