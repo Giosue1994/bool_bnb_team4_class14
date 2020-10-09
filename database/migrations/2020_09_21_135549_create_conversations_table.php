@@ -21,7 +21,7 @@ class CreateConversationsTable extends Migration
             ->references('id')
             ->on('apartments');
             $table->longText('message');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->date('date');
 
 

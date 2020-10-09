@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Apartment;
 use App\User;
 use App\Image;
 use App\Service;
 use App\Conversation;
+use App\Statistic;
 
 
 class ApartmentController extends Controller
@@ -94,9 +96,32 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Apartment $apartment)
+    public function show(Request $request, Apartment $apartment)
     {
         $logged_user = Auth::user();
+
+        $presentDay = Statistic::where([
+          ['apartment_id', '=', $apartment->id],
+          ['date', '=', now()->format('Y-m-d')],
+        ])
+        ->first();
+
+        if ($presentDay == null) {
+          $newRow = new Statistic();
+          $newRow->apartment_id = $apartment->id;
+          $newRow->date = now()->format('Y-m-d');
+          $newRow->view = 1;
+          $newRow->save();
+        }else {
+          $views = Statistic::where([
+            ['apartment_id', '=', $apartment->id],
+            ['date', '=', now()->format('Y-m-d')],
+          ])
+          ->first()
+          ->increment('view', 1);
+        }
+
+
         return view('admin.apartments.show', compact('apartment','logged_user'));
     }
 
@@ -220,4 +245,99 @@ class ApartmentController extends Controller
 
       return view('admin.apartments.received_emails', compact('emailsReceived'));
     }
+
+    public function statistics(Apartment $apartment) {
+
+      $today = Carbon::now();
+      $daysInMonth = $today->daysInMonth;
+
+      $thisMonth = $today->format('m');
+      if ($thisMonth == 1) {
+        $month = 'Gennaio';
+      } elseif ($thisMonth == 2) {
+        $month = 'Febbraio';
+      }elseif ($thisMonth == 3) {
+        $month = 'Marzo';
+      }elseif ($thisMonth == 4) {
+        $month = 'Aprile';
+      }elseif ($thisMonth == 5) {
+        $month = 'Maggio';
+      }elseif ($thisMonth == 6) {
+        $month = 'Giugno';
+      }elseif ($thisMonth == 7) {
+        $month = 'Luglio';
+      }elseif ($thisMonth == 8) {
+        $month = 'Agosto';
+      }elseif ($thisMonth == 9) {
+        $month = 'Settembre';
+      }elseif ($thisMonth == 10) {
+        $month = 'Ottobre';
+      }elseif ($thisMonth == 11) {
+        $month = 'Novembre';
+      }else {
+        $month = 'Dicembre';
+      }
+
+      $arrayDays = [];
+      for ($i=1; $i <= $daysInMonth; $i++) {
+        if ($i < 10) {
+          $arrayDays[] = $today->format('Y') . '-' . $today->format('m') . '-' . 0 . $i;
+        } else {
+          $arrayDays[] = $today->format('Y') . '-' . $today->format('m') . '-' . $i;
+        }
+      }
+
+      //////////////// ARRAY MESSAGGI //////////////////
+      $arrayMessages = [];
+      for ($i=1; $i <= $daysInMonth; $i++) {
+        if ($i < 10) {
+          $arrayMessages[] = Conversation::where('apartment_id', '=', $apartment->id)
+          ->whereDay('date', '=', 0 . $i)
+          ->count();
+        } else {
+          $arrayMessages[] = Conversation::where('apartment_id', '=', $apartment->id)
+          ->whereDay('date', '=', $i)
+          ->count();
+        }
+      }
+
+      // MONTHLY MESSAGES
+      $totMonthlyMessages = Conversation::where('apartment_id', '=', $apartment->id)
+      ->whereMonth('date', '=', $today->format('m'))
+      ->count();
+
+      //////////////// ARRAY VISUALIZZAZIONI //////////////////
+      $arrayCollectionView = [];
+      for ($i=1; $i <= $daysInMonth; $i++) {
+        if ($i < 10) {
+          $arrayCollectionView[] = Statistic::where('apartment_id', '=', $apartment->id)
+          ->whereDay('date', '=', 0 . $i)
+          ->pluck('view')
+          ->toArray();
+        } else {
+          $arrayCollectionView[] = Statistic::where('apartment_id', '=', $apartment->id)
+          ->whereDay('date', '=', $i)
+          ->pluck('view')
+          ->toArray();
+        }
+      }
+
+      $arrayViews = [];
+      foreach ($arrayCollectionView as $key => $value) {
+        if ($value == null) {
+          $arrayViews[] = 0;
+        }else {
+          $arrayViews[] = intval(implode($value));
+        }
+      }
+
+      // MONTHLY VIEWS
+      $totMonthlyViews = Statistic::where('apartment_id', '=', $apartment->id)
+      ->whereMonth('date', '=', $today->format('m'))
+      ->sum('view');
+      // dd($totMonthlyViews);
+
+      return view('admin.apartments.statistics', compact('apartment', 'arrayDays', 'arrayViews', 'arrayMessages', 'totMonthlyMessages', 'totMonthlyViews', 'month'));
+    }
+
 }

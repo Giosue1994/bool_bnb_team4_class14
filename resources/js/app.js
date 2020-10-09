@@ -6,6 +6,9 @@ var $ = require( "jquery" );
 // viene incluso handlebars
 var Handlebars = require("handlebars");
 
+// viene incluso chart.js
+var Chart = require('chart.js');
+
 $(document).ready(function() {
 
 });

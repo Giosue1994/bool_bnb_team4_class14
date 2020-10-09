@@ -14,15 +14,16 @@ class CreateStatisticsTable extends Migration
     public function up()
     {
         Schema::create('statistics', function (Blueprint $table) {
-            $table->id();
-            $table->datetime('date');
-            
-            $table->unsignedBigInteger('apartment_id');
-            $table->foreign('apartment_id')
-            ->references('id')
-            ->on('apartments');
+          $table->id();
+          $table->date('date');
+          $table->integer('view');
 
-            $table->timestamps();
+          $table->unsignedBigInteger('apartment_id');
+          $table->foreign('apartment_id')
+          ->references('id')
+          ->on('apartments');
+
+          $table->timestamps();
         });
     }
 
