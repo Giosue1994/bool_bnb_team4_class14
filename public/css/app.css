@@ -3,7 +3,7 @@
 /* ________ REGOLE GENERALI ________ */
 
 section {
-  margin-top: 70px;
+  margin-top: 45px;
 }
 
 img {
@@ -50,17 +50,16 @@ header .my-nav .logo img {
   width: 100%;
 }
 
-main .teaser {
-  height: 232px;
-  margin-bottom: 0;
-  padding: 2rem 0rem;
+main .jumbo-col {
+  padding: 0;
 }
 
-main .teaser .jumbo {
+main .jumbo-col .jumbo {
   background-image: url("/images/jumbo_03.gif");
   background-repeat: no-repeat;
-  height: 400px;
+  height: 600px;
   background-size: cover;
+  align-items: center;
 }
 
 main .form-search-apartment {
@@ -70,8 +69,9 @@ main .form-search-apartment {
 }
 
 main .form-search-apartment .form-group {
-  position: relative;
   width: 40%;
+  display: flex;
+  align-items: center;
 }
 
 main .form-search-apartment .form-group .ap-input {
@@ -90,25 +90,10 @@ main .form-search-apartment .btn-index-search {
   outline: none;
   width: 30px;
   height: 30px;
-  background: transparent;
-  z-index: 1;
-  position: absolute;
-  top: 55%;
-  left: 67%;
-  transform: translate(-50%, -50%);
-}
-
-main .form-search-apartment .icon-search {
-  float: right;
-  margin-right: 6px;
-  margin-top: -20px;
-  z-index: 0;
-  color: red;
-  font-size: 25px;
-  position: absolute;
-  top: 79%;
-  left: 67%;
-  transform: translate(-50%, -50%);
+  background: #3e489b;
+  position: relative;
+  right: 37px;
+  transform: scale(1.1);
 }
 
 main .heading {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Apartment;
 use App\Service;
+use App\Conversation;
 
 class ApartmentController extends Controller
 {
@@ -85,26 +86,38 @@ class ApartmentController extends Controller
      ->limit(20)
      ->get();
 
-  foreach ($apartments as $apartment) {
-    $apartmentServices = $apartment->services;
-    // prepariamo array per salvare i servizi scelti dall'utente
-    $arrayApartmentServices = [];
-    foreach ($apartmentServices as $service) {
-      $arrayApartmentServices[] = $service->id;
+    foreach ($apartments as $apartment) {
+      $apartmentServices = $apartment->services;
+      // prepariamo array per salvare i servizi scelti dall'utente
+      $arrayApartmentServices = [];
+      foreach ($apartmentServices as $service) {
+        $arrayApartmentServices[] = $service->id;
+      }
+
+      $match = $this->matchingServices( $inputServices, $arrayApartmentServices);
+        if ($match == true) {
+          $selectedApartments[] = $apartment;
+        }
+        $apartments = collect($selectedApartments);
     }
 
-    $match = $this->matchingServices( $inputServices, $arrayApartmentServices);
-      if ($match == true) {
-        $selectedApartments[] = $apartment;
-      }
-      $apartments = collect($selectedApartments);
-  }
-
-  if($request->ajax())
-  {
-    return response()->json($apartments);
-  }
+    if($request->ajax())
+    {
+      return response()->json($apartments);
+    }
 
     return view('partials.search', compact('apartments', 'services', 'requestedServices', 'sponsoredApartments'));
+  }
+
+  public function sendEmail(Request $request, Apartment $apartment) {
+    $new_email = new Conversation();
+    $data= $request->all();
+    $new_email->apartment_id = $apartment->id;
+    $new_email->message = $data['bodyMessage'];
+    $new_email->email = $data['userMail'];
+    $new_email->date = now();
+    $new_email->save();
+
+    return redirect()->route('apartments.show', $apartment)->with('success','email inviata con successo!');
   }
 }
