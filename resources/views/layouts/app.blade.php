@@ -18,15 +18,19 @@
     {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css" integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8=" crossorigin="anonymous"> --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/1/leaflet.css" />
 
-    <!-- cdn algolia -->
-    <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
-    <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
-
-    <!-- braintree -->
-    <script src="https://js.braintreegateway.com/web/dropin/1.24.0/js/dropin.min.js"></script>
-
     <!-- font awesome -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <!-- cdn algolia -->
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+    <!-- cdn leaflet -->
+    <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
+
+    <!-- cdn braintree -->
+    <script src="https://js.braintreegateway.com/web/dropin/1.24.0/js/dropin.min.js"></script>
+
+    <!-- cdn chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 </head>
 <body>
 

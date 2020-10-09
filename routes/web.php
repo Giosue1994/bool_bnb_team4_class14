@@ -43,6 +43,7 @@ Route::prefix('admin')
     //Route send email
     Route::post('send-email/{apartment}', 'ApartmentController@sendEmail')->name('send-email');
 
+    Route::get('statistics/{apartment}', 'ApartmentController@statistics')->name('statistics');
   });
 
 //Route apartments per tutti gli utenti

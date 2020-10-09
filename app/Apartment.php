@@ -28,10 +28,6 @@ class Apartment extends Model
       'active',
     ];
 
-    // public function shouldBeSearchable()
-    // {
-    //     return $this->isPublished();
-    // }
 
     public function user(){
       return $this->belongsTo('App\User');
@@ -48,6 +44,10 @@ class Apartment extends Model
     public function statistics() {
       return $this->hasMany('App\Statistic');
     }
+    // public function visits()
+    // {
+    //   return visits($this)->increment()->relation();
+    // }
 
     public function services(){
       return $this->belongsToMany('App\Service');
