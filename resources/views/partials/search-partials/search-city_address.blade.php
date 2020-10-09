@@ -1,6 +1,7 @@
 {{-- struttura per la ricerca in base alle città e gli indirizzi --}}
 <div class="form-group">
   <input id="form-city" name="city" type="text"  placeholder="Inizia la ricerca" value="{{request()->input('city')}}"/>
+  <input class="btn-index-search" type="submit" value="">
 </div>
 
 

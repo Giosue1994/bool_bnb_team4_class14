@@ -1,17 +1,19 @@
 // MAIN
 main {
   //SEZIONE JUMBO
-  .teaser {
-    height: 232px;
-    margin-bottom:0;
-    padding: 2rem 0rem;
+
+  .jumbo-col {
+    padding: 0;
     .jumbo {
       background-image: url("/images/jumbo_03.gif");
       background-repeat: no-repeat;
-      height: 400px;
+      height: 600px;
       background-size: cover;
+      align-items: center;
+
     }
   }
+
 
   //SEZIONE INPUT DI RICERCA
   .form-search-apartment {
@@ -20,8 +22,9 @@ main {
     transition: 0.2s ease-in-out;
 
     .form-group {
-      position: relative;
       width: 40%;
+      display: flex;
+      align-items: center;
 
       .ap-input {
         border-radius: 20px;
@@ -40,25 +43,12 @@ main {
       outline: none;
       width: 30px;
       height: 30px;
-      background: transparent;
-      z-index: 1;
-      position: absolute;
-      top: 55%;
-      left: 67%;
-      transform: translate(-50%, -50%);
-    }
+      background: #3e489b;
+      position: relative;
+      right: 37px;
+      transform: scale(1.1);
 
-    .icon-search {
-      float: right;
-      margin-right: 6px;
-      margin-top: -20px;
-      z-index: 0;
-      color: red;
-      font-size: 25px;
-      position: absolute;
-      top: 79%;
-      left: 67%;
-      transform: translate(-50%, -50%);
+      $
     }
   }
 

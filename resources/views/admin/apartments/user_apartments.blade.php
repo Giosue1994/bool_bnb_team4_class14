@@ -24,10 +24,15 @@
               </div>
               <div class="card-footer">
                 <small class="text-muted">Ultimo aggiornamento {{$userApartment->updated_at}}</small>
-                <select class="select" name="active">
-                  <option value="1" {{ $userApartment->active == 1 ? 'selected' : '' }}>Attiva</option>
-                  <option value="0" {{ $userApartment->active == 0 ? 'selected' : '' }}>Non attiva</option>
-                </select>
+                @if ($userApartment->active)
+                  <div>
+                    <small>Attivo</small>
+                  </div>
+                @else
+                  <div>
+                    <small>Disattivo</small>
+                  </div>
+                @endif
               </div>
             </div>
           </div>

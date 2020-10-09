@@ -37,13 +37,13 @@ Route::prefix('admin')
     //Route user apartments
     Route::get('user-apartments', 'ApartmentController@userApartments')->name('user-apartments');
 
+    //Route statistiche
+    Route::get('statistics/{apartment}', 'ApartmentController@statistics')->name('statistics');
+
+    //Route send email admin
+    Route::post('send-email/{apartment}', 'ApartmentController@sendEmail')->name('send-email');
     //Route received emails
     Route::get('received-emails', 'ApartmentController@receivedEmails')->name('received-emails');
-
-    //Route send email
-    Route::post('send-email/{apartment}', 'ApartmentController@sendEmail')->name('send-email');
-
-    Route::get('statistics/{apartment}', 'ApartmentController@statistics')->name('statistics');
   });
 
 //Route apartments per tutti gli utenti
@@ -52,3 +52,6 @@ Route::get('/apartments/{apartment}', 'ApartmentController@show')->name('apartme
 
 //Route per cercare gli appartamenti
 Route::get('search', 'ApartmentController@search')->name('search');
+
+//Route send email guest
+Route::post('send-email/{apartment}', 'ApartmentController@sendEmail')->name('send-email');
