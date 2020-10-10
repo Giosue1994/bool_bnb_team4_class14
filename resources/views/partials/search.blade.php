@@ -16,32 +16,34 @@
           {{-- viene incluso il file che cerca gli appartamenti filtrandoli --}}
           @include('partials.search-partials.filters')
 
-          <button type="button" id="btn-search" name="button">Chi cerca trova</button>
+          <button id="btn-search" class="btn-index-search" type="button"><i class="search-icon fas fa-search"></i>Cerca</button>
         </form>
 
-        <div class="heading">
-          <h2>Appartamenti in evidenza</h2>
-        </div>
+        @if (!$sponsoredApartments->isEmpty())
+          <div class="heading">
+            <h2>Appartamenti in evidenza</h2>
+          </div>
 
-        <div class="apartments sponsored-apartments d-flex">
-          @foreach ($sponsoredApartments as $sponsoredApartment)
-            <div class="single-sponsored">
-              @if (Auth::check())
-                <a href="{{route('admin.apartments.show', $sponsoredApartment)}}">
-                @else
-                <a href="{{route('apartments.show', $sponsoredApartment)}}">
-              @endif
+          <div class="apartments sponsored-apartments d-flex">
+            @foreach ($sponsoredApartments as $sponsoredApartment)
+              <div class="single-sponsored">
+                @if (Auth::check())
+                  <a href="{{route('admin.apartments.show', $sponsoredApartment)}}">
+                  @else
+                    <a href="{{route('apartments.show', $sponsoredApartment)}}">
+                    @endif
 
-                <div class="img-sponsored">
-                  <img src="{{$sponsoredApartment->image}}" alt="">
-                  <img class="border" src="images/border.png" alt="">
+                    <div class="img-sponsored">
+                      <img src="{{$sponsoredApartment->image}}" alt="">
+                      <img class="border" src="images/border.png" alt="">
+                    </div>
+                    <h2 class="text-center">{{$sponsoredApartment->title}}</h2>
+                  </a>
                 </div>
-                <h2 class="text-center">{{$sponsoredApartment->title}}</h2>
-              </a>
-            </div>
 
-          @endforeach
-        </div>
+              @endforeach
+            </div>
+        @endif
 
         <div class="apartment-count">
           <h2>Risultati appartamenti</h2>
