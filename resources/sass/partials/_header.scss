@@ -3,8 +3,9 @@ header {
   .my-nav {
     position: fixed;
     width: 100%;
-    height: 70px;
+    // height: 70px;
     z-index: 2345;
+    padding: 0 1rem;
     .logo {
       height: 70px;
       width: 134px;
@@ -13,5 +14,19 @@ header {
         width: 100%;
       }
     }
+    .btn-add_app{
+      color: #fff;
+      background-color: #f2061c;
+      border-color: #e30116;
+      border-radius: 18px;
+      &:hover {
+        color: #fff;
+        background-color: #3e489b;
+        border-color: #3e489b;
+        border-radius: 18px;
+      }
+    }
+
+
   }
 }

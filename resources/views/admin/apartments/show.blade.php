@@ -6,8 +6,20 @@
         <div class="row card-body">
 
           <div class="col-12 single-apartment" lat="{{ $apartment->latitude }}" lng="{{ $apartment->longitude }}">
-            <h2 id="title" class="card-title">{{ $apartment->title }}</h2>
-            <h4>{{ $apartment->address }}, {{ $apartment->city }}, {{ $apartment->zip }}</h4>
+            <div class="d-flex justify-content-between">
+              <div class="col-6">
+                <h2 id="title" class="card-title">{{ $apartment->title }}</h2>
+                <h4>{{ $apartment->address }}, {{ $apartment->city }}, {{ $apartment->zip }}</h4>
+              </div>
+              <div>
+                @if ($logged_user->id === $apartment->user->id)
+                  <a class="btn btn-success btn-style" href="{{ route('admin.payment', $apartment) }}">Sponsorizza appartamento</a>
+                  <a class="btn btn-warning btn-style" href="{{ route('admin.statistics', $apartment) }}">Visualizza statistiche</a>
+                @endif
+              </div>
+
+
+            </div>
             <div class="apartment-image">
               <img src="{{ $apartment->image }}" alt="">
             </div>
@@ -124,14 +136,11 @@
           <div class="col-12 apartment-admin-function">
             {{-- <a class="btn btn-primary" href="{{ route('admin.apartments.index')}}"> Torna alla lista appartamenti</a> --}}
             @if ($logged_user->id === $apartment->user->id)
-              <a class="btn btn-success" href="{{ route('admin.payment', $apartment) }}">Sponsorizza appartamento</a>
-              <a class="btn btn-primary" href="{{ route('admin.apartments.edit', $apartment) }}"> Modifica Appartamento</a>
-              <a class="btn btn-warning" href="{{ route('admin.statistics', $apartment) }}"> Visualizza statistiche</a>
-
+              <a class="btn btn-primary btn-style" href="{{ route('admin.apartments.edit', $apartment) }}"> Modifica Appartamento</a>
               <form class="delete" action="{{ route('admin.apartments.destroy', $apartment) }}" method="post">
                 @csrf
                 @method('DELETE')
-                <input class="btn btn-danger" type="submit" value="Elimina">
+                <input class="btn btn-danger btn-style" type="submit" value="Elimina">
               </form>
             @endif
           </div>

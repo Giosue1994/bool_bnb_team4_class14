@@ -44,8 +44,8 @@ ul {
 header .my-nav {
   position: fixed;
   width: 100%;
-  height: 70px;
   z-index: 2345;
+  padding: 0 1rem;
 }
 
 header .my-nav .logo {
@@ -56,6 +56,20 @@ header .my-nav .logo {
 header .my-nav .logo img {
   height: 100%;
   width: 100%;
+}
+
+header .my-nav .btn-add_app {
+  color: #fff;
+  background-color: #f2061c;
+  border-color: #e30116;
+  border-radius: 18px;
+}
+
+header .my-nav .btn-add_app:hover {
+  color: #fff;
+  background-color: #3e489b;
+  border-color: #3e489b;
+  border-radius: 18px;
 }
 
 main .jumbo-col {
@@ -78,7 +92,8 @@ main .form-search-apartment {
 }
 
 main .form-search-apartment .form-group {
-  width: 40%;
+  max-width: 600px;
+  width: 600px;
   display: flex;
   align-items: center;
 }
@@ -212,6 +227,43 @@ main .show .apartment-informations .card-body,
 main .show .apartment-map .card-body,
 main .show .apartment-email .card-body {
   background-color: #f8fafc;
+}
+
+main .show .btn-style {
+  border-radius: 18px;
+}
+
+@media (max-width: 575.98px) {
+  main .jumbo-col .jumbo {
+    height: 300px;
+  }
+
+  main .form-search-apartment .form-group {
+    max-width: 300px;
+    width: 300px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  main .jumbo-col .jumbo {
+    height: 400px;
+  }
+
+  main .form-search-apartment .form-group {
+    max-width: 400px;
+    width: 400px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  main .jumbo-col .jumbo {
+    height: 500px;
+  }
+
+  main .form-search-apartment .form-group {
+    max-width: 500px;
+    width: 500px;
+  }
 }
 
 footer {

@@ -40,7 +40,7 @@
                     @endif
                 @else
                     <li class="nav-item  mr-5">
-                      <a class="btn btn-primary" href="{{ route('admin.apartments.create')}}">Inserisci il tuo appartamento</a>
+                      <a class="btn btn-add_app" href="{{ route('admin.apartments.create')}}">Inserisci il tuo appartamento</a>
                     </li>
                     <li class="nav-item dropdown">
 
