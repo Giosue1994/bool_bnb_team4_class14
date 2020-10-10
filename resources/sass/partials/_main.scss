@@ -124,7 +124,7 @@ main {
     #btn-search {
       right: 0;
     }
-    
+
     .form-group {
       width: 100%;
 
@@ -165,6 +165,17 @@ main {
         // img{
         //   width: 100%;
         // }
+      }
+    }
+  }
+
+  // SEZIONE SHOW
+  .show {
+    .apartment-informations,
+    .apartment-map,
+    .apartment-email {
+      .card-body {
+        background-color: #f8fafc;
       }
     }
   }

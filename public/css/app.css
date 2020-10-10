@@ -208,6 +208,12 @@ main #search-results .sponsored-apartments .single-sponsored .img-sponsored img 
   width: 200px;
 }
 
+main .show .apartment-informations .card-body,
+main .show .apartment-map .card-body,
+main .show .apartment-email .card-body {
+  background-color: #f8fafc;
+}
+
 footer {
   background-image: url("/images/gif_03.png");
   background-repeat: no-repeat;
