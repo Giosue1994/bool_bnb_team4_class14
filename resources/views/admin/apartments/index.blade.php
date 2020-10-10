@@ -6,7 +6,6 @@
 
 @section('content')
 
-
 <!-- SEZIONE INPUT DI RICERCA -->
   <section class="input-search" id="input-search-admin">
     <div class="container-fluid">
@@ -27,8 +26,8 @@
 
   <!-- SEZIONE LISTA APPARTAMENTI -->
   <section class="apartments-admin" id="apartments-admin">
-
     <div class="container-fluid">
+
       @if (!$sponsoredApartments->isEmpty())
         <!-- Appartamenti in evidenza -->
         <h1 class="heading text-center">Appartamenti in evidenza</h1>
@@ -38,9 +37,9 @@
               <a href="{{ route('admin.apartments.show', $sponsoredApartment) }}">
                 <div class="img-container">
                   <img class="apartment-image" src="{{ $sponsoredApartment->image }}" alt="Immagine appartamento">
-                </div>
-                <div class="title-container">
-                  <h2 class="text-center">{{ $sponsoredApartment->title }}</h2>
+                  <div class="title-container">
+                    <h2 class="text-center">{{ $sponsoredApartment->title }}</h2>
+                  </div>
                 </div>
               </a>
             </div>
@@ -64,7 +63,8 @@
             </a>
           </div>
         @endforeach
-      </div>
-    </div> --}}
+      </div> --}}
+
+    </div>
   </section>
 @endsection

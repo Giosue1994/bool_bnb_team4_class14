@@ -1,4 +1,25 @@
 // FOOTER
 footer {
+  background-image: url("/images/gif_03.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 50px 100px;
+  z-index: 234567890;
+  background-color: white;
 
+  a {
+    color: rgba(0, 0, 0, 0.6);
+
+    &:hover {
+      color: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  .footer-logo {
+    padding-bottom: 20px;
+
+    img {
+      width: 120px;
+    }
+  }
 }

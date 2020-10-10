@@ -46,9 +46,11 @@
         </main>
 
         <!-- FOOTER -->
+        @if (!Route::has('search'))
         <footer>
-          @include('partials.footer')
+            @include('partials.footer')
         </footer>
+        @endif
     </div>
 
     <!-- Scripts -->
