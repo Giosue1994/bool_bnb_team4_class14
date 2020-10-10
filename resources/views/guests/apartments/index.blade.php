@@ -37,15 +37,33 @@
             <a href="{{ route('apartments.show', $sponsoredApartment) }}">
               <div class="img-container">
                 <img class="apartment-image" src="{{ $sponsoredApartment->image }}" alt="Immagine appartamento">
-              </div>
-              <div class="title-container">
-                <h2 class="text-center">{{ $sponsoredApartment->title }}</h2>
+                <div class="title-container">
+                  <h2 class="text-center">{{ $sponsoredApartment->title }}</h2>
+                </div>
               </div>
             </a>
           </div>
         @endforeach
       </div>
     @endif
+    <!-- Appartamenti -->
+    <h2 class="heading text-center">Appartamenti</h2>
+    <div class="row apartments all-apartments d-flex justify-content-center">
+
+      @foreach ($apartments as $apartment)
+        <div lat="{{ $apartment->latitude }}" lng="{{ $apartment->longitude }}" class="col-lg-2 col-md-6 col-sm-6 single-apartment">
+          <a href="{{ route('apartments.show', $apartment) }}">
+            <div class="img-container">
+              <img class="apartment-image" src="{{ $apartment->image }}" alt="Immagine appartamento">
+              <div class="title-container">
+                <h2 class="text-center">{{ $apartment->title }}</h2>
+              </div>
+            </div>
+          </a>
+        </div>
+      @endforeach
+    </div>
+
 
   </div>
 </section>

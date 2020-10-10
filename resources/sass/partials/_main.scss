@@ -23,7 +23,8 @@ main {
     padding-top: 25px;
 
     .form-group {
-      width: 40%;
+      max-width: 600px;
+      width:600px;
       display: flex;
       align-items: center;
 
@@ -124,7 +125,7 @@ main {
     #btn-search {
       right: 0;
     }
-    
+
     .form-group {
       width: 100%;
 
@@ -169,4 +170,62 @@ main {
     }
   }
 
+  // SEZIONE SHOW
+  .show {
+    .apartment-informations,
+    .apartment-map,
+    .apartment-email {
+      .card-body {
+        background-color: #f8fafc;
+      }
+    }
+    .btn-style {
+      border-radius: 18px;
+    }
+  }
+
+}
+@media (max-width: 575.98px) {
+  main {
+    .jumbo-col .jumbo{
+      height: 300px;
+    }
+    .form-search-apartment{
+      .form-group {
+        max-width: 300px;
+        width:300px;
+        .btn-index-search {
+
+        }
+      }
+    }
+  }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  main {
+    .jumbo-col .jumbo{
+      height: 400px;
+    }
+    .form-search-apartment{
+      .form-group {
+        max-width: 400px;
+        width:400px;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  main {
+    .jumbo-col .jumbo{
+      height: 500px;
+    }
+    .form-search-apartment{
+      .form-group {
+        max-width: 500px;
+        width: 500px;
+
+      }
+    }
+  }
 }

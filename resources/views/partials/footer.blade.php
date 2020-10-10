@@ -4,7 +4,7 @@
       <img src="{{asset('images/bool-bnb-rg.png')}}" alt="">
     </div>
 
-    <div class="col-3">
+    <div class="col-lg-3 col-md-12">
       <ul class="information">
         <dl>Informazioni</dl>
         <li><a href="#">Come funziona Airbnb</a></li>
@@ -18,7 +18,7 @@
       </ul>
     </div>
 
-    <div class="col-3">
+    <div class="col-lg-3 col-md-12">
       <ul class="community">
         <dl>Community</dl>
         <li><a href="#">Diversità e appartenenza</a></li>
@@ -29,7 +29,7 @@
       </ul>
     </div>
 
-    <div class="col-3">
+    <div class="col-lg-3 col-md-12">
       <ul class="host">
         <dl>Ospita</dl>
         <li><a href="#">Diventa un host</a></li>
@@ -42,7 +42,7 @@
       </ul>
     </div>
 
-    <div class="col-3">
+    <div class="col-lg-3 col-md-12">
       <ul class="assistence">
         <dl>Assistenza</dl>
         <li><a href="#">Aggiornamenti sulla pandemia di COVID-19</a></li>
