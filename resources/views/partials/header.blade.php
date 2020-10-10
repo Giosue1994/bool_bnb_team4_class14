@@ -3,14 +3,14 @@
       @if (Auth::check())
         <a class="navbar-brand" href="{{ url('/admin/apartments') }}">
             <div class="logo">
-              <img src="{{asset('images/bool-bnb-rg.png')}}" alt="">
+              <img src="{{asset('images/bool-bnb-rb.png')}}" alt="Logo bool bnb">
 
             </div>
         </a>
         @else
           <a class="navbar-brand" href="{{ url('/') }}">
             <div class="logo">
-              <img src="{{asset('images/bool-bnb-rg.png')}}" alt="">
+              <img src="{{asset('images/bool-bnb-rb.png')}}" alt="Logo bool bnb">
 
             </div>
           </a>

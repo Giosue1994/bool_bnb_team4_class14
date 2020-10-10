@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12 footer-logo">
-      <img src="{{asset('images/bool-bnb-rg.png')}}" alt="">
+      <img src="{{asset('images/bool-bnb-rb.png')}}" alt="">
     </div>
 
     <div class="col-lg-3 col-md-12">
