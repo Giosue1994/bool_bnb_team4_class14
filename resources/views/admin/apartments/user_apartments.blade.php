@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-<section>
+<section id="user-apartments">
   <div class="container">
 
     @if (!$userApartments->isEmpty())
@@ -23,13 +23,15 @@
                 <p>{{ $userApartment->description }}</p>
               </div>
               <div class="card-footer">
-                <small class="text-muted">Ultimo aggiornamento {{$userApartment->updated_at}}</small>
+                <div class="last-update">
+                  <small class="text-muted">Ultimo aggiornamento: <br>{{$userApartment->updated_at}}</small>
+                </div>
                 @if ($userApartment->active)
-                  <div>
+                  <div class="status active">
                     <small>Attivo</small>
                   </div>
                 @else
-                  <div>
+                  <div class="status disabled">
                     <small>Disattivo</small>
                   </div>
                 @endif

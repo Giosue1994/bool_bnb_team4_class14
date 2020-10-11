@@ -20,6 +20,29 @@ ul {
 
 section {
   margin: 70px 0;
+  /* TITOLI SEZIONI */
+}
+
+section .heading {
+  display: block;
+  height: 50px;
+  margin: 1em 0 0;
+  position: relative;
+}
+
+section .heading span {
+  background: #f8fafc;
+  border: 5px solid #2174ec;
+  border-radius: 30px;
+  box-shadow: 0 0 0 5px #f8fafc, inset 0 0 0 5px #f8fafc;
+  display: block;
+  margin: 0 0 0 50px;
+  padding: 10px 30px 5px;
+  position: absolute;
+  top: 50%;
+  transform-origin: top left;
+  z-index: 30;
+  color: #d21625;
 }
 
 .input-search {
@@ -91,14 +114,14 @@ main .jumbo-col .jumbo .jumbo-title {
   position: absolute;
   top: 50%;
   left: 0;
-  width: 30%;
+  width: 50%;
   font-weight: bold;
   color: white;
   padding-left: 50px;
 }
 
 main .jumbo-col .jumbo .jumbo-title h1 {
-  font-size: 65px;
+  font-size: 45px;
 }
 
 main .jumbo-col .jumbo .form-search-apartment .form-group {
@@ -153,49 +176,6 @@ main .form-search-apartment .btn-index-search {
 
 main .form-search-apartment .btn-index-search .search-icon {
   padding-right: 5px;
-}
-
-main .heading {
-  display: block;
-  height: 50px;
-  margin: 1em 0 0;
-  position: relative;
-}
-
-main .heading span {
-  background: #f8fafc;
-  border: 5px solid;
-  border-radius: 30px;
-  box-shadow: 0 0 0 5px #f8fafc, inset 0 0 0 5px #f8fafc;
-  display: block;
-  margin: 0 0 0 50px;
-  padding: 10px 30px 5px;
-  position: absolute;
-  text-transform: uppercase;
-  top: 50%;
-  transform-origin: top left;
-  z-index: 30;
-}
-
-main .heading:before {
-  content: "";
-  height: 5px;
-  left: -5%;
-  position: absolute;
-  top: 50%;
-  transform-origin: top left;
-  width: 110%;
-  z-index: 30;
-}
-
-main .heading:after {
-  bottom: -40px;
-  content: "";
-  height: 50px;
-  left: -5%;
-  position: absolute;
-  width: 110%;
-  z-index: 20;
 }
 
 main .card-sponsored {
@@ -256,8 +236,8 @@ main .apartments .single-apartment a .img-container:hover {
 main .apartments .single-apartment a .title-container {
   position: relative;
   bottom: 110px;
-  background-color: white;
-  color: black;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
   padding: 15px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
@@ -274,8 +254,8 @@ main .apartments .single-apartment a .title-container p {
   text-overflow: ellipsis;
   white-space: normal;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   font-size: 13px;
   line-height: 1.3;
   margin: 0;
@@ -335,6 +315,58 @@ main .show .apartment-email .card-body {
 
 main .show .btn-style {
   border-radius: 18px;
+}
+
+main #user-apartments .heading {
+  height: auto;
+  background: white;
+  border: 5px solid #2174ec;
+  border-radius: 30px;
+  box-shadow: 0 0 0 5px white, inset 0 0 0 5px white;
+  margin: 100px 0 50px;
+  padding: 10px 30px 5px;
+  color: #d21625;
+}
+
+main #user-apartments .card a {
+  padding: 1.25rem;
+}
+
+main #user-apartments .card-body {
+  flex-basis: 0;
+}
+
+main #user-apartments .card-body h5 {
+  font-weight: bold;
+}
+
+main #user-apartments .card-body p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+main #user-apartments .card-footer {
+  border: none;
+}
+
+main #user-apartments .card-footer .status {
+  border-radius: 30px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  margin: 30px 0;
+}
+
+main #user-apartments .card-footer .status.active {
+  background-color: green;
+}
+
+main #user-apartments .card-footer .status.disabled {
+  background-color: red;
 }
 
 @media (max-width: 575.98px) {
@@ -466,7 +498,7 @@ form {
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Nunito", sans-serif;
+  --font-family-sans-serif: "Comfortaa", cursive;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -498,7 +530,7 @@ section {
 
 body {
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Comfortaa", cursive;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
@@ -6802,7 +6834,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Comfortaa", cursive;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -6927,7 +6959,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Nunito", sans-serif;
+  font-family: "Comfortaa", cursive;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;

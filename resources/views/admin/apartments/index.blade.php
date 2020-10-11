@@ -15,7 +15,7 @@
             <div class="d-flex jumbo">
               <div class="jumbo-title">
                 <h1>Riscopri l'Italia</h1>
-                <h3>Cambia quadro. Scopri alloggi nelle vicinanze tutti da vivere, per lavoro o svago.</h3>
+                <h3>Cambia quadro. Scopri alloggi nelle vicinanze <br>tutti da vivere, per lavoro o svago.</h3>
               </div>
               <form action="{{ route('search') }}" class="form-search-apartment d-flex">
                 {{-- viene incluso il file che cerca gli appartamenti in base alle città e gli indirizzi --}}
