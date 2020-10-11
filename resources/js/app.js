@@ -11,6 +11,27 @@ var Chart = require('chart.js');
 
 $(document).ready(function() {
 
+  // al click compare la tendina dei filtri
+  $('#btn-slide').click(function() {
+    $('#filters-drop').slideToggle();
+
+    if ($('#angle').hasClass('fa-angle-up')) {
+      $('#angle').removeClass('fa-angle-up');
+      $('#angle').addClass('fa-angle-down');
+    } else {
+      $('#angle').removeClass('fa-angle-down');
+      $('#angle').addClass('fa-angle-up');
+    }
+
+    if ($('#btn-filter-page').hasClass('d-none')) {
+      $('#btn-filter-page').removeClass('d-none');
+      $('#btn-filter-page').addClass('d-block');
+    } else {
+      $('#btn-filter-page').removeClass('d-block');
+      $('#btn-filter-page').addClass('d-none');
+    }
+
+  });
 });
 
 // funzione ricerca appartamenti

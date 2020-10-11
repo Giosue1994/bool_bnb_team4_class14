@@ -1,9 +1,9 @@
 {{-- struttura per la ricerca in base alle città e gli indirizzi --}}
 <div class="form-group">
   <input class="search-input" id="form-city" name="city" type="text"  placeholder="Inizia la ricerca" value="{{request()->input('city')}}"/>
-  @if (!Route::is('search'))
-    <button class="btn-index-search" type="submit"><i class="search-icon fas fa-search"></i>Cerca</button>
-  @endif
+  {{-- @if (!Route::is('search')) --}}
+    <button id="btn-filter-page" class="btn-index-search" type="submit"><i class="search-icon fas fa-search"></i>Cerca</button>
+  {{-- @endif --}}
 </div>
 
 

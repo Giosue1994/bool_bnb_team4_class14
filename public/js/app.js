@@ -80086,7 +80086,28 @@ var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebar
 
 var Chart = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/Chart.js");
 
-$(document).ready(function () {}); // funzione ricerca appartamenti
+$(document).ready(function () {
+  // al click compare la tendina dei filtri
+  $('#btn-slide').click(function () {
+    $('#filters-drop').slideToggle();
+
+    if ($('#angle').hasClass('fa-angle-up')) {
+      $('#angle').removeClass('fa-angle-up');
+      $('#angle').addClass('fa-angle-down');
+    } else {
+      $('#angle').removeClass('fa-angle-down');
+      $('#angle').addClass('fa-angle-up');
+    }
+
+    if ($('#btn-filter-page').hasClass('d-none')) {
+      $('#btn-filter-page').removeClass('d-none');
+      $('#btn-filter-page').addClass('d-block');
+    } else {
+      $('#btn-filter-page').removeClass('d-block');
+      $('#btn-filter-page').addClass('d-none');
+    }
+  });
+}); // funzione ricerca appartamenti
 
 (function () {
   // autocomplete ricerca città
