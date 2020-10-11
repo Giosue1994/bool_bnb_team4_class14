@@ -23,7 +23,7 @@
             </div>
           </form>
           <div id="btn-slide"class="text-center">
-            <i id="angle" class="fas fa-angle-down"></i>
+            <i id="angle" class="fas fa-angle-down"></i><span>Filtri</span>
           </div>
         </div>
 
@@ -33,24 +33,48 @@
           </div>
 
           <div class="apartments sponsored-apartments d-flex">
-            @foreach ($sponsoredApartments as $sponsoredApartment)
-              <div class="single-sponsored">
-                @if (Auth::check())
-                  <a href="{{route('admin.apartments.show', $sponsoredApartment)}}">
-                  @else
-                    <a href="{{route('apartments.show', $sponsoredApartment)}}">
-                    @endif
+            <div id="carousel" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner" role="listbox">
+                <ol class="carousel-indicators">
+                  @foreach ($sponsoredApartments as $sponsoredApartment)
+                    <li data-target="#carousel" data-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
+                  @endforeach
+                </ol>
+                @foreach ($sponsoredApartments as $sponsoredApartment)
+                    <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                      <div class="single-sponsored">
 
-                    <div class="img-sponsored">
-                      <img src="{{$sponsoredApartment->image}}" alt="">
-                      <img class="border" src="images/border.png" alt="">
+                        @if (Auth::check())
+                        <a href="{{route('admin.apartments.show', $sponsoredApartment)}}">
+                        @else
+                        <a href="{{route('apartments.show', $sponsoredApartment)}}">
+                        @endif
+
+                          <div class="img-sponsored">
+                            <div class="dark-filter"></div>
+                            <img class="d-block img-fluid" src="{{$sponsoredApartment->image}}" alt="">
+                          </div>
+                          <div class="carousel-caption d-none d-md-block">
+                             <h2>{{$sponsoredApartment->title}}</h2>
+                          </div>
+                        </a>
+                      </div>
                     </div>
-                    <h2 class="text-center">{{$sponsoredApartment->title}}</h2>
-                  </a>
-                </div>
+                @endforeach
 
-              @endforeach
+                <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+
             </div>
+
+          </div>
         @endif
 
         <div class="apartment-count">

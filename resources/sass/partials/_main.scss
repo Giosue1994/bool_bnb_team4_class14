@@ -250,38 +250,58 @@ main {
       }
 
       #btn-slide {
-        background-color: $blue-color;
+        background-color: #3e489b;
         color: white;
         font-size: 20px;
-        width: 30px;
+        width: 90px;
         height: 30px;
-        border-radius: 50%;
+        border-radius: 30px;
         position: relative;
         left: 50%;
         cursor: pointer;
         top: -15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        span {
+          padding-left: 5px;
+          font-size: 15px;
+        }
       }
     }
 
     .sponsored-apartments {
-      overflow: auto;
+      #carousel {
+        width: 100%;
 
-      .single-sponsored {
-        padding: 5px;
+        .single-sponsored {
+          padding: 5px;
 
-        h2 {
-          padding-top: 10px;
-          font-size: 17px;
-        }
+          h2 {
+            padding-top: 10px;
+            font-size: 17px;
+          }
 
-        .img-sponsored {
-          position: relative;
+          .img-sponsored {
+            position: relative;
+            height: 200px;
 
-          img {
-            width: 200px;
+            .dark-filter {
+              position: absolute;
+              background-color: rgba(0, 0, 0, 0.5);
+              width: 100%;
+              height: 105%;
+              z-index: 2;
+              bottom: -5px
+            }
+
+            img {
+              position: relative;
+              bottom: 90%;
+            }
           }
         }
-
       }
     }
 
