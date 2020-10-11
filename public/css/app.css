@@ -11,6 +11,22 @@ ul {
   list-style-type: none;
 }
 
+i {
+  padding-right: 10px;
+  color: #f2111b;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  resize: none;
+}
+
 .border {
   position: absolute;
   top: 0;
@@ -20,6 +36,29 @@ ul {
 
 section {
   margin: 70px 0;
+  /* TITOLI SEZIONI */
+}
+
+section .heading {
+  display: block;
+  height: 50px;
+  margin: 1em 0 0;
+  position: relative;
+}
+
+section .heading span {
+  background: #f8fafc;
+  border: 5px solid #2174ec;
+  border-radius: 30px;
+  box-shadow: 0 0 0 5px #f8fafc, inset 0 0 0 5px #f8fafc;
+  display: block;
+  margin: 0 0 0 50px;
+  padding: 10px 30px 5px;
+  position: absolute;
+  top: 50%;
+  transform-origin: top left;
+  z-index: 30;
+  color: #d21625;
 }
 
 .input-search {
@@ -91,14 +130,14 @@ main .jumbo-col .jumbo .jumbo-title {
   position: absolute;
   top: 50%;
   left: 0;
-  width: 30%;
+  width: 50%;
   font-weight: bold;
   color: white;
   padding-left: 50px;
 }
 
 main .jumbo-col .jumbo .jumbo-title h1 {
-  font-size: 65px;
+  font-size: 45px;
 }
 
 main .jumbo-col .jumbo .form-search-apartment .form-group {
@@ -155,51 +194,8 @@ main .form-search-apartment .btn-index-search .search-icon {
   padding-right: 5px;
 }
 
-main .heading {
-  display: block;
-  height: 50px;
-  margin: 1em 0 0;
-  position: relative;
-}
-
-main .heading span {
-  background: #f8fafc;
-  border: 5px solid;
-  border-radius: 30px;
-  box-shadow: 0 0 0 5px #f8fafc, inset 0 0 0 5px #f8fafc;
-  display: block;
-  margin: 0 0 0 50px;
-  padding: 10px 30px 5px;
-  position: absolute;
-  text-transform: uppercase;
-  top: 50%;
-  transform-origin: top left;
-  z-index: 30;
-}
-
-main .heading:before {
-  content: "";
-  height: 5px;
-  left: -5%;
-  position: absolute;
-  top: 50%;
-  transform-origin: top left;
-  width: 110%;
-  z-index: 30;
-}
-
-main .heading:after {
-  bottom: -40px;
-  content: "";
-  height: 50px;
-  left: -5%;
-  position: absolute;
-  width: 110%;
-  z-index: 20;
-}
-
 main .card-sponsored {
-  background-image: url("/images/sfondo-app_01.png");
+  background-image: url("/images/sfondo-app_03.png");
   background-repeat: no-repeat;
   background-size: cover;
   padding: 30px 70px;
@@ -256,8 +252,8 @@ main .apartments .single-apartment a .img-container:hover {
 main .apartments .single-apartment a .title-container {
   position: relative;
   bottom: 110px;
-  background-color: white;
-  color: black;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
   padding: 15px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
@@ -274,8 +270,8 @@ main .apartments .single-apartment a .title-container p {
   text-overflow: ellipsis;
   white-space: normal;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   font-size: 13px;
   line-height: 1.3;
   margin: 0;
@@ -327,19 +323,89 @@ main #search-results .sponsored-apartments .single-sponsored .img-sponsored img 
   width: 200px;
 }
 
+main .show .single-apartment .apartment-image img {
+  height: 400px;
+}
+
 main .show .apartment-informations .card-body,
 main .show .apartment-map .card-body,
 main .show .apartment-email .card-body {
   background-color: #f8fafc;
 }
 
-main .show .btn-style {
+main .show .apartment-informations .card-body .email-form input[type=text],
+main .show .apartment-map .card-body .email-form input[type=text],
+main .show .apartment-email .card-body .email-form input[type=text] {
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+
+main .show .apartment-informations .btn-style,
+main .show .apartment-map .btn-style,
+main .show .apartment-email .btn-style {
   border-radius: 18px;
+}
+
+main .show #user-apartments .heading {
+  height: auto;
+  background: white;
+  border: 5px solid #2174ec;
+  border-radius: 30px;
+  box-shadow: 0 0 0 5px white, inset 0 0 0 5px white;
+  margin: 100px 0 50px;
+  padding: 10px 30px 5px;
+  color: #d21625;
+}
+
+main .show #user-apartments .card a {
+  padding: 1.25rem;
+}
+
+main .show #user-apartments .card-body {
+  flex-basis: 0;
+}
+
+main .show #user-apartments .card-body h5 {
+  font-weight: bold;
+}
+
+main .show #user-apartments .card-body p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+main .show #user-apartments .card-footer {
+  border: none;
+}
+
+main .show #user-apartments .card-footer .status {
+  border-radius: 30px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  margin: 30px 0;
+}
+
+main .show #user-apartments .card-footer .status.active {
+  background-color: green;
+}
+
+main .show #user-apartments .card-footer .status.disabled {
+  background-color: red;
 }
 
 @media (max-width: 575.98px) {
   main .jumbo-col .jumbo {
     height: 300px;
+  }
+
+  main .jumbo-col .jumbo .jumbo-title {
+    display: none;
   }
 
   main .form-search-apartment .form-group {
@@ -353,6 +419,14 @@ main .show .btn-style {
     height: 400px;
   }
 
+  main .jumbo-col .jumbo .jumbo-title h1 {
+    font-size: 20px;
+  }
+
+  main .jumbo-col .jumbo .jumbo-title h3 {
+    font-size: 12px;
+  }
+
   main .form-search-apartment .form-group {
     max-width: 400px;
     width: 400px;
@@ -364,6 +438,14 @@ main .show .btn-style {
     height: 500px;
   }
 
+  main .jumbo-col .jumbo .jumbo-title h1 {
+    font-size: 30px;
+  }
+
+  main .jumbo-col .jumbo .jumbo-title h3 {
+    font-size: 22px;
+  }
+
   main .form-search-apartment .form-group {
     max-width: 500px;
     width: 500px;
@@ -371,28 +453,61 @@ main .show .btn-style {
 }
 
 footer {
-  background-image: url("/images/footer.png");
+  background-image: url("/images/footer_02.png");
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 50px 100px;
+  padding: 30px;
   z-index: 234567890;
-  background-color: white;
 }
 
-footer a {
+footer .container-footer {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+footer .footer-img {
+  margin: 0;
+  padding: 0;
+}
+
+footer a,
+footer i {
   color: rgba(0, 0, 0, 0.6);
 }
 
-footer a:hover {
-  color: rgba(0, 0, 0, 0.8);
+footer a:hover,
+footer i:hover {
+  color: #f2111b;
 }
 
 footer .footer-logo {
-  padding-bottom: 20px;
+  padding: 5px;
+}
+
+footer .footer-logo ul {
+  padding: 0;
 }
 
 footer .footer-logo img {
   width: 120px;
+}
+
+footer .items {
+  display: flex;
+  justify-content: center;
+}
+
+footer .items .footer-item {
+  padding: 0;
+}
+
+footer .items .footer-item ul {
+  padding: 0;
+  line-height: 10px;
+}
+
+footer .items .footer-item ul li {
+  display: inline;
+  padding-left: 10px;
 }
 
 form {
@@ -466,7 +581,7 @@ form {
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Nunito", sans-serif;
+  --font-family-sans-serif: "Comfortaa", cursive;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -498,7 +613,7 @@ section {
 
 body {
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Comfortaa", cursive;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
@@ -6802,7 +6917,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Comfortaa", cursive;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -6927,7 +7042,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Nunito", sans-serif;
+  font-family: "Comfortaa", cursive;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;

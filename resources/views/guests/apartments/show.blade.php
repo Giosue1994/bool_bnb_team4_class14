@@ -1,105 +1,148 @@
 @extends('layouts.app')
 @section('content')
-  <section id="guests-show" class="show">
+  <section id="admin-show" class="show">
     <div class="container">
       <div class="card">
-        <div class="row">
-          <div class="col-6">
-            <div lat="{{ $apartment->latitude }}" lng="{{ $apartment->longitude }}" class=" single-apartment card-body">
-              <h2 id="title" class="card-title">{{ $apartment->title }}</h2>
-              <h4>{{ $apartment->address }}, {{ $apartment->city }}, {{ $apartment->zip }}</h4>
-              <div class="">
-                <img src="{{ $apartment->image }}" alt="">
-              </div>
-              <p class="card-text">{{ $apartment->description }}</p>
-              <p class="card-text"><small class="text-muted">Author: {{ $apartment->user->name }} - Creato il: {{ $apartment->created_at->format('d/m/y') }}</small></p>
+        <div class="row card-body">
 
-              <div>
+          <div class="col-12 single-apartment" lat="{{ $apartment->latitude }}" lng="{{ $apartment->longitude }}">
+            <div class="d-flex justify-content-between">
+              <div class="col-lg-6 col-md-12">
+                <h2 id="title" class="card-title">{{ $apartment->title }}</h2>
+                <h4>{{ $apartment->address }}, {{ $apartment->city }}, {{ $apartment->zip }}</h4>
+              </div>
+
+            </div>
+            <div class="apartment-image">
+              <img src="{{ $apartment->image }}" alt="">
+            </div>
+            <p><small class="text-muted">Autore: {{ $apartment->user->name }} - Creato il: {{ $apartment->created_at->format('d/m/y') }}</small></p>
+          </div>
+
+          <div class="col-lg-6 col-md-12 apartment-informations">
+            <div class="informations card mb-2">
+              <div class="card-body">
+                <h3>Informazioni</h3>
                 <ul>
                   <li>Numero stanze: {{ $apartment->rooms }}</li>
                   <li>Numero bagni: {{ $apartment->baths }}</li>
                   <li>Numero letti: {{ $apartment->beds }}</li>
-                  <li>Numero ospiti: {{ $apartment->guests }}</li>
+                  <li>Numero Ospiti: {{ $apartment->guests }}</li>
                   <li>Metri quadri: {{ $apartment->mqs }}</li>
                 </ul>
-
               </div>
+            </div>
 
-              <div class="services-list">
+            <div class="services-list card mb-2">
+              <div class="card-body">
                 <h3>Servizi aggiuntivi</h3>
                 @if ($apartment->services->isEmpty())
                   <p>Non ci sono servizi</p>
                 @else
-                    <ul>
-                      @foreach ($apartment->services as $service)
-                        <li>{{$service->name}}</li>
-                      @endforeach
-                    </ul>
+                  <ul>
+                    @foreach ($apartment->services as $service)
+                      <li>
+                        @if ($service->name == 'Wifi')
+                          <i class="fas fa-wifi"></i>
+                        @elseif ($service->name == 'Parcheggio')
+                            <i class="fas fa-parking"></i>
+                          @elseif ($service->name == 'Animali ammessi')
+                              <i class="fas fa-dog"></i>
+                            @elseif ($service->name == 'Aria condizionata')
+                              <i class="fas fa-fan"></i>
+                            @elseif ($service->name == 'Servizio lavanderia')
+                              <i class="fas fa-washer"></i>
+                            @elseif ($service->name == 'Tv')
+                              <i class="fas fa-tv"></i>
+                            @elseif ($service->name == 'Cucina')
+                              <i class="fas fa-utensils"></i>
+                            @elseif ($service->name == 'Breakfast')
+                              <i class="far fa-coffee"></i>
+                            @elseif ($service->name == 'Piscina')
+                              <i class="fas fa-swimming-pool"></i>
+                        @endif
+                        {{$service->name}}</li>
+                    @endforeach
+                  </ul>
                 @endif
               </div>
+            </div>
 
-              <div class="mb-2">
-                <a class="btn btn-primary" href="{{ route('apartments.index')}}"> Torna alla lista appartamenti</a>
+            <div class="description card mb-2">
+              <div class="card-body">
+                <h3>Descrizione</h3>
+                <p>{{ $apartment->description }}</p>
               </div>
-
             </div>
           </div>
-          <div class="col-6">
 
-            <div class="col-12">
-              <h3>Mappa appartamento</h3>
-              <div id="map-show"></div>
+          <div class="col-lg-6 col-md-12">
+            <div class="col-12 apartment-map">
+              <div class="card mb-2">
+                <div class="card-body">
+                  <h3>Mappa appartamento</h3>
+                  <div id="map-show"></div>
+                </div>
+              </div>
 
               <script>
-              (function() {
+                (function() {
 
-              var title = document.getElementById('title').innerText;
+                  var title = document.getElementById('title').innerText;
 
-              var latlng = {
-                lat: document.querySelector('.single-apartment').getAttribute("lat"),
-                lng: document.querySelector('.single-apartment').getAttribute("lng")
-              };
+                  var latlng = {
+                    lat: document.querySelector('.single-apartment').getAttribute("lat"),
+                    lng: document.querySelector('.single-apartment').getAttribute("lng")
+                  };
 
-              var map = L.map('map-show', {
-                scrollWheelZoom: false,
-                zoomControl: false,
-                keyboard: false,
-                dragging: false,
-                boxZoom: false,
-                doubleClickZoom: false,
-                tap: false,
-                touchZoom: false,
-              });
+                  var map = L.map('map-show', {
+                    scrollWheelZoom: false,
+                    zoomControl: false,
+                    keyboard: false,
+                    dragging: false,
+                    boxZoom: false,
+                    doubleClickZoom: false,
+                    tap: false,
+                    touchZoom: false,
+                  });
 
-              var osmLayer = new L.TileLayer(
-                'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                  minZoom: 12,
-                  maxZoom: 18,
-                  attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-                }
-              );
+                  var osmLayer = new L.TileLayer(
+                    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                      minZoom: 12,
+                      maxZoom: 18,
+                      attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+                    }
+                  );
 
-              map.setView(new L.LatLng(latlng.lat, latlng.lng), 17);
+                  map.setView(new L.LatLng(latlng.lat, latlng.lng), 17);
 
-              map.addLayer(osmLayer);
+                  map.addLayer(osmLayer);
 
-              var marker = L.marker([latlng.lat, latlng.lng])
-              .addTo(map)
-              .bindPopup(title);
+                  var marker = L.marker([latlng.lat, latlng.lng])
+                  .addTo(map)
+                  .bindPopup(title);
 
-              })();
+                })();
               </script>
             </div>
-            <div class="col-12">
-              <h3>Scrivi al proprietario</h3>
-              <div class="message-form">
-                <form action="{{route('send-email', $apartment)}}" method="post">
-                  @csrf
-                  @method('POST')
-                  <input type="text" name="userMail" value="" placeholder="Email">
-                  <textarea name="bodyMessage" rows="8" cols="61" placeholder="Scrivi un messaggio"></textarea>
-                  <input type="submit" name="" value="Invia">
-                </form>
+            <div class="col-12 apartment-email">
+              <div class="message-form card mb-2">
+                <div class="card-body">
+                  <h3>Scrivi al proprietario</h3>
+                  <form class="email-form" action="{{route('send-email', $apartment)}}" method="post">
+                    @csrf
+                    @method('POST')
+                    <div>
+                      <input type="text" name="userMail" value="" placeholder="Email">
+                    </div>
+                    <div>
+                      <textarea name="bodyMessage" rows="8" cols="46" placeholder="Scrivi un messaggio"></textarea>
+                    </div>
+                    <div>
+                      <input type="submit" name="" value="Invia">
+                    </div>
+                  </form>
+                </div>
               </div>
               @if (session('success'))
                 <div id="success_message" class="message ">
@@ -107,11 +150,10 @@
                 </div>
               @endif
             </div>
+          </div>
 
-        </div>
         </div>
       </div>
     </div>
   </section>
-
 @endsection
