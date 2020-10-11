@@ -29,35 +29,26 @@ textarea {
 
 /* ________ SEZIONI ________ */
 section {
-  margin: 70px 0;
+  margin: 60px 0;
+}
 
+#user-apartments,
+#received-email,
+#statistics,
+#payment {
   /* TITOLI SEZIONI */
   .heading {
-    display: block;
-    height: 50px;
-    margin: 1em 0 0;
-    position: relative;
-
-    span {
-      background: $body-bg;
-      border: 5px solid $sky-color;
-      border-radius: 30px;
-      box-shadow: 0 0 0 5px $body-bg, inset 0 0 0 5px $body-bg;
-      display: block;
-      margin: 0 0 0 50px;
-      padding: 10px 30px 5px;
-      position: absolute;
-      top: 50%;
-      transform-origin: top left;
-      z-index: 30;
-      color: $red-color;
-    }
+    height: auto;
+    background: white;
+    border: 5px solid $sky-color;
+    border-radius: 30px;
+    box-shadow: 0 0 0 5px white, inset 0 0 0 5px white;
+    margin: 100px 0 50px;
+    padding: 10px 30px 5px;
+    color: $red-color;
   }
 }
 
-.input-search {
-  margin: 45px 0;
-}
 
 
 /* ________ MAPPE ________ */

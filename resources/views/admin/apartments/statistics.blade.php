@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-<section>
+<section id="statistics">
 
   <div class="container-fluid">
       <div class="row">
