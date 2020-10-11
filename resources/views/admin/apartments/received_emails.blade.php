@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-<section>
+<section id="received-email">
   <div class="container">
 
     @if (!$emailsReceived->isEmpty())
