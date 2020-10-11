@@ -119,7 +119,7 @@ main {
 
   .card-sponsored {
     // background-color:  $red-color;
-    background-image: url("/images/sfondo-app_01.png");
+    background-image: url("/images/sfondo-app_03.png");
     background-repeat: no-repeat;
     background-size: cover;
     padding: 30px 70px;
@@ -315,70 +315,81 @@ main {
   }
 
   // SEZIONE SHOW
-  .show {
-    .apartment-informations,
-    .apartment-map,
-    .apartment-email {
-      .card-body {
-        background-color: #f8fafc;
+    .show {
+      .single-apartment {
+        .apartment-image img{
+        height: 400px;
+        }
       }
-    }
-    .btn-style {
-      border-radius: 18px;
-    }
-  }
-
-  // SEZIONE APPARTAMENTI UTENTI
-  #user-apartments {
-    .heading {
-      height: auto;
-      background: white;
-      border: 5px solid $sky-color;
-      border-radius: 30px;
-      box-shadow: 0 0 0 5px white, inset 0 0 0 5px white;
-      margin: 100px 0 50px;
-      padding: 10px 30px 5px;
-      color: $red-color;
-    }
-
-    .card {
-      a {
-        padding: 1.25rem;
+      .apartment-informations,
+      .apartment-map,
+      .apartment-email {
+        .card-body {
+          background-color: #f8fafc;
+          .email-form{
+            input[type=text]{
+              border: 2px solid #ccc;
+              border-radius: 4px;
+              margin-bottom:5px;
+          }
+        }
+      }
+      .btn-style {
+        border-radius: 18px;
       }
     }
 
-    .card-body {
-      flex-basis: 0;
-
-      h5 {
-        font-weight: bold;
-      }
-
-      p {
-        @include hidden-partials-text;
-        -webkit-line-clamp: 3;
-      }
-    }
-
-    .card-footer {
-      border: none;
-      .status {
+    // SEZIONE APPARTAMENTI UTENTI
+    #user-apartments {
+      .heading {
+        height: auto;
+        background: white;
+        border: 5px solid $sky-color;
         border-radius: 30px;
-        color: white;
-        text-align: center;
-        font-weight: bold;
-        margin: 30px 0;
+        box-shadow: 0 0 0 5px white, inset 0 0 0 5px white;
+        margin: 100px 0 50px;
+        padding: 10px 30px 5px;
+        color: $red-color;
+      }
 
-        &.active {
-          background-color: green;
+      .card {
+        a {
+          padding: 1.25rem;
         }
-        &.disabled {
-          background-color: red;
+      }
+
+      .card-body {
+        flex-basis: 0;
+
+        h5 {
+          font-weight: bold;
+        }
+
+        p {
+          @include hidden-partials-text;
+          -webkit-line-clamp: 3;
+        }
+      }
+
+      .card-footer {
+        border: none;
+        .status {
+          border-radius: 30px;
+          color: white;
+          text-align: center;
+          font-weight: bold;
+          margin: 30px 0;
+
+          &.active {
+            background-color: green;
+          }
+          &.disabled {
+            background-color: red;
+          }
         }
       }
     }
   }
-
 }
 
 /////////////// MEDIA QUERY //////////////////
@@ -386,6 +397,9 @@ main {
   main {
     .jumbo-col .jumbo{
       height: 300px;
+      .jumbo-title {
+        display: none;
+      }
     }
     .form-search-apartment{
       .form-group {
@@ -402,6 +416,14 @@ main {
   main {
     .jumbo-col .jumbo{
       height: 400px;
+      .jumbo-title {
+        h1 {
+          font-size: 20px;
+        }
+        h3 {
+          font-size: 12px;
+        }
+      }
     }
     .form-search-apartment{
       .form-group {
@@ -416,6 +438,14 @@ main {
   main {
     .jumbo-col .jumbo{
       height: 500px;
+      .jumbo-title {
+        h1 {
+          font-size: 30px;
+        }
+        h3 {
+          font-size: 22px;
+        }
+      }
     }
     .form-search-apartment{
       .form-group {

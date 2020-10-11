@@ -26,7 +26,7 @@
             <p><small class="text-muted">Autore: {{ $apartment->user->name }} - Creato il: {{ $apartment->created_at->format('d/m/y') }}</small></p>
           </div>
 
-          <div class="col-6 apartment-informations">
+          <div class="col-lg-6 col-md-12 apartment-informations">
             <div class="informations card mb-2">
               <div class="card-body">
                 <h3>Informazioni</h3>
@@ -34,7 +34,7 @@
                   <li>Numero stanze: {{ $apartment->rooms }}</li>
                   <li>Numero bagni: {{ $apartment->baths }}</li>
                   <li>Numero letti: {{ $apartment->beds }}</li>
-                  <li>Numero ospiti: {{ $apartment->guests }}</li>
+                  <li>Numero Ospiti: {{ $apartment->guests }}</li>
                   <li>Metri quadri: {{ $apartment->mqs }}</li>
                 </ul>
               </div>
@@ -48,7 +48,27 @@
                 @else
                   <ul>
                     @foreach ($apartment->services as $service)
-                      <li>{{$service->name}}</li>
+                      <li>
+                        @if ($service->name == 'Wifi')
+                          <i class="fas fa-wifi"></i>
+                        @elseif ($service->name == 'Parcheggio')
+                            <i class="fas fa-parking"></i>
+                          @elseif ($service->name == 'Animali ammessi')
+                              <i class="fas fa-dog"></i>
+                            @elseif ($service->name == 'Aria condizionata')
+                              <i class="fas fa-fan"></i>
+                            @elseif ($service->name == 'Servizio lavanderia')
+                              <i class="fas fa-washer"></i>
+                            @elseif ($service->name == 'Tv')
+                              <i class="fas fa-tv"></i>
+                            @elseif ($service->name == 'Cucina')
+                              <i class="fas fa-utensils"></i>
+                            @elseif ($service->name == 'Breakfast')
+                              <i class="far fa-coffee"></i>
+                            @elseif ($service->name == 'Piscina')
+                              <i class="fas fa-swimming-pool"></i>
+                        @endif
+                        {{$service->name}}</li>
                     @endforeach
                   </ul>
                 @endif
@@ -72,7 +92,7 @@
             @endif
           </div>
 
-          <div class="col-6">
+          <div class="col-lg-6 col-md-12">
             <div class="col-12 apartment-map">
               <div class="card mb-2">
                 <div class="card-body">
@@ -125,12 +145,18 @@
               <div class="message-form card mb-2">
                 <div class="card-body">
                   <h3>Scrivi al proprietario</h3>
-                  <form action="{{route('admin.send-email', $apartment)}}" method="post">
+                  <form class="email-form" action="{{route('admin.send-email', $apartment)}}" method="post">
                     @csrf
                     @method('POST')
-                    <input type="text" name="userMail" value="{{$logged_user->email}}" readonly placeholder="Email">
-                    <textarea name="bodyMessage" rows="8" cols="46" placeholder="Scrivi un messaggio"></textarea>
-                    <input type="submit" name="" value="Invia">
+                    <div>
+                      <input type="text" name="userMail" value="{{$logged_user->email}}" readonly placeholder="Email">
+                    </div>
+                    <div>
+                      <textarea name="bodyMessage" rows="8" cols="46" placeholder="Scrivi un messaggio"></textarea>
+                    </div>
+                    <div>
+                      <input type="submit" name="" value="Invia">
+                    </div>
                   </form>
                 </div>
               </div>
