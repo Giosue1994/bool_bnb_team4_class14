@@ -33,7 +33,7 @@
 
             <div>
               <label>Descrizione appartamento</label>
-              <textarea name="description" rows="8" cols="80" placeholder="description">{{old('description')}}</textarea>
+              <textarea name="description" rows="8" cols="80" placeholder="Description">{{old('description')}}</textarea>
             </div>
 
             <div>

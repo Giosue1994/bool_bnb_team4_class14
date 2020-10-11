@@ -38,6 +38,15 @@
           </div>
         @endforeach
       </div>
+
+      @else
+        <div class="row">
+          <div class="col-12 text-center p-5">
+            <h2>OPS! Non hai ancora nessun appartamento</h2>
+            <a class="btn btn-primary btn-style mt-5" href="{{ route('admin.apartments.index') }}"> Torna alla HomePage</a>
+          </div>
+
+        </div>
     @endif
 </section>
 @endsection

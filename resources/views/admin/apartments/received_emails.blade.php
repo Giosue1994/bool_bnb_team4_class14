@@ -19,6 +19,8 @@
                 <img class="apartment-image img-user-apart" src="{{ $userApartment->image }}" alt="Immagine appartamento">
               </a> --}}
               <div class="card-body">
+                {{-- <h3>{{$emailReceived->apartment['apartment_id']->title}}</h3> --}}
+                <h3>{{$allApartments->where('id',$emailReceived->apartment_id)->pluck('title')->first()}}</h3>
                 <small class="card-title">{{ $emailReceived->email }}</small>
                 <p>{{ $emailReceived->message }}</p>
               </div>
@@ -35,11 +37,11 @@
         <div class="col">
           <div class="card">
             <div class="card-body d-flex justify-content-center align-center">
-              <h1>Non hai email da visualizzare</h1>
+              <h1>OPS! Non hai messaggi da visualizzare</h1>
             </div>
           </div>
           <div class="d-flex justify-content-center">
-            <a class="btn btn-primary mt-3" href="{{ route('admin.apartments.index')}}"> Torna alla lista appartamenti</a>
+            <a class="btn btn-primary mt-3" href="{{ route('admin.apartments.index')}}"> Torna alla HomePage</a>
           </div>
 
         </div>
