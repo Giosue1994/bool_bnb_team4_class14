@@ -55,7 +55,7 @@
       @endif
 
       <!-- Appartamenti -->
-      <h2 class="heading text-center"><span>Appartamenti</span></h2>
+      {{-- <h2 class="heading text-center"><span>Appartamenti</span></h2>
       <div class="card card-normal">
         <div class="row apartments all-apartments card-body d-flex justify-content-center">
 
@@ -73,7 +73,7 @@
             </div>
           @endforeach
         </div>
-      </div>
+      </div> --}}
 
     </div>
   </section>

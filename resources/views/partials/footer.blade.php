@@ -1,56 +1,58 @@
-<div class="container-fluid">
+<div class="container-fluid container-footer">
+  {{-- <div class="row">
+    <div class="col-12 footer-img">
+      <img src="{{asset('images/footer_01.png')}}" alt="">
+    </div>
+  </div> --}}
+
   <div class="row">
-    <div class="col-12 footer-logo">
+    <div class="col-lg-6 col-md-12 footer-logo">
       <img src="{{asset('images/bool-bnb-rb.png')}}" alt="">
-    </div>
-
-    <div class="col-lg-3 col-md-12">
-      <ul class="information">
-        <dl>Informazioni</dl>
-        <li><a href="#">Come funziona Airbnb</a></li>
-        <li><a href="#">Newsroom</a></li>
-        <li><a href="#">Airbnb Plus</a></li>
-        <li><a href="#">Airbnb Luxe</a></li>
-        <li><a href="#">HotelTonight</a></li>
-        <li><a href="#">Airbnb for Work</a></li>
-        <li><a href="#">Olimpiadi</a></li>
-        <li><a href="#">Opportunità di lavoro</a></li>
+      <ul>
+        <li><a href="https://github.com/Giosue1994/bool_bnb_team4_class14">© Boolbnb Progetto finale 2020</a></li>
       </ul>
     </div>
+    </div>
+    <div class="row items">
+      <div class="col-lg-2 col-sm-12 footer-item">
+        <ul class="information">
+          <dl>Classe14# Team </dl>
+          <li><a href="https://www.boolean.careers/corso/full-time">Boolean Careers</a></li>
+        </ul>
+      </div>
 
-    <div class="col-lg-3 col-md-12">
-      <ul class="community">
-        <dl>Community</dl>
-        <li><a href="#">Diversità e appartenenza</a></li>
-        <li><a href="#">Accessibilità</a></li>
-        <li><a href="#">Airbnb Associates</a></li>
-        <li><a href="#">Alloggi per l'emergenza</a></li>
-        <li><a href="#">Invita degli amici</a></li>
-      </ul>
+      <div class="col-lg-2 col-sm-12 footer-item">
+        <ul class="information">
+          <dl>Francesca Campana</dl>
+          <li><a href="https://github.com/francesca-campana"><i class="fab fa-github"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/francesca-campana-b05478a4/"> <i class="fab fa-linkedin-in"></i></a> </li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-sm-12 footer-item">
+        <ul class="community">
+          <dl>Crescenzo Demartino</dl>
+          <li><a href="https://github.com/MrCresc"><i class="fab fa-github"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/crescenzo-de-martino/"> <i class="fab fa-linkedin-in"></i></a> </li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-sm-12 footer-item">
+        <ul class="host">
+          <dl>Giosuè Lentini</dl>
+          <li><a href="https://github.com/Giosue1994"><i class="fab fa-github"></i></li>
+          <li><a href="https://www.linkedin.com/in/giosu%C3%A8-lentini-9228801aa/"> <i class="fab fa-linkedin-in"></i></a> </li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-sm-12 footer-item">
+        <ul class="assistence">
+          <dl>Dennis Olimpio</dl>
+          <li><a href="https://github.com/denniolimpio"><i class="fab fa-github"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/dennis-olimpio-01b4261a6/"> <i class="fab fa-linkedin-in"></i></a> </li>
+        </ul>
+      </div>
     </div>
 
-    <div class="col-lg-3 col-md-12">
-      <ul class="host">
-        <dl>Ospita</dl>
-        <li><a href="#">Diventa un host</a></li>
-        <li><a href="#">Offri un'Esperienza online</a></li>
-        <li><a href="#">Offri un'Esperienza</a></li>
-        <li><a href="#">Ospitare responsabilmente</a></li>
-        <li><a href="#">Open Homes</a></li>
-        <li><a href="#">Centro risorse</a></li>
-        <li><a href="#">Community Center</a></li>
-      </ul>
-    </div>
 
-    <div class="col-lg-3 col-md-12">
-      <ul class="assistence">
-        <dl>Assistenza</dl>
-        <li><a href="#">Aggiornamenti sulla pandemia di COVID-19</a></li>
-        <li><a href="#">Centro Assistenza</a></li>
-        <li><a href="#">Opzioni di cancellazione</a></li>
-        <li><a href="#">Servizio di supporto al vicinato</a></li>
-        <li><a href="#">Affidabilità e sicurezza</a></li>
-      </ul>
-    </div>
-  </div>
 </div>
