@@ -26,44 +26,48 @@
 
   <!-- SEZIONE LISTA APPARTAMENTI -->
   <section class="apartments-admin" id="apartments-admin">
-    <div class="container-fluid">
+    <div class="container-fluid p-0">
 
       @if (!$sponsoredApartments->isEmpty())
         <!-- Appartamenti in evidenza -->
         <h2 class="heading text-center">Appartamenti in evidenza</h2>
-        <div class="row apartments sponsored-apartments d-flex justify-content-center">
+        <div class="card card-sponsored mb-5">
+          <div class="row apartments sponsored-apartments card-body d-flex justify-content-center">
 
-          @foreach ($sponsoredApartments as $sponsoredApartment)
-            <div lat="{{ $sponsoredApartment->latitude }}" lng="{{ $sponsoredApartment->longitude }}" class="col-lg-2 col-md-6 col-sm-6 single-apartment">
-              <a href="{{ route('admin.apartments.show', $sponsoredApartment) }}">
-                <div class="img-container">
-                  <img class="apartment-image" src="{{ $sponsoredApartment->image }}" alt="Immagine appartamento">
-                  <div class="title-container">
-                    <h2 class="text-center">{{ $sponsoredApartment->title }}</h2>
+            @foreach ($sponsoredApartments as $sponsoredApartment)
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 single-apartment" lat="{{ $sponsoredApartment->latitude }}" lng="{{ $sponsoredApartment->longitude }}">
+                <a href="{{ route('admin.apartments.show', $sponsoredApartment) }}">
+                  <div class="img-container">
+                    <img class="apartment-image" src="{{ $sponsoredApartment->image }}" alt="Immagine appartamento">
                   </div>
-                </div>
-              </a>
-            </div>
-          @endforeach
+                  <div class="title-container">
+                    <h5>{{ $sponsoredApartment->title }}</h5>
+                  </div>
+                </a>
+              </div>
+            @endforeach
+          </div>
         </div>
       @endif
 
       <!-- Appartamenti -->
       <h2 class="heading text-center">Appartamenti</h2>
-      <div class="row apartments all-apartments d-flex justify-content-center">
+      <div class="card card-normal">
+        <div class="row apartments all-apartments card-body d-flex justify-content-center">
 
-        @foreach ($apartments as $apartment)
-          <div lat="{{ $apartment->latitude }}" lng="{{ $apartment->longitude }}" class="col-lg-2 col-md-6 col-sm-6 single-apartment">
-            <a href="{{ route('admin.apartments.show', $apartment) }}">
-              <div class="img-container">
-                <img class="apartment-image" src="{{ $apartment->image }}" alt="Immagine appartamento">
-                <div class="title-container">
-                  <h2 class="text-center">{{ $apartment->title }}</h2>
+          @foreach ($apartments as $apartment)
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 single-apartment" lat="{{ $apartment->latitude }}" lng="{{ $apartment->longitude }}">
+              <a href="{{ route('admin.apartments.show', $apartment) }}">
+                <div class="img-container">
+                  <img class="apartment-image" src="{{ $apartment->image }}" alt="Immagine appartamento">
                 </div>
-              </div>
-            </a>
-          </div>
-        @endforeach
+                <div class="title-container">
+                  <h2>{{ $apartment->title }}</h2>
+                </div>
+              </a>
+            </div>
+          @endforeach
+        </div>
       </div>
 
     </div>
