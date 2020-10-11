@@ -1,12 +1,4 @@
 /* ________ REGOLE GENERALI ________ */
-section {
-  margin-top: 45px;
-}
-
-#search-results {
-  margin-top: 70px;
-}
-
 img {
   width: 100%;
   display: block;
@@ -21,12 +13,22 @@ ul {
   top: 0;
 }
 
+/* ________ SEZIONI ________ */
+section {
+  margin: 70px 0;
+}
+
+.input-search {
+  margin: 45px 0;
+}
+
+/* ________ MAPPE ________ */
 #map-search {
   height: 100vh;
   z-index: 0;
   position: fixed;
   width: 50%;
-  top: 70px;
+  top: 86px;
 };
 
 #map-show {

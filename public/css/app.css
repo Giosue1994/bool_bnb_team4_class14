@@ -2,14 +2,6 @@
 
 /* ________ REGOLE GENERALI ________ */
 
-section {
-  margin-top: 45px;
-}
-
-#search-results {
-  margin-top: 70px;
-}
-
 img {
   width: 100%;
   display: block;
@@ -24,12 +16,24 @@ ul {
   top: 0;
 }
 
+/* ________ SEZIONI ________ */
+
+section {
+  margin: 70px 0;
+}
+
+.input-search {
+  margin: 45px 0;
+}
+
+/* ________ MAPPE ________ */
+
 #map-search {
   height: 100vh;
   z-index: 0;
   position: fixed;
   width: 50%;
-  top: 70px;
+  top: 86px;
 }
 
 #map-show {
@@ -95,6 +99,7 @@ main .form-search-apartment .form-group {
   width: 600px;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 main .form-search-apartment .form-group .ap-input {
@@ -114,8 +119,8 @@ main .form-search-apartment .btn-index-search {
   width: 90px;
   height: 30px;
   background: #3e489b;
-  position: relative;
-  right: 87px;
+  position: absolute;
+  right: 5px;
   color: white;
 }
 
@@ -127,12 +132,26 @@ main .heading {
   padding-bottom: 20px;
 }
 
+main .card-sponsored {
+  background-color: #d21625;
+  padding: 30px 70px;
+}
+
+main .card-sponsored .sponsored-apartments .single-apartment {
+  margin: 0;
+}
+
+main .card-normal {
+  background-color: #c5b3e8;
+  padding: 30px 150px;
+}
+
 main .apartments {
-  margin-bottom: 80px;
+  padding: 50px 0;
 }
 
 main .apartments .single-apartment {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   transition: 0.2s ease-in-out;
 }
 
@@ -141,7 +160,7 @@ main .apartments .single-apartment:hover {
 }
 
 main .apartments .single-apartment:hover .img-container {
-  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.7);
 }
 
 main .apartments .single-apartment a {
@@ -154,35 +173,41 @@ main .apartments .single-apartment a .img-container {
   height: 250px;
   overflow: hidden;
   display: flex;
-  align-items: center;
   border-radius: 20px;
-  transition: 0.2s ease-in-out;
+  transition: 0.3s ease-in-out;
+  z-index: 1;
 }
 
 main .apartments .single-apartment a .img-container .apartment-image {
   transform: scale(1.7);
 }
 
-main .apartments .single-apartment a .img-container .title-container {
-  padding-top: 20px;
-  background-color: rgba(0, 0, 0, 0.3);
-  width: 100%;
-  height: 100%;
-  display: none;
-  position: absolute;
+main .apartments .single-apartment a .img-container:hover {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
-main .apartments .single-apartment a .img-container .title-container h2 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  text-shadow: 1.2px 1.2px rgba(0, 0, 0, 0.7);
+main .apartments .single-apartment a .title-container {
+  position: relative;
+  bottom: 62px;
+  background-color: white;
+  color: black;
+  padding: 10px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transition: 0.2s ease-in-out;
+  z-index: 0;
 }
 
-main .apartments .single-apartment a .img-container:hover .title-container {
-  display: block;
+main .apartments .single-apartment a:hover .title-container {
+  bottom: 1px;
+}
+
+main .apartments .single-apartment a:hover .img-container {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 main #search-results #btn-search {
