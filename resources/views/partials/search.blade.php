@@ -8,16 +8,24 @@
 <section id="search-results">
   <div class="container-fluid">
     <div class="row">
-
       <div class="col-6">
-        <form action="{{ route('search') }}" class="form-search-apartment">
-          {{-- viene incluso il file che cerca gli appartamenti in base alle città e gli indirizzi --}}
-          @include('partials.search-partials.search-city_address')
-          {{-- viene incluso il file che cerca gli appartamenti filtrandoli --}}
-          @include('partials.search-partials.filters')
-
-          <button id="btn-search" class="btn-index-search" type="button"><i class="search-icon fas fa-search"></i>Cerca</button>
-        </form>
+        <h2 class="heading">Appartamenti nell'area selezionata della mappa</h2>
+        <p id="counter"></p>
+        <div id="filters-container">
+          <form action="{{ route('search') }}" class="form-search-apartment">
+            {{-- viene incluso il file che cerca gli appartamenti in base alle città e gli indirizzi --}}
+            @include('partials.search-partials.search-city_address')
+            <div id="filters-drop" class="card">
+              <div class="card-body">
+                {{-- viene incluso il file che cerca gli appartamenti filtrandoli --}}
+                @include('partials.search-partials.filters')
+              </div>
+            </div>
+          </form>
+          <div id="btn-slide"class="text-center">
+            <i id="angle" class="fas fa-angle-down"></i>
+          </div>
+        </div>
 
         @if (!$sponsoredApartments->isEmpty())
           <div class="heading">
@@ -47,7 +55,7 @@
 
         <div class="apartment-count">
           <h2>Risultati appartamenti</h2>
-          <p id="counter"></p>
+
         </div>
 
 
