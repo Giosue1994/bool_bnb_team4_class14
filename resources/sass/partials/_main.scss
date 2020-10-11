@@ -5,7 +5,7 @@ main {
   .jumbo-col {
     padding: 0;
     .jumbo {
-      background-image: url("/images/jumbo_03.gif");
+      background-image: url("/images/jumbo-03.gif");
       background-repeat: no-repeat;
       height: 700px;
       background-size: cover;
@@ -63,7 +63,10 @@ main {
 
 
   .card-sponsored {
-    background-color:  $red-color;
+    // background-color:  $red-color;
+    background-image: url("/images/sfondo-app_01.png");
+    background-repeat: no-repeat;
+    background-size: cover;
     padding: 30px 70px;
 
     .sponsored-apartments {
@@ -128,10 +131,16 @@ main {
           border-bottom-right-radius: 20px;
           transition: 0.2s ease-in-out;
           z-index: 0;
+          h2 {
+            font-size: 20px;
+            text-align: center;
+            padding-top: 5px
+          }
         }
 
         &:hover .title-container {
           bottom: 1px;
+
         }
         &:hover .img-container {
           border-bottom-left-radius: 0;

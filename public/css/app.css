@@ -80,7 +80,7 @@ main .jumbo-col {
 }
 
 main .jumbo-col .jumbo {
-  background-image: url("/images/jumbo_03.gif");
+  background-image: url("/images/jumbo-03.gif");
   background-repeat: no-repeat;
   height: 700px;
   background-size: cover;
@@ -133,7 +133,9 @@ main .heading {
 }
 
 main .card-sponsored {
-  background-color: #d21625;
+  background-image: url("/images/sfondo-app_01.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   padding: 30px 70px;
 }
 
@@ -199,6 +201,12 @@ main .apartments .single-apartment a .title-container {
   border-bottom-right-radius: 20px;
   transition: 0.2s ease-in-out;
   z-index: 0;
+}
+
+main .apartments .single-apartment a .title-container h2 {
+  font-size: 20px;
+  text-align: center;
+  padding-top: 5px;
 }
 
 main .apartments .single-apartment a:hover .title-container {
