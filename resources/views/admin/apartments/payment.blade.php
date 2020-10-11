@@ -43,7 +43,7 @@
                   <div id="bt-dropin"></div>
               </div>
           <input id="nonce" name="payment_method_nonce" type="hidden" />
-          <button class="button" type="submit"><span>Test Transaction</span></button>
+          <button class="button" type="submit"><span>Procedi al checkout</span></button>
         </form>
       </div>
     </div>

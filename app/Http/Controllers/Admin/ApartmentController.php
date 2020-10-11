@@ -77,7 +77,7 @@ class ApartmentController extends Controller
           $path = $request->file('image_path')->store('images','public');
           $new_apartment->image = asset('storage'). '/' . $path;
         } else {
-          $new_apartment->image = 'https://otticasilingardi.it/wp-content/themes/consultix/images/no-image-found-360x250.png';
+          $new_apartment->image = 'https://www.labrigna.it/wp-content/plugins/ninja-forms/assets/img/no-image-available-icon-6.jpg';
         }
         // $new_image->apartment_id = $new_apartment->id;
         // $new_image->save();
@@ -99,6 +99,8 @@ class ApartmentController extends Controller
     public function show(Request $request, Apartment $apartment)
     {
         $logged_user = Auth::user();
+
+        $endSponsors = $apartment->sponsors()->where('fine_sponsorizzazione','>',now())->pluck('fine_sponsorizzazione');
 
         $presentDay = Statistic::where([
           ['apartment_id', '=', $apartment->id],
@@ -122,7 +124,7 @@ class ApartmentController extends Controller
         }
 
 
-        return view('admin.apartments.show', compact('apartment','logged_user'));
+        return view('admin.apartments.show', compact('apartment','logged_user','endSponsors'));
     }
 
     /**
@@ -172,8 +174,6 @@ class ApartmentController extends Controller
         if (isset($data['image_path'])) {
           $path = $request->file('image_path')->store('images','public');
           $apartment->image = asset('storage'). '/' . $path;
-        } else {
-          $apartment->image = 'https://otticasilingardi.it/wp-content/themes/consultix/images/no-image-found-360x250.png';
         }
 
         if (!empty($data['services'])) {
@@ -198,8 +198,12 @@ class ApartmentController extends Controller
      */
     public function destroy(Apartment $apartment)
     {
+        $statistic = Statistic::where('apartment_id' , $apartment->id);
         $conversation = Conversation::where('apartment_id' , $apartment->id);
         $apartment->services()->detach();
+        $apartment->sponsors()->detach();
+
+        $statistic->delete();
         $conversation->delete();
         $apartment->delete();
 
@@ -240,10 +244,11 @@ class ApartmentController extends Controller
     }
     public function receivedEmails() {
       $idUser = Auth::id();
+      $allApartments = Apartment::all();
       $userApartmentsId = Apartment::all()->where('user_id', '=', $idUser)->pluck('id');
       $emailsReceived = Conversation::whereIn('apartment_id', $userApartmentsId)->get();
 
-      return view('admin.apartments.received_emails', compact('emailsReceived'));
+      return view('admin.apartments.received_emails', compact('emailsReceived','allApartments'));
     }
 
     public function statistics(Apartment $apartment) {

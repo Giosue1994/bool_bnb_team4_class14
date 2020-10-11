@@ -61,6 +61,15 @@
                 <p>{{ $apartment->description }}</p>
               </div>
             </div>
+
+            @if (!($endSponsors->isEmpty()) && $logged_user->id === $apartment->user->id)
+              <h3>Sponsorizzazioni attive</h3>
+              <ol>
+                @foreach ($endSponsors as $sponsor)
+                  <li>Scade il: {{$sponsor}}</li>
+                @endforeach
+              </ol>
+            @endif
           </div>
 
           <div class="col-6">
