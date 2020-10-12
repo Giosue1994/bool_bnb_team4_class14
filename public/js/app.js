@@ -80308,7 +80308,7 @@ $(document).ready(function () {
       },
       success: function success(result) {
         // la pagina diventa vuota
-        $('.search-results-container').html(''); // variabili handlebars
+        $('#handlebars-apartments').html(''); // variabili handlebars
 
         var source = document.getElementById("entry-template").innerHTML;
         var template = Handlebars.compile(source); // contiamo i risultati ottenuti
@@ -80317,22 +80317,18 @@ $(document).ready(function () {
         counter.text(result.length + ' Risultati per ' + city); // ciclo che appende i risultati nella pagina search
 
         for (var i = 0; i < result.length; i++) {
-          var singleResult = result[i]; // icona marker personalizzata
+          var singleResult = result[i]; // // icona marker personalizzata
+          // var houseIcon = L.icon({
+          //   iconUrl: 'images/house.png',
+          //   iconSize: [60, 60],
+          // });
 
-          var houseIcon = L.icon({
-            iconUrl: 'images/house.png',
-            iconSize: [60, 60] // size of the icon
-            // shadowUrl: 'images/shadow.png',
-            // shadowSize:   [50, 50], // size of the shadow
-            // shadowAnchor: [25, 20],  // the same for the shadow
-
-          });
-          L.marker([singleResult.latitude, singleResult.longitude], {
-            icon: houseIcon
-          }).addTo(map).bindPopup(singleResult.title);
+          L.marker([singleResult.latitude, singleResult.longitude]
+          /*, {icon: houseIcon}*/
+          ).addTo(map).bindPopup(singleResult.title);
           var context = singleResult;
           var html = template(context);
-          $('.search-results-container').append(html);
+          $('#handlebars-apartments').append(html);
         }
       },
       error: function error(XMLHttpRequest, textStatus, errorThrown) {
@@ -80469,8 +80465,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/michele/Documents/Boolean/repo/mamp-htdocs/bool_bnb_team4_class14/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/michele/Documents/Boolean/repo/mamp-htdocs/bool_bnb_team4_class14/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/giosue/Scrivania/Boolean/xampp-htdocs/bool_bnb_team4_class14/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/giosue/Scrivania/Boolean/xampp-htdocs/bool_bnb_team4_class14/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

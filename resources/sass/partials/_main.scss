@@ -263,6 +263,7 @@ main {
         display: flex;
         align-items: center;
         justify-content: center;
+        transform: translate(-50%);
 
         span {
           padding-left: 5px;
@@ -272,6 +273,8 @@ main {
     }
 
     .sponsored-apartments {
+      padding: 0;
+
       #carousel {
         width: 100%;
 
@@ -292,8 +295,8 @@ main {
               background-color: rgba(0, 0, 0, 0.5);
               width: 100%;
               height: 105%;
-              z-index: 2;
-              bottom: -5px
+              z-index: 1;
+              bottom: -5px;
             }
 
             img {
@@ -305,87 +308,98 @@ main {
       }
     }
 
-    .single-apartment {
-      .apartment-image {
-        // img{
-        //   width: 100%;
-        // }
-      }
-    }
-  }
-
-  // SEZIONE SHOW
-    .show {
+    .search-results-container {
       .single-apartment {
-        .apartment-image img{
-        height: 400px;
+        h5 {
+          font-weight: bold;
         }
-      }
-      .apartment-informations,
-      .apartment-map,
-      .apartment-email {
-        .card-body {
-          background-color: #f8fafc;
-          .email-form{
-            input[type=text]{
-              border: 2px solid #ccc;
-              border-radius: 4px;
-              margin-bottom:5px;
+        
+        .apartment-image {
+          img {
+            border-radius: 30px;
+            width: 300px;
           }
         }
       }
+    }
+
+  }
+
+  // SEZIONE SHOW
+  .show {
+    .single-apartment {
+      .apartment-image img {
+        // height: 400px;
+      }
+    }
+
+    .apartment-informations,
+    .apartment-map,
+    .apartment-email {
+      .card-body {
+        background-color: #f8fafc;
+
+        .email-form{
+          input[type=text] {
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            margin-bottom:5px;
+          }
+        }
+      }
+
       .btn-style {
         border-radius: 18px;
       }
     }
+  }
 
-    // SEZIONE APPARTAMENTI UTENTI
-    #user-apartments {
-      .heading {
-        height: auto;
-        background: white;
-        border: 5px solid $sky-color;
+  // SEZIONE APPARTAMENTI UTENTI
+  #user-apartments {
+    .heading {
+      height: auto;
+      background: white;
+      border: 5px solid $sky-color;
+      border-radius: 30px;
+      box-shadow: 0 0 0 5px white, inset 0 0 0 5px white;
+      margin: 100px 0 50px;
+      padding: 10px 30px 5px;
+      color: $red-color;
+    }
+
+    .card {
+      a {
+        padding: 1.25rem;
+      }
+    }
+
+    .card-body {
+      flex-basis: 0;
+
+      h5 {
+        font-weight: bold;
+      }
+
+      p {
+        @include hidden-partials-text;
+        -webkit-line-clamp: 3;
+      }
+    }
+
+    .card-footer {
+      border: none;
+      .status {
         border-radius: 30px;
-        box-shadow: 0 0 0 5px white, inset 0 0 0 5px white;
-        margin: 100px 0 50px;
-        padding: 10px 30px 5px;
-        color: $red-color;
-      }
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        margin: 30px 0;
 
-      .card {
-        a {
-          padding: 1.25rem;
+        &.active {
+          background-color: green;
         }
-      }
-
-      .card-body {
-        flex-basis: 0;
-
-        h5 {
-          font-weight: bold;
-        }
-
-        p {
-          @include hidden-partials-text;
-          -webkit-line-clamp: 3;
-        }
-      }
-
-      .card-footer {
-        border: none;
-        .status {
-          border-radius: 30px;
-          color: white;
-          text-align: center;
-          font-weight: bold;
-          margin: 30px 0;
-
-          &.active {
-            background-color: green;
-          }
-          &.disabled {
-            background-color: red;
-          }
+        &.disabled {
+          background-color: red;
         }
       }
     }

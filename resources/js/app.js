@@ -268,7 +268,7 @@ $(document).ready(function() {
 
           success: function(result){
             // la pagina diventa vuota
-            $('.search-results-container').html('')
+            $('#handlebars-apartments').html('')
 
             // variabili handlebars
             var source = document.getElementById("entry-template").innerHTML;
@@ -282,21 +282,19 @@ $(document).ready(function() {
             for (var i = 0; i < result.length; i++) {
               var singleResult = result[i]
 
-              // icona marker personalizzata
-              var houseIcon = L.icon({
-                iconUrl: 'images/house.png',
-                iconSize: [60, 60], // size of the icon
-                // shadowUrl: 'images/shadow.png',
-                // shadowSize:   [50, 50], // size of the shadow
-                // shadowAnchor: [25, 20],  // the same for the shadow
-              });
+              // // icona marker personalizzata
+              // var houseIcon = L.icon({
+              //   iconUrl: 'images/house.png',
+              //   iconSize: [60, 60],
+              // });
 
-              L.marker([singleResult.latitude, singleResult.longitude], {icon: houseIcon}).addTo(map)
+              L.marker([singleResult.latitude, singleResult.longitude]/*, {icon: houseIcon}*/).addTo(map)
               .bindPopup(singleResult.title)
+
               var context = singleResult
               var html = template(context);
 
-              $('.search-results-container').append(html)
+              $('#handlebars-apartments').append(html)
             }
 
           },

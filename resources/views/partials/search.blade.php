@@ -32,14 +32,16 @@
             <h2>Appartamenti in evidenza</h2>
           </div>
 
-          <div class="apartments sponsored-apartments d-flex">
-            <div id="carousel" class="carousel slide" data-ride="carousel">
+          <div class="apartments sponsored-apartments card d-flex">
+            <div id="carousel" class="carousel slide card-body" data-ride="carousel">
               <div class="carousel-inner" role="listbox">
+
                 <ol class="carousel-indicators">
                   @foreach ($sponsoredApartments as $sponsoredApartment)
                     <li data-target="#carousel" data-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
                   @endforeach
                 </ol>
+
                 @foreach ($sponsoredApartments as $sponsoredApartment)
                     <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
                       <div class="single-sponsored">
@@ -70,20 +72,15 @@
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="sr-only">Next</span>
                 </a>
+
               </div>
-
             </div>
-
           </div>
         @endif
 
-        <div class="apartment-count">
-          <h2>Risultati appartamenti</h2>
 
-        </div>
-
-
-        <div class="row search-results-container">
+        <h2>Risultati appartamenti</h2>
+        <div id="handlebars-apartments">
 
         </div>
 
@@ -94,28 +91,29 @@
         <div id="map-search"></div>
       </div>
 
-
+      {{-- TEMPLATE HANDLEBARS --}}
         <script id="entry-template" type="text/x-handlebars-template">
-
-            <div class="col-5">
-              <div lat="@{{ latitude }}" lng="@{{ longitude }}" class="single-apartment">
-                @if (Auth::check())
-                  <a href="admin/apartments/@{{id}}" class="btn-blue">
-                  @else
-                  <a href="apartments/@{{id}}" class="btn-blue">
-                @endif
-                  <div class="apartment-image">
+          <div  class="row search-results-container">
+            <div class="col-12">
+              <div class="single-apartment card flex-row" lat="@{{ latitude }}" lng="@{{ longitude }}">
+              @if (Auth::check())
+                <a href="admin/apartments/@{{id}}" class="btn-blue">
+                @else
+                <a href="apartments/@{{id}}" class="btn-blue">
+              @endif
+                  <div class="apartment-image card-body">
                     <img src="@{{ image }}" alt="">
                   </div>
                 </a>
 
+                <div class="card-body">
+                  <h5 class="card-title">@{{title}}</h5>
+                  <p>@{{guests}} ospiti | @{{rooms}} Stanze | @{{beds}} letti | @{{baths}} bagni</p>
+                  <span>@{{mqs}} metri quadri</span>
+                </div>
               </div>
             </div>
-            <div class="col-7">
-              <h2>@{{title}}</h2>
-            </div>
-
-
+          </div>
         </script>
 
     </div>
