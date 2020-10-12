@@ -11,7 +11,6 @@
       <div class="col">
         <h1 class="title_form"> Crea il tuo appartamento</h1>
 
-
         {{-- Validazione form --}}
         @if ($errors->any())
           <div class="alert alert-danger">
@@ -86,11 +85,18 @@
             </div>
 
             <div class="checkboxes">
-              <span>Servizi aggiuntivi</span>
+              <div>
+                <h5>Servizi aggiuntivi</h5>
+
+              </div>
               @foreach ($services as $service)
                 <div>
-                  <input type="checkbox" name="services[]" value="{{$service->id}}">
                   <label>{{$service->name}}</label>
+                  <div>
+                    <input class="create_check" type="checkbox" name="services[]" value="{{$service->id}}">
+
+                  </div>
+
                 </div>
               @endforeach
             </div>

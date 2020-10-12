@@ -331,20 +331,10 @@ main {
 
   // SEZIONE SHOW
   .show {
-    a.link {
-      color: #3e489b;
-      font-weight: bold;
-      text-decoration: none;
-      &:hover {
-        color: $red-color;
-        text-decoration: underline;
-      }
-    }
     .single-apartment {
       .apartment-image img {
         width: 400px;
       }
-
     }
 
     .apartment-informations,
@@ -362,41 +352,9 @@ main {
         }
       }
 
-    }
-    ul.button {
-      display: flex;
-      margin-right: 0;
-      padding:0;
-
-
-      .btn-add_app {
-        color: #fff;
-        background-color: #3e489b;
-        border-color: #3e489b;
+      .btn-style {
         border-radius: 18px;
-        margin-right: 10px;
-        &:hover {
-          color: #e30116;
-          background-color: #3e489b;
-          border-radius: 18px;
-        }
       }
-      .btn-add_app.delete {
-        color: #fff;
-        background-color: #e30116;
-        border-color: #e30116;
-        border-radius: 18px;
-        &:hover {
-          color: #e30116;
-          background-color: #3e489b;
-          border-color: #3e489b;
-          border-radius: 18px;
-        }
-      }
-    }
-
-    .btn-style {
-      border-radius: 18px;
     }
   }
 
@@ -422,6 +380,7 @@ main {
     }
 
     .card-footer {
+      border: none;
       .status {
         border-radius: 30px;
         color: white;
@@ -438,19 +397,6 @@ main {
       }
     }
   }
-}
-// ALTRE SEZIONI
-#create, #edit, #statistics, #payment {
-  margin: 80px;
-  h1, h2 {
-    padding-bottom:10px;
-    color: $red-color;
-  }
-}
-
-// SPONSORIZZAZIONI
-.alert-success {
-  margin-top: 10px;
 }
 
 // create form
@@ -487,15 +433,24 @@ main {
     background-color: #3e489b;
     color: white
   }
-  .checkboxes {
-    input {
-      transform: scale(1.5);
-
-    }
-
-  }
 
 }
+
+.edit_check,
+.create_check {
+  transform: scale(1.2);
+  position: relative;
+  box-shadow: 0px 0px 0px 1px rgb(192,192,192);
+}
+
+ .edit_check{
+   top: 62px;
+ }
+
+ .create_check {
+   top: -30px;
+
+ }
 
 /////////////// MEDIA QUERY //////////////////
 @media (max-width: 674px) {
@@ -522,41 +477,19 @@ main {
       .handlebars-container {
         .search-results-container {
           .single-apartment {
-            align-items: center;
-
-            .card-body {
-              padding: 10px;
-            }
             .apartment-image {
               img {
                 width: 200px;
               }
             }
-            .status {
-              border-radius: 10px;
-            }
           }
         }
-      }
-    }
-
-    #user-apartments {
-      .card {
-        a {
-          img {
-            width: 100px;
-          }
-        }
-      }
-
-      .card-body {
-        padding: 10px;
       }
     }
   }
 }
 
-@media (min-width: 675px) and (max-width: 767.98px) {
+@media (min-width: 576px) and (max-width: 767.98px) {
   main {
     .jumbo-col .jumbo{
       height: 400px;
@@ -572,20 +505,6 @@ main {
     .form-search-apartment{
       .form-group {
         width:400px;
-      }
-    }
-
-    #user-apartments {
-      .card {
-        a {
-          img {
-            width: 150px;
-          }
-        }
-      }
-
-      .card-body {
-        padding: 10px;
       }
     }
   }

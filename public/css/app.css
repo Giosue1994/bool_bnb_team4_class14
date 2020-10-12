@@ -418,16 +418,10 @@ main #search-results .handlebars-container .search-results-container .single-apa
   width: 300px;
 }
 
-main .show a.link {
-  color: #3e489b;
-  font-weight: bold;
-  text-decoration: none;
+main .show .single-apartment .apartment-image img {
+  width: 400px;
 }
 
-main .show a.link:hover {
-  color: #d21625;
-  text-decoration: underline;
-}
 main .show .apartment-informations .card-body,
 main .show .apartment-map .card-body,
 main .show .apartment-email .card-body {
@@ -442,41 +436,9 @@ main .show .apartment-email .card-body .email-form input[type=text] {
   margin-bottom: 5px;
 }
 
-main .show ul.button {
-  display: flex;
-  margin-right: 0;
-  padding: 0;
-}
-
-main .show ul.button .btn-add_app {
-  color: #fff;
-  background-color: #3e489b;
-  border-color: #3e489b;
-  border-radius: 18px;
-  margin-right: 10px;
-}
-
-main .show ul.button .btn-add_app:hover {
-  color: #e30116;
-  background-color: #3e489b;
-  border-radius: 18px;
-}
-
-main .show ul.button .btn-add_app.delete {
-  color: #fff;
-  background-color: #e30116;
-  border-color: #e30116;
-  border-radius: 18px;
-}
-
-main .show ul.button .btn-add_app.delete:hover {
-  color: #e30116;
-  background-color: #3e489b;
-  border-color: #3e489b;
-  border-radius: 18px;
-}
-
-main .show .btn-style {
+main .show .apartment-informations .btn-style,
+main .show .apartment-map .btn-style,
+main .show .apartment-email .btn-style {
   border-radius: 18px;
 }
 
@@ -501,6 +463,10 @@ main #user-apartments .card-body p {
   -webkit-line-clamp: 3;
 }
 
+main #user-apartments .card-footer {
+  border: none;
+}
+
 main #user-apartments .card-footer .status {
   border-radius: 30px;
   color: white;
@@ -517,7 +483,52 @@ main #user-apartments .card-footer .status.disabled {
   background-color: red;
 }
 
-@media (max-width: 575.98px) {
+.title_form {
+  color: red;
+}
+
+.create_form input,
+.edit_form input {
+  -webkit-transition: all 0.3s ease-in-out;
+  outline: none;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 100%;
+  background: #fff;
+  margin-bottom: 4%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #555;
+}
+
+.create_form input:focus,
+.edit_form input:focus {
+  background: #d2d9dd;
+}
+
+.create_form .save-btn,
+.edit_form .save-btn {
+  background-color: #3e489b;
+  color: white;
+}
+
+.edit_check,
+.create_check {
+  transform: scale(1.2);
+  position: relative;
+  box-shadow: 0px 0px 0px 1px silver;
+}
+
+.edit_check {
+  top: 62px;
+}
+
+.create_check {
+  top: -30px;
+}
+
+@media (max-width: 674px) {
   main .jumbo-col .jumbo {
     height: 300px;
   }
@@ -534,32 +545,12 @@ main #user-apartments .card-footer .status.disabled {
     width: 300px;
   }
 
-  main #search-results .handlebars-container .search-results-container .single-apartment {
-    align-items: center;
-  }
-
-  main #search-results .handlebars-container .search-results-container .single-apartment .card-body {
-    padding: 10px;
-  }
-
   main #search-results .handlebars-container .search-results-container .single-apartment .apartment-image img {
     width: 200px;
   }
-
-  main #search-results .handlebars-container .search-results-container .single-apartment .status {
-    border-radius: 10px;
-  }
-
-  main #user-apartments .card a img {
-    width: 100px;
-  }
-
-  main #user-apartments .card-body {
-    padding: 10px;
-  }
 }
 
-@media (min-width: 675px) and (max-width: 767.98px) {
+@media (min-width: 576px) and (max-width: 767.98px) {
   main .jumbo-col .jumbo {
     height: 400px;
   }
@@ -574,14 +565,6 @@ main #user-apartments .card-footer .status.disabled {
 
   main .form-search-apartment .form-group {
     width: 400px;
-  }
-
-  main #user-apartments .card a img {
-    width: 150px;
-  }
-
-  main #user-apartments .card-body {
-    padding: 10px;
   }
 }
 

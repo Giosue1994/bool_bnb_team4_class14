@@ -92,11 +92,11 @@
                 </div>
               </div>
 
-              <div class="chekboxes">
+              <div class="chekboxes ">
                 <span>Servizi aggiuntivi</span>
                 @foreach ($services as $service)
                   <div>
-                    <input type="checkbox" name="services[]" {{ $apartment->services->contains($service) ? 'checked' : '' }} value="{{$service->id}}">
+                    <input class="edit_check" type="checkbox" name="services[]" {{ $apartment->services->contains($service) ? 'checked' : '' }} value="{{$service->id}}">
                     <label>{{$service->name}}</label>
                   </div>
                 @endforeach
