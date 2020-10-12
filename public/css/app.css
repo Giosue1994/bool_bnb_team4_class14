@@ -51,9 +51,7 @@ section {
 #payment .heading {
   height: auto;
   background: white;
-  border: 5px solid #2174ec;
-  border-radius: 30px;
-  box-shadow: 0 0 0 5px white, inset 0 0 0 5px white;
+  border: 1px solid rgba(0, 0, 0, 0.125);
   margin: 100px 0 50px;
   padding: 10px 30px 5px;
   color: #d21625;
@@ -106,6 +104,11 @@ header .my-nav .btn-add_app:hover {
   background-color: #3e489b;
   border-color: #3e489b;
   border-radius: 18px;
+}
+
+main #login,
+main #register {
+  padding-top: 100px;
 }
 
 main .jumbo-col {
@@ -200,7 +203,7 @@ main .heading {
 
 main .heading span {
   background: #f8fafc;
-  border: 5px solid #2174ec;
+  border: 3px solid #2174ec;
   border-radius: 30px;
   box-shadow: 0 0 0 5px #f8fafc, inset 0 0 0 5px #f8fafc;
   display: block;
@@ -423,17 +426,6 @@ main .show .apartment-email .btn-style {
   border-radius: 18px;
 }
 
-main #user-apartments .heading {
-  height: auto;
-  background: white;
-  border: 5px solid #2174ec;
-  border-radius: 30px;
-  box-shadow: 0 0 0 5px white, inset 0 0 0 5px white;
-  margin: 100px 0 50px;
-  padding: 10px 30px 5px;
-  color: #d21625;
-}
-
 main #user-apartments .card a {
   padding: 1.25rem;
 }
@@ -482,6 +474,10 @@ main #user-apartments .card-footer .status.disabled {
 
   main .jumbo-col .jumbo .jumbo-title {
     display: none;
+  }
+
+  main .heading span {
+    margin: 0;
   }
 
   main .form-search-apartment .form-group {
