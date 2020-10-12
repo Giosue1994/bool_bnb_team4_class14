@@ -89,7 +89,7 @@
               <span>Servizi aggiuntivi</span>
               @foreach ($services as $service)
                 <div>
-                  <input type="checkbox" name="services[]" value="{{$service->id}}">
+                  <input class="single-check" type="checkbox" name="services[]" value="{{$service->id}}">
                   <label>{{$service->name}}</label>
                 </div>
               @endforeach
