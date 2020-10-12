@@ -54,27 +54,6 @@
         </div>
       @endif
 
-      <!-- Appartamenti -->
-      {{-- <h2 class="heading text-center"><span>Appartamenti</span></h2>
-      <div class="card card-normal">
-        <div class="row apartments all-apartments card-body d-flex justify-content-center">
-
-          @foreach ($apartments as $apartment)
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 single-apartment" lat="{{ $apartment->latitude }}" lng="{{ $apartment->longitude }}">
-              <a href="{{ route('admin.apartments.show', $apartment) }}">
-                <div class="img-container">
-                  <img class="apartment-image" src="{{ $apartment->image }}" alt="Immagine appartamento">
-                </div>
-                <div class="title-container">
-                  <h5>{{ $apartment->title }}</h5>
-                  <p>{{ $sponsoredApartment->description }}</p>
-                </div>
-              </a>
-            </div>
-          @endforeach
-        </div>
-      </div> --}}
-
     </div>
   </section>
 @endsection
