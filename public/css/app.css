@@ -479,6 +479,41 @@ main #user-apartments .card-footer .status.disabled {
   background-color: red;
 }
 
+.title_form {
+  color: red;
+}
+
+.create_form input,
+.edit_form input {
+  -webkit-transition: all 0.3s ease-in-out;
+  outline: none;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 100%;
+  background: #fff;
+  margin-bottom: 4%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #555;
+}
+
+.create_form input:focus,
+.edit_form input:focus {
+  background: #d2d9dd;
+}
+
+.create_form .save-btn,
+.edit_form .save-btn {
+  background-color: #3e489b;
+  color: white;
+}
+
+.create_form .checkboxes input,
+.edit_form .checkboxes input {
+  transform: scale(1.5);
+}
+
 @media (max-width: 674px) {
   main .jumbo-col .jumbo {
     height: 300px;

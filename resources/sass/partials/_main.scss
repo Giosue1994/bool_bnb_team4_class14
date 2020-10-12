@@ -398,6 +398,50 @@ main {
   }
 }
 
+// create form
+
+.title_form{
+  color: red;
+}
+.create_form,
+.edit_form {
+
+
+  input {
+    -webkit-transition: all 0.30s ease-in-out;
+    outline: none;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    margin-bottom: 4%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    color: #555;
+
+
+  }
+
+  input:focus {
+    background: #d2d9dd;
+
+  }
+
+  .save-btn{
+    background-color: #3e489b;
+    color: white
+  }
+  .checkboxes {
+    input {
+      transform: scale(1.5);
+
+    }
+
+  }
+
+}
+
 /////////////// MEDIA QUERY //////////////////
 @media (max-width: 674px) {
   main {
