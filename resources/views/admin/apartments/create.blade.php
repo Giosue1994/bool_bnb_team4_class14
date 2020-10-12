@@ -11,6 +11,7 @@
       <div class="col">
         <h1>Crea il tuo appartamento</h1>
 
+
         {{-- Validazione form --}}
         @if ($errors->any())
           <div class="alert alert-danger">

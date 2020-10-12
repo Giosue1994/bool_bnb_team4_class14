@@ -334,10 +334,20 @@ main {
 
   // SEZIONE SHOW
   .show {
+    a.link {
+      color: #3e489b;
+      font-weight: bold;
+      text-decoration: none;
+      &:hover {
+        color: $red-color;
+        text-decoration: underline;
+      }
+    }
     .single-apartment {
       .apartment-image img {
         // height: 400px;
       }
+
     }
 
     .apartment-informations,
@@ -355,9 +365,41 @@ main {
         }
       }
 
-      .btn-style {
+    }
+    ul.button {
+      display: flex;
+      margin-right: 0;
+      padding:0;
+
+
+      .btn-add_app {
+        color: #fff;
+        background-color: #3e489b;
+        border-color: #3e489b;
         border-radius: 18px;
+        margin-right: 10px;
+        &:hover {
+          color: #e30116;
+          background-color: #3e489b;
+          border-radius: 18px;
+        }
       }
+      .btn-add_app.delete {
+        color: #fff;
+        background-color: #e30116;
+        border-color: #e30116;
+        border-radius: 18px;
+        &:hover {
+          color: #e30116;
+          background-color: #3e489b;
+          border-color: #3e489b;
+          border-radius: 18px;
+        }
+      }
+    }
+
+    .btn-style {
+      border-radius: 18px;
     }
   }
 
@@ -400,6 +442,19 @@ main {
       }
     }
   }
+}
+// ALTRE SEZIONI
+#create, #edit, #statistics, #payment {
+  margin: 80px;
+  h1, h2 {
+    padding-bottom:10px;
+    color: $red-color;
+  }
+}
+
+// SPONSORIZZAZIONI
+.alert-success {
+  margin-top: 10px;
 }
 
 /////////////// MEDIA QUERY //////////////////

@@ -8,6 +8,8 @@
         <div class="col-12">
 
           <h1> Modifica i dati dell'appartamento</h1>
+          
+
 
           {{-- Validazione form --}}
           @if ($errors->any())
