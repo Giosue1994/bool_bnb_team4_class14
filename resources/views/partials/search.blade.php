@@ -80,7 +80,7 @@
 
 
         <div class="handlebars-container">
-          <h2>Risultati appartamenti</h2>
+          <h2 class="heading">Risultati appartamenti</h2>
           <div id="handlebars-apartments"></div>
         </div>
       </div>
