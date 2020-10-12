@@ -134,7 +134,13 @@
 
                   map.addLayer(osmLayer);
 
-                  var marker = L.marker([latlng.lat, latlng.lng])
+                  // // icona marker personalizzata
+                  // var houseIcon = L.icon({
+                  //   iconUrl: 'images/house.png',
+                  //   iconSize: [60, 60],
+                  // });
+
+                  var marker = L.marker([latlng.lat, latlng.lng]/*, {icon: houseIcon}*/)
                   .addTo(map)
                   .bindPopup(title);
 

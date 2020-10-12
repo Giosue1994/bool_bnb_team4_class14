@@ -18,10 +18,12 @@
               <a href="{{ route('admin.apartments.show', $userApartment) }}">
                 <img class="apartment-image img-user-apart" src="{{ $userApartment->image }}" alt="Immagine appartamento">
               </a>
+
               <div class="card-body">
                 <h5 class="card-title">{{ $userApartment->title }}</h5>
                 <p>{{ $userApartment->description }}</p>
               </div>
+
               <div class="card-footer">
                 <div class="last-update">
                   <small class="text-muted">Ultimo aggiornamento: <br>{{$userApartment->updated_at}}</small>
@@ -36,6 +38,7 @@
                   </div>
                 @endif
               </div>
+              
             </div>
           </div>
         @endforeach
