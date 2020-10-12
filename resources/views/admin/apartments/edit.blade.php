@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col-12">
 
-          <h1> Modifica i dati dell'appartamento</h1>
+          <h1 class="title_form">  Modifica i dati dell'appartamento</h1>
 
           {{-- Validazione form --}}
           @if ($errors->any())
@@ -21,6 +21,7 @@
           @endif
 
           <div>
+          <div class="edit_form">
             <form action="{{ route('admin.apartments.update', $apartment) }}" method="post" enctype="multipart/form-data">
               @csrf
               @method('PUT')
@@ -105,9 +106,11 @@
                 <input type="file" name="image_path" accept="image/*">
               </div>
 
-              <input type="submit" name="" value="Salva le modifiche">
+              <input class="save-btn "type="submit" name="" value="Salva le modifiche">
 
             </form>
+
+          </div>
 
           </div>
 

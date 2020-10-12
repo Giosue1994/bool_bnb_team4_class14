@@ -9,7 +9,7 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <h1>Crea il tuo appartamento</h1>
+        <h1 class="title_form"> Crea il tuo appartamento</h1>
 
         {{-- Validazione form --}}
         @if ($errors->any())
@@ -99,7 +99,7 @@
               <input type="file" name="image_path" accept="image/*">
             </div>
 
-            <input type="submit" value="Salva">
+            <input class="save-btn" type="submit" value="Salva">
 
           </form>
         </div>
