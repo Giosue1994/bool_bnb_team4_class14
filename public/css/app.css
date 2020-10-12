@@ -64,6 +64,10 @@ section {
   border: none;
 }
 
+#search-results .heading {
+  color: #d21625;
+}
+
 /* ________ MAPPE ________ */
 
 #map-search {
@@ -704,7 +708,7 @@ footer i:hover {
 }
 
 footer .footer-logo {
-  padding: 5px;
+  padding: 20px;
 }
 
 footer .footer-logo ul {
@@ -718,6 +722,7 @@ footer .footer-logo img {
 footer .items {
   display: flex;
   justify-content: center;
+  padding: 20px;
 }
 
 footer .items .footer-item {

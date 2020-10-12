@@ -26,9 +26,8 @@ footer {
   }
 
   .footer-logo {
-    // padding-bottom: 20px;
+    padding: 20px;
 
-    padding:5px;
     ul {
       padding: 0;
     }
@@ -40,6 +39,7 @@ footer {
   .items{
     display: flex;
     justify-content: center;
+    padding: 20px;
     .footer-item {
       padding: 0;
 
