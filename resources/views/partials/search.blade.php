@@ -8,7 +8,7 @@
 <section id="search-results">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-6">
+      <div class="col-xl-6 col-lg-7 col-md-12">
         <h2 class="heading">Appartamenti nell'area selezionata della mappa</h2>
         <p id="counter"></p>
         <div id="filters-container">
@@ -23,7 +23,7 @@
             </div>
           </form>
           <div id="btn-slide"class="text-center">
-            <i id="angle" class="fas fa-angle-down"></i><span>Filtri</span>
+            <i id="angle" class="fas fa-angle-down"></i>
           </div>
         </div>
 
@@ -79,14 +79,13 @@
         @endif
 
 
-        <h2>Risultati appartamenti</h2>
-        <div id="handlebars-apartments">
-
+        <div class="handlebars-container">
+          <h2>Risultati appartamenti</h2>
+          <div id="handlebars-apartments"></div>
         </div>
-
       </div>
 
-      <div class="col-6">
+      <div class="col-xl-6 col-lg-5 col-md-12">
         {{-- Mappa --}}
         <div id="map-search"></div>
       </div>

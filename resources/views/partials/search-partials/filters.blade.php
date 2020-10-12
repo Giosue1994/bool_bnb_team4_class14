@@ -37,4 +37,4 @@
   </div>
 </div>
 
-<button id="btn-search" class="btn-index-search" type="button"><i class="search-icon fas fa-search"></i>Filtra</button>
+<button id="btn-search" class="btn-index-search" type="button"><i class="search-icon fas fa-search"></i>Cerca</button>

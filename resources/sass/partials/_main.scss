@@ -125,17 +125,10 @@ main {
   }
 
   .card-sponsored {
-    // background-color:  $red-color;
     background-image: url("/images/sfondo-app_03.png");
     background-repeat: no-repeat;
     background-size: cover;
     padding: 30px 70px;
-
-    .sponsored-apartments {
-      .single-apartment {
-        // margin: 0;
-      }
-    }
   }
 
   .card-normal {
@@ -222,6 +215,10 @@ main {
 
   //SEZIONE SEARCH
   #search-results {
+    .heading {
+      height: inherit;
+      padding-bottom: 10px;
+    }
     #filters-container {
       .form-search-apartment {
         .form-group {
@@ -260,21 +257,17 @@ main {
         background-color: #3e489b;
         color: white;
         font-size: 20px;
-        width: 90px;
+        width: 30px;
         height: 30px;
         border-radius: 30px;
         position: relative;
         left: 50%;
         cursor: pointer;
         top: -15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         transform: translate(-50%);
 
-        span {
-          padding-left: 5px;
-          font-size: 15px;
+        i {
+          padding: 0;
         }
       }
     }
@@ -308,23 +301,27 @@ main {
 
             img {
               position: relative;
-              bottom: 90%;
+              bottom: 5%;
             }
           }
         }
       }
     }
 
-    .search-results-container {
-      .single-apartment {
-        h5 {
-          font-weight: bold;
-        }
+    .handlebars-container {
+      padding-top: 100px;
 
-        .apartment-image {
-          img {
-            border-radius: 30px;
-            width: 300px;
+      .search-results-container {
+        .single-apartment {
+          h5 {
+            font-weight: bold;
+          }
+
+          .apartment-image {
+            img {
+              border-radius: 30px;
+              width: 300px;
+            }
           }
         }
       }
@@ -336,7 +333,7 @@ main {
   .show {
     .single-apartment {
       .apartment-image img {
-        // height: 400px;
+        width: 400px;
       }
     }
 
@@ -403,7 +400,7 @@ main {
 }
 
 /////////////// MEDIA QUERY //////////////////
-@media (max-width: 575.98px) {
+@media (max-width: 674px) {
   main {
     .jumbo-col .jumbo{
       height: 300px;
@@ -419,15 +416,26 @@ main {
     }
     .form-search-apartment{
       .form-group {
-        max-width: 300px;
         width:300px;
-        .btn-index-search {
+      }
+    }
 
+    #search-results {
+      .handlebars-container {
+        .search-results-container {
+          .single-apartment {
+            .apartment-image {
+              img {
+                width: 200px;
+              }
+            }
+          }
         }
       }
     }
   }
 }
+
 @media (min-width: 576px) and (max-width: 767.98px) {
   main {
     .jumbo-col .jumbo{
@@ -443,7 +451,6 @@ main {
     }
     .form-search-apartment{
       .form-group {
-        max-width: 400px;
         width:400px;
       }
     }
@@ -465,10 +472,19 @@ main {
     }
     .form-search-apartment{
       .form-group {
-        max-width: 500px;
         width: 500px;
-
       }
     }
   }
+}
+
+@media screen and (max-width: 992px) {
+  #map-search {
+    margin-top: 100px;
+    height: 400px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+  };
 }
