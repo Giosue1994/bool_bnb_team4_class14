@@ -408,7 +408,7 @@ main {
 .edit_form {
 
 
-  input {
+  .input-text, .save-btn {
     -webkit-transition: all 0.30s ease-in-out;
     outline: none;
     box-sizing: border-box;
@@ -436,21 +436,8 @@ main {
 
 }
 
-.edit_check,
-.create_check {
-  transform: scale(1.2);
-  position: relative;
-  box-shadow: 0px 0px 0px 1px rgb(192,192,192);
-}
 
- .edit_check{
-   top: 62px;
- }
 
- .create_check {
-   top: -30px;
-
- }
 
 /////////////// MEDIA QUERY //////////////////
 @media (max-width: 674px) {

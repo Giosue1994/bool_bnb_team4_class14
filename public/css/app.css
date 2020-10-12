@@ -487,8 +487,10 @@ main #user-apartments .card-footer .status.disabled {
   color: red;
 }
 
-.create_form input,
-.edit_form input {
+.create_form .input-text,
+.create_form .save-btn,
+.edit_form .input-text,
+.edit_form .save-btn {
   -webkit-transition: all 0.3s ease-in-out;
   outline: none;
   box-sizing: border-box;
@@ -511,21 +513,6 @@ main #user-apartments .card-footer .status.disabled {
 .edit_form .save-btn {
   background-color: #3e489b;
   color: white;
-}
-
-.edit_check,
-.create_check {
-  transform: scale(1.2);
-  position: relative;
-  box-shadow: 0px 0px 0px 1px silver;
-}
-
-.edit_check {
-  top: 62px;
-}
-
-.create_check {
-  top: -30px;
 }
 
 @media (max-width: 674px) {

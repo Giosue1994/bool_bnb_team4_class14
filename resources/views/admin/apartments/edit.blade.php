@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col-12">
 
-          <h1> Modifica i dati dell'appartamento</h1>
+          <h1 class="title_form"> Modifica i dati dell'appartamento</h1>
 
 
           {{-- Validazione form --}}
@@ -36,7 +36,7 @@
               </div>
               <div>
                 <label>Titolo:</label>
-                <input type="text" name="title" value="{{ old('title') ? old('title') : $apartment->title}}">
+                <input class="input-text" type="text" name="title" value="{{ old('title') ? old('title') : $apartment->title}}">
               </div>
 
               <div>
@@ -46,49 +46,49 @@
 
               <div>
                 <label>Numero stanze:</label>
-                <input type="number" name="rooms" value="{{ old('rooms') ? old('rooms') : $apartment->rooms}}">
+                <input class="input-text" type="number" name="rooms" value="{{ old('rooms') ? old('rooms') : $apartment->rooms}}">
               </div>
 
               <div>
                 <label>Numero Bagni:</label>
-                <input type="number" name="baths" value="{{ old('baths') ? old('baths') : $apartment->baths}}">
+                <input class="input-text" type="number" name="baths" value="{{ old('baths') ? old('baths') : $apartment->baths}}">
               </div>
 
               <div>
                 <label>Numero letti:</label>
-                <input type="number" name="beds" value="{{ old('beds') ? old('beds') :$apartment->beds}}">
+                <input class="input-text" type="number" name="beds" value="{{ old('beds') ? old('beds') :$apartment->beds}}">
               </div>
 
               <div>
                 <label> Metri quadri:</label>
-                <input type="number" name="mqs" value="{{old('mqs') ? old('mqs') : $apartment->mqs}}">
+                <input class="input-text"  type="number" name="mqs" value="{{old('mqs') ? old('mqs') : $apartment->mqs}}">
               </div>
 
               <div>
                 <label>Numero Ospiti:</label>
-                <input type="number" name="guests" value="{{old('guests') ? old('guests') : $apartment->guests}}">
+                <input class="input-text" type="number" name="guests" value="{{old('guests') ? old('guests') : $apartment->guests}}">
               </div>
 
               <div class="form-group">
                 <label for="form-address">Indirizzo*</label>
-                <input value="{{old('address') ? old('address') : $apartment->address}}" name="address" type="search" class="form-control" id="form-address" placeholder="Inserisci l'indirizzo del tuo appartamento" />
+                <input class="input-text" value="{{old('address') ? old('address') : $apartment->address}}" name="address" type="search" class="form-control" id="form-address" placeholder="Inserisci l'indirizzo del tuo appartamento" />
               </div>
               <div class="form-group">
                 <label for="form-city">Città*</label>
-                <input value="{{old('city') ? old('city') : $apartment->city}}" name="city" type="text" class="form-control" id="form-city" placeholder="City" />
+                <input class="input-text" value="{{old('city') ? old('city') : $apartment->city}}" name="city" type="text" class="form-control" id="form-city" placeholder="City" />
               </div>
               <div class="form-group">
                 <label for="form-zip">CAP/ZIP*</label>
-                <input value="{{old('zip') ? old('zip') : $apartment->zip}}" name="zip" type="text" class="form-control" id="form-zip" placeholder="ZIP code" />
+                <input class="input-text" value="{{old('zip') ? old('zip') : $apartment->zip}}" name="zip" type="text" class="form-control" id="form-zip" placeholder="ZIP code" />
               </div>
               <div class="split" style="display: none">
                 <div class="form-group">
                   <label for="form-lat">Latitude</label>
-                  <input value="{{old('latitude') ? old('latitude') : $apartment->latitude}}" name="latitude" type="text" class="form-control" id="form-lat" placeholder="Latitude" />
+                  <input class="input-text" value="{{old('latitude') ? old('latitude') : $apartment->latitude}}" name="latitude" type="text" class="form-control" id="form-lat" placeholder="Latitude" />
                 </div>
                 <div class="form-group">
                   <label for="form-lng">Longitude</label>
-                  <input value="{{old('longitude') ? old('longitude') : $apartment->longitude}}" name="longitude" type="text" class="form-control" id="form-lng" placeholder="Longitude" />
+                  <input class="input-text" value="{{old('longitude') ? old('longitude') : $apartment->longitude}}" name="longitude" type="text" class="form-control" id="form-lng" placeholder="Longitude" />
                 </div>
               </div>
 
