@@ -21,12 +21,12 @@
                   </div>
                 @endif
 
-
-
             </div>
+
             <div class="apartment-image">
               <img src="{{ $apartment->image }}" alt="">
             </div>
+
             <p><small class="text-muted">Autore: {{ $apartment->user->name }} - Creato il: {{ $apartment->created_at->format('d/m/y') }}</small></p>
           </div>
 
@@ -94,8 +94,8 @@
                     <li>Scade il: {{$sponsor}}</li>
                   @endforeach
                 </ol>
-              @endif
               </div>
+            @endif
 
           </div>
 
@@ -154,6 +154,8 @@
                 })();
               </script>
             </div>
+
+
             <div class="col-12 apartment-email">
               <div class="message-form card mb-2">
                 <div class="card-body">
@@ -186,11 +188,13 @@
             @if ($logged_user->id === $apartment->user->id)
               <ul class="button">
                 <li><a class="btn btn-add_app " href="{{ route('admin.apartments.edit', $apartment) }}"> Modifica Appartamento</a></li>
-                <li><form  action="{{ route('admin.apartments.destroy', $apartment) }}" method="post">
-                  @csrf
-                  @method('DELETE')
-                  <input class="btn btn-add_app delete" type="submit" value="Elimina">
-                </form></li>
+                <li>
+                  <form  action="{{ route('admin.apartments.destroy', $apartment) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <input class="btn btn-add_app delete" type="submit" value="Elimina">
+                  </form>
+                </li>
               </ul>
             @endif
           </div>

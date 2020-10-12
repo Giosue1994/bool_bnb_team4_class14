@@ -342,7 +342,7 @@ main {
     }
     .single-apartment {
       .apartment-image img {
-        width: 400px;
+        width: 100%;
       }
 
     }
@@ -372,12 +372,12 @@ main {
       .btn-add_app {
         color: #fff;
         background-color: #3e489b;
-        border-color: #3e489b;
+        // border-color: #3e489b;
         border-radius: 18px;
         margin-right: 10px;
         &:hover {
-          color: #e30116;
-          background-color: #3e489b;
+          color: white;
+          background-color: #e30116;
           border-radius: 18px;
         }
       }
@@ -387,7 +387,7 @@ main {
         border-color: #e30116;
         border-radius: 18px;
         &:hover {
-          color: #e30116;
+          color: white;
           background-color: #3e489b;
           border-color: #3e489b;
           border-radius: 18px;
