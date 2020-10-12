@@ -57,6 +57,13 @@ section {
   color: #d21625;
 }
 
+#user-apartments .card-footer,
+#received-email .card-footer,
+#statistics .card-footer,
+#payment .card-footer {
+  border: none;
+}
+
 /* ________ MAPPE ________ */
 
 #map-search {
@@ -456,10 +463,6 @@ main #user-apartments .card-body p {
   -webkit-line-clamp: 3;
 }
 
-main #user-apartments .card-footer {
-  border: none;
-}
-
 main #user-apartments .card-footer .status {
   border-radius: 30px;
   color: white;
@@ -528,8 +531,20 @@ main #user-apartments .card-footer .status.disabled {
     width: 300px;
   }
 
+  main #search-results .handlebars-container .search-results-container .single-apartment {
+    align-items: center;
+  }
+
+  main #search-results .handlebars-container .search-results-container .single-apartment .card-body {
+    padding: 10px;
+  }
+
   main #search-results .handlebars-container .search-results-container .single-apartment .apartment-image img {
     width: 200px;
+  }
+
+  main #search-results .handlebars-container .search-results-container .single-apartment .status {
+    border-radius: 10px;
   }
 
   main #user-apartments .card a img {
