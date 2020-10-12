@@ -461,6 +461,9 @@ main {
 .create_form,
 .edit_form {
 
+  .single-check {
+    margin-right: 10px;
+  }
 
   input {
     -webkit-transition: all 0.30s ease-in-out;
@@ -468,14 +471,15 @@ main {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    width: 100%;
     background: #fff;
     margin-bottom: 4%;
     border: 1px solid #ccc;
     padding: 10px;
     color: #555;
+  }
 
-
+  .save-btn {
+    width: 100%;
   }
 
   input:focus {
