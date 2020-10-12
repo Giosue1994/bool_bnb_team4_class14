@@ -496,9 +496,17 @@ main #user-apartments .card-footer .status.disabled {
   main #search-results .handlebars-container .search-results-container .single-apartment .apartment-image img {
     width: 200px;
   }
+
+  main #user-apartments .card a img {
+    width: 100px;
+  }
+
+  main #user-apartments .card-body {
+    padding: 10px;
+  }
 }
 
-@media (min-width: 576px) and (max-width: 767.98px) {
+@media (min-width: 675px) and (max-width: 767.98px) {
   main .jumbo-col .jumbo {
     height: 400px;
   }
@@ -513,6 +521,14 @@ main #user-apartments .card-footer .status.disabled {
 
   main .form-search-apartment .form-group {
     width: 400px;
+  }
+
+  main #user-apartments .card a img {
+    width: 150px;
+  }
+
+  main #user-apartments .card-body {
+    padding: 10px;
   }
 }
 

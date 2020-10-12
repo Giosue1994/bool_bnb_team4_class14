@@ -433,10 +433,24 @@ main {
         }
       }
     }
+
+    #user-apartments {
+      .card {
+        a {
+          img {
+            width: 100px;
+          }
+        }
+      }
+
+      .card-body {
+        padding: 10px;
+      }
+    }
   }
 }
 
-@media (min-width: 576px) and (max-width: 767.98px) {
+@media (min-width: 675px) and (max-width: 767.98px) {
   main {
     .jumbo-col .jumbo{
       height: 400px;
@@ -452,6 +466,20 @@ main {
     .form-search-apartment{
       .form-group {
         width:400px;
+      }
+    }
+
+    #user-apartments {
+      .card {
+        a {
+          img {
+            width: 150px;
+          }
+        }
+      }
+
+      .card-body {
+        padding: 10px;
       }
     }
   }

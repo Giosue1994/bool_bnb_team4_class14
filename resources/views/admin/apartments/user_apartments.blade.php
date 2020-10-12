@@ -14,7 +14,7 @@
       <div class="row">
         @foreach ($userApartments as $userApartment)
           <div lat="{{ $userApartment->latitude }}" lng="{{ $userApartment->longitude }}" class="col-12 single-apartment mb-3">
-            <div class="card flex-row">
+            <div class="card flex-row align-items-center">
               <a href="{{ route('admin.apartments.show', $userApartment) }}">
                 <img class="apartment-image img-user-apart" src="{{ $userApartment->image }}" alt="Immagine appartamento">
               </a>
@@ -38,7 +38,7 @@
                   </div>
                 @endif
               </div>
-              
+
             </div>
           </div>
         @endforeach
