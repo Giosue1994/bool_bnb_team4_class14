@@ -380,7 +380,6 @@ main {
     }
 
     .card-footer {
-      border: none;
       .status {
         border-radius: 30px;
         color: white;
@@ -424,10 +423,18 @@ main {
       .handlebars-container {
         .search-results-container {
           .single-apartment {
+            align-items: center;
+
+            .card-body {
+              padding: 10px;
+            }
             .apartment-image {
               img {
                 width: 200px;
               }
+            }
+            .status {
+              border-radius: 10px;
             }
           }
         }
