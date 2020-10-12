@@ -7,16 +7,20 @@
 
           <div class="col-12 single-apartment" lat="{{ $apartment->latitude }}" lng="{{ $apartment->longitude }}">
             <div class="d-flex justify-content-between">
-              <div class="col-6">
+              <div class="col-lg-6 col-md-12">
                 <h2 id="title" class="card-title">{{ $apartment->title }}</h2>
                 <h4>{{ $apartment->address }}, {{ $apartment->city }}, {{ $apartment->zip }}</h4>
               </div>
-              <div>
+
                 @if ($logged_user->id === $apartment->user->id)
-                  <a class="btn btn-success btn-style" href="{{ route('admin.payment', $apartment) }}">Sponsorizza appartamento</a>
-                  <a class="btn btn-warning btn-style" href="{{ route('admin.statistics', $apartment) }}">Visualizza statistiche</a>
+                  <div class="">
+                    <ul>
+                      <li> <a class="link" href="{{ route('admin.payment', $apartment) }}">Sponsorizza appartamento</a></li>
+                      <li> <a class="link" href="{{ route('admin.statistics', $apartment) }}">Visualizza statistiche</a></li>
+                    </ul>
+                  </div>
                 @endif
-              </div>
+
 
 
             </div>
@@ -83,13 +87,16 @@
             </div>
 
             @if (!($endSponsors->isEmpty()) && $logged_user->id === $apartment->user->id)
-              <h3>Sponsorizzazioni attive</h3>
-              <ol>
-                @foreach ($endSponsors as $sponsor)
-                  <li>Scade il: {{$sponsor}}</li>
-                @endforeach
-              </ol>
-            @endif
+              <div class="card-body card mb-2">
+                <h3>Sponsorizzazioni attive</h3>
+                <ol>
+                  @foreach ($endSponsors as $sponsor)
+                    <li>Scade il: {{$sponsor}}</li>
+                  @endforeach
+                </ol>
+              @endif
+              </div>
+
           </div>
 
           <div class="col-lg-6 col-md-12">
@@ -177,12 +184,14 @@
           <div class="col-12 apartment-admin-function">
             {{-- <a class="btn btn-primary" href="{{ route('admin.apartments.index')}}"> Torna alla lista appartamenti</a> --}}
             @if ($logged_user->id === $apartment->user->id)
-              <a class="btn btn-primary btn-style" href="{{ route('admin.apartments.edit', $apartment) }}"> Modifica Appartamento</a>
-              <form class="delete" action="{{ route('admin.apartments.destroy', $apartment) }}" method="post">
-                @csrf
-                @method('DELETE')
-                <input class="btn btn-danger btn-style" type="submit" value="Elimina">
-              </form>
+              <ul class="button">
+                <li><a class="btn btn-add_app " href="{{ route('admin.apartments.edit', $apartment) }}"> Modifica Appartamento</a></li>
+                <li><form  action="{{ route('admin.apartments.destroy', $apartment) }}" method="post">
+                  @csrf
+                  @method('DELETE')
+                  <input class="btn btn-add_app delete" type="submit" value="Elimina">
+                </form></li>
+              </ul>
             @endif
           </div>
 

@@ -7,7 +7,8 @@
       <div class="row">
         <div class="col-12">
 
-          <h1 class="title_form">  Modifica i dati dell'appartamento</h1>
+          <h1> Modifica i dati dell'appartamento</h1>
+
 
           {{-- Validazione form --}}
           @if ($errors->any())

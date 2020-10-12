@@ -52,7 +52,7 @@ section {
   height: auto;
   background: white;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  margin: 100px 0 50px;
+  margin: 80px 0 50px;
   padding: 10px 30px 5px;
   color: #d21625;
 }
@@ -418,10 +418,16 @@ main #search-results .handlebars-container .search-results-container .single-apa
   width: 300px;
 }
 
-main .show .single-apartment .apartment-image img {
-  width: 400px;
+main .show a.link {
+  color: #3e489b;
+  font-weight: bold;
+  text-decoration: none;
 }
 
+main .show a.link:hover {
+  color: #d21625;
+  text-decoration: underline;
+}
 main .show .apartment-informations .card-body,
 main .show .apartment-map .card-body,
 main .show .apartment-email .card-body {
@@ -436,9 +442,41 @@ main .show .apartment-email .card-body .email-form input[type=text] {
   margin-bottom: 5px;
 }
 
-main .show .apartment-informations .btn-style,
-main .show .apartment-map .btn-style,
-main .show .apartment-email .btn-style {
+main .show ul.button {
+  display: flex;
+  margin-right: 0;
+  padding: 0;
+}
+
+main .show ul.button .btn-add_app {
+  color: #fff;
+  background-color: #3e489b;
+  border-color: #3e489b;
+  border-radius: 18px;
+  margin-right: 10px;
+}
+
+main .show ul.button .btn-add_app:hover {
+  color: #e30116;
+  background-color: #3e489b;
+  border-radius: 18px;
+}
+
+main .show ul.button .btn-add_app.delete {
+  color: #fff;
+  background-color: #e30116;
+  border-color: #e30116;
+  border-radius: 18px;
+}
+
+main .show ul.button .btn-add_app.delete:hover {
+  color: #e30116;
+  background-color: #3e489b;
+  border-color: #3e489b;
+  border-radius: 18px;
+}
+
+main .show .btn-style {
   border-radius: 18px;
 }
 
@@ -479,42 +517,7 @@ main #user-apartments .card-footer .status.disabled {
   background-color: red;
 }
 
-.title_form {
-  color: red;
-}
-
-.create_form input,
-.edit_form input {
-  -webkit-transition: all 0.3s ease-in-out;
-  outline: none;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  width: 100%;
-  background: #fff;
-  margin-bottom: 4%;
-  border: 1px solid #ccc;
-  padding: 10px;
-  color: #555;
-}
-
-.create_form input:focus,
-.edit_form input:focus {
-  background: #d2d9dd;
-}
-
-.create_form .save-btn,
-.edit_form .save-btn {
-  background-color: #3e489b;
-  color: white;
-}
-
-.create_form .checkboxes input,
-.edit_form .checkboxes input {
-  transform: scale(1.5);
-}
-
-@media (max-width: 674px) {
+@media (max-width: 575.98px) {
   main .jumbo-col .jumbo {
     height: 300px;
   }
@@ -740,7 +743,7 @@ form {
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Comfortaa", cursive;
+  --font-family-sans-serif: "Comfortaa", "Open Sans";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -772,7 +775,7 @@ section {
 
 body {
   margin: 0;
-  font-family: "Comfortaa", cursive;
+  font-family: "Comfortaa", "Open Sans";
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
@@ -7076,7 +7079,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Comfortaa", cursive;
+  font-family: "Comfortaa", "Open Sans";
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -7201,7 +7204,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Comfortaa", cursive;
+  font-family: "Comfortaa", "Open Sans";
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
