@@ -273,6 +273,7 @@ main .apartments .single-apartment a .img-container {
 
 main .apartments .single-apartment a .img-container .apartment-image {
   transform: scale(1.7);
+  width: 500px;
 }
 
 main .apartments .single-apartment a .img-container:hover {
