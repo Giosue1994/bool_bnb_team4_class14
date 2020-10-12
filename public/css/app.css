@@ -325,6 +325,14 @@ main #search-results .heading {
   padding-bottom: 10px;
 }
 
+main #search-results .search-results-container .single-apartment {
+  transition: 0.2s ease-in-out;
+}
+
+main #search-results .search-results-container .single-apartment:hover {
+  background-color: rgba(178, 34, 34, 0.3);
+}
+
 main #search-results #filters-container .form-search-apartment .form-group {
   width: 100%;
 }
